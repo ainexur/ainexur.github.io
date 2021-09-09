@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="实验二：按键开关输入1. 实验原理2. 材料清单   元器件名称 信号参数规格 数量 参考实物图    Arduino开发板 Uno R3 1    3. 硬件连接4. 程序设计4.1 流程图4.2 程序源码123456789101112131415161718192021int LEDPin &#x3D; 3;void setup() &amp;#123;  &#x2F;&#x2F; put your setup code here">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实验二：按键开关输入">
+<meta property="og:url" content="https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/index.html">
+<meta property="og:site_name" content="ainexur">
+<meta property="og:description" content="实验二：按键开关输入1. 实验原理2. 材料清单   元器件名称 信号参数规格 数量 参考实物图    Arduino开发板 Uno R3 1    3. 硬件连接4. 程序设计4.1 流程图4.2 程序源码123456789101112131415161718192021int LEDPin &#x3D; 3;void setup() &amp;#123;  &#x2F;&#x2F; put your setup code here">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-09T08:25:18.000Z">
+<meta property="article:modified_time" content="2021-09-09T09:15:10.880Z">
+<meta property="article:author" content="ainexur">
+<meta property="article:tag" content="Arduino">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>实验二：按键开关输入</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇 " href="/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%B8%89%EF%BC%9A%E7%81%AB%E7%84%B0%E4%BC%A0%E6%84%9F%E5%99%A8/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇 " href="/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%B8%80%EF%BC%9A%E7%82%AB%E9%85%B7LED%E7%81%AF/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部 " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章 " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/&text=实验二：按键开关输入"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/&title=实验二：按键开关输入"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/&is_video=false&description=实验二：按键开关输入"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=实验二：按键开关输入&body=Check out this article: https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/&title=实验二：按键开关输入"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/&title=实验二：按键开关输入"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/&title=实验二：按键开关输入"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/&title=实验二：按键开关输入"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/&name=实验二：按键开关输入&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/&t=实验二：按键开关输入"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">实验二：按键开关输入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9E%E9%AA%8C%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">1. 实验原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%9D%90%E6%96%99%E6%B8%85%E5%8D%95"><span class="toc-number">1.2.</span> <span class="toc-text">2. 材料清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.3.</span> <span class="toc-text">3. 硬件连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.4.</span> <span class="toc-text">4. 程序设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E7%A8%8B%E5%BA%8F%E6%BA%90%E7%A0%81"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 程序源码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%B0%83%E8%AF%95%E5%8F%8A%E5%AE%9E%E9%AA%8C%E7%8E%B0%E8%B1%A1"><span class="toc-number">1.5.</span> <span class="toc-text">5. 调试及实验现象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%BB%A3%E7%A0%81%E5%9B%9E%E9%A1%BE"><span class="toc-number">1.6.</span> <span class="toc-text">6. 代码回顾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%89%A9%E5%B1%95%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.7.</span> <span class="toc-text">7. 扩展实验</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        实验二：按键开关输入
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">ainexur</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-09-09T08:25:18.000Z" itemprop="datePublished">2021-09-09</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Arduino/" rel="tag">Arduino</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="实验二：按键开关输入"><a href="#实验二：按键开关输入" class="headerlink" title="实验二：按键开关输入"></a>实验二：按键开关输入</h1><h2 id="1-实验原理"><a href="#1-实验原理" class="headerlink" title="1. 实验原理"></a>1. 实验原理</h2><h2 id="2-材料清单"><a href="#2-材料清单" class="headerlink" title="2. 材料清单"></a>2. 材料清单</h2><table>
+<thead>
+<tr>
+<th>元器件名称</th>
+<th>信号参数规格</th>
+<th>数量</th>
+<th>参考实物图</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Arduino开发板</td>
+<td>Uno R3</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="3-硬件连接"><a href="#3-硬件连接" class="headerlink" title="3. 硬件连接"></a>3. 硬件连接</h2><h2 id="4-程序设计"><a href="#4-程序设计" class="headerlink" title="4. 程序设计"></a>4. 程序设计</h2><h3 id="4-1-流程图"><a href="#4-1-流程图" class="headerlink" title="4.1 流程图"></a>4.1 流程图</h3><h3 id="4-2-程序源码"><a href="#4-2-程序源码" class="headerlink" title="4.2 程序源码"></a>4.2 程序源码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> LEDPin = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// put your setup code here, to run once:</span></span><br><span class="line">  pinMode(LEDPin, OUTPUT);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// put your main code here, to run repeatedly:</span></span><br><span class="line">  <span class="keyword">int</span> val;</span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="comment">//获取电压值， 0~5V : 0 ~ 1023</span></span><br><span class="line">    val = analogRead(A0);</span><br><span class="line">    <span class="keyword">if</span> (val &gt;= <span class="number">1000</span>) &#123;</span><br><span class="line">      digitalWrite(LEDPin, HIGH);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      digitalWrite(LEDPin, LOW);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-调试及实验现象"><a href="#5-调试及实验现象" class="headerlink" title="5. 调试及实验现象"></a>5. 调试及实验现象</h2><h2 id="6-代码回顾"><a href="#6-代码回顾" class="headerlink" title="6. 代码回顾"></a>6. 代码回顾</h2><h2 id="7-扩展实验"><a href="#7-扩展实验" class="headerlink" title="7. 扩展实验"></a>7. 扩展实验</h2><p>上述实验中， 按键按下LED亮，要想LED一直亮着， 按键需一直按下。修改源码，实现当按键按下并放开后，LED任然会一直亮着</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> LEDPin = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">bool</span> w = <span class="literal">false</span>; <span class="comment">//开关按下， w取反</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    pinMode(LEDPin, OUTPUT);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//获取电压值， 0~5V : 0 ~ 1023</span></span><br><span class="line">        <span class="keyword">if</span> (analogRead(A0) &gt;= <span class="number">1000</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            w = !w;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (w)</span><br><span class="line">        &#123;</span><br><span class="line">            digitalWrite(LEDPin, HIGH);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            digitalWrite(LEDPin, LOW);</span><br><span class="line">        &#125;</span><br><span class="line">        delay(<span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//版本2</span></span><br><span class="line"><span class="comment">// #define LEDPin 3</span></span><br><span class="line"><span class="comment">// #define sw 7</span></span><br><span class="line"><span class="comment">// int old = 0;</span></span><br><span class="line"><span class="comment">// bool state = false; //开关按下， w取反</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// void setup()</span></span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//     pinMode(LEDPin, OUTPUT);</span></span><br><span class="line"><span class="comment">//     pinMode(sw, INPUT);</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// void loop()</span></span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//     unsigned char val; //读取高低位</span></span><br><span class="line"><span class="comment">//     val = digitalRead(sw);</span></span><br><span class="line"><span class="comment">//     if (val == HIGH &amp;&amp; old == LOW)</span></span><br><span class="line"><span class="comment">//     &#123;</span></span><br><span class="line"><span class="comment">//         state = !state;</span></span><br><span class="line"><span class="comment">//         delay(10);</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">//     old = val;</span></span><br><span class="line"><span class="comment">//     //获取电压值， 0~5V : 0 ~ 1023</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//     if (state)</span></span><br><span class="line"><span class="comment">//     &#123;</span></span><br><span class="line"><span class="comment">//         digitalWrite(LEDPin, HIGH);</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">//     else</span></span><br><span class="line"><span class="comment">//     &#123;</span></span><br><span class="line"><span class="comment">//         digitalWrite(LEDPin, LOW);</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">实验二：按键开关输入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9E%E9%AA%8C%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">1. 实验原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%9D%90%E6%96%99%E6%B8%85%E5%8D%95"><span class="toc-number">1.2.</span> <span class="toc-text">2. 材料清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.3.</span> <span class="toc-text">3. 硬件连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.4.</span> <span class="toc-text">4. 程序设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E7%A8%8B%E5%BA%8F%E6%BA%90%E7%A0%81"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 程序源码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%B0%83%E8%AF%95%E5%8F%8A%E5%AE%9E%E9%AA%8C%E7%8E%B0%E8%B1%A1"><span class="toc-number">1.5.</span> <span class="toc-text">5. 调试及实验现象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%BB%A3%E7%A0%81%E5%9B%9E%E9%A1%BE"><span class="toc-number">1.6.</span> <span class="toc-text">6. 代码回顾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%89%A9%E5%B1%95%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.7.</span> <span class="toc-text">7. 扩展实验</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/&text=实验二：按键开关输入"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/&title=实验二：按键开关输入"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/&is_video=false&description=实验二：按键开关输入"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=实验二：按键开关输入&body=Check out this article: https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/&title=实验二：按键开关输入"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/&title=实验二：按键开关输入"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/&title=实验二：按键开关输入"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/&title=实验二：按键开关输入"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/&name=实验二：按键开关输入&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://ainexur.github.io/2021/09/09/%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3%E8%BE%93%E5%85%A5/&t=实验二：按键开关输入"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021
+    ainexur
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

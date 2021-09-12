@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="练习题 3.1假设下面的值存放在指明的内存地址和寄存器中    地址 值    0x100 0xFF   0x104 0xAB   0x108 0x13   0x10C 0x11      寄存器 值    %rax 0x100   %rcx 0x1   %rdx 0x3   填写下表，给出所示操作数的值：    操作数 值    %rax 0x100   0x104 0xAB   $0x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSAPP第三章练习">
+<meta property="og:url" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/index.html">
+<meta property="og:site_name" content="光">
+<meta property="og:description" content="练习题 3.1假设下面的值存放在指明的内存地址和寄存器中    地址 值    0x100 0xFF   0x104 0xAB   0x108 0x13   0x10C 0x11      寄存器 值    %rax 0x100   %rcx 0x1   %rdx 0x3   填写下表，给出所示操作数的值：    操作数 值    %rax 0x100   0x104 0xAB   $0x">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.1.1.png">
+<meta property="article:published_time" content="2021-09-10T08:27:52.000Z">
+<meta property="article:modified_time" content="2021-09-10T09:27:53.986Z">
+<meta property="article:author" content="ainexur">
+<meta property="article:tag" content="深入理解计算机操作系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.1.1.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>CSAPP第三章练习</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇 " href="/2021/09/10/CSAPP%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%AE%B6%E5%BA%AD%E4%BD%9C%E4%B8%9A2-63/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部 " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章 " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/&text=CSAPP第三章练习"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/&title=CSAPP第三章练习"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/&is_video=false&description=CSAPP第三章练习"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CSAPP第三章练习&body=Check out this article: https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/&title=CSAPP第三章练习"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/&title=CSAPP第三章练习"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/&title=CSAPP第三章练习"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/&title=CSAPP第三章练习"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/&name=CSAPP第三章练习&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/&t=CSAPP第三章练习"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-1"><span class="toc-number">1.</span> <span class="toc-text">练习题 3.1</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        CSAPP第三章练习
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">ainexur</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-09-10T08:27:52.000Z" itemprop="datePublished">2021-09-10</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">深入理解计算机操作系统</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.1.1.png" class="" title="3.1.1">
+
+
+
+<h3 id="练习题-3-1"><a href="#练习题-3-1" class="headerlink" title="练习题 3.1"></a>练习题 3.1</h3><p><strong>假设下面的值存放在指明的内存地址和寄存器中</strong></p>
+<table>
+<thead>
+<tr>
+<th>地址</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0x100</td>
+<td>0xFF</td>
+</tr>
+<tr>
+<td>0x104</td>
+<td>0xAB</td>
+</tr>
+<tr>
+<td>0x108</td>
+<td>0x13</td>
+</tr>
+<tr>
+<td>0x10C</td>
+<td>0x11</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>寄存器</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%rax</td>
+<td>0x100</td>
+</tr>
+<tr>
+<td>%rcx</td>
+<td>0x1</td>
+</tr>
+<tr>
+<td>%rdx</td>
+<td>0x3</td>
+</tr>
+</tbody></table>
+<p><strong>填写下表，给出所示操作数的值：</strong></p>
+<table>
+<thead>
+<tr>
+<th>操作数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%rax</td>
+<td>0x100</td>
+</tr>
+<tr>
+<td>0x104</td>
+<td>0xAB</td>
+</tr>
+<tr>
+<td>$0x108</td>
+<td>0x108</td>
+</tr>
+<tr>
+<td>(%rax)</td>
+<td>0xFF</td>
+</tr>
+<tr>
+<td>4(%rax)</td>
+<td>0xAB</td>
+</tr>
+<tr>
+<td>9(%rax, %rdx)</td>
+<td>0x11</td>
+</tr>
+<tr>
+<td>260(%rcx, %rdx)</td>
+<td>0x13</td>
+</tr>
+<tr>
+<td>0xFC(, %rcx, 4)</td>
+<td>0xFF</td>
+</tr>
+<tr>
+<td>(%rax, %rdx, 4)</td>
+<td>0x11</td>
+</tr>
+</tbody></table>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-1"><span class="toc-number">1.</span> <span class="toc-text">练习题 3.1</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/&text=CSAPP第三章练习"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/&title=CSAPP第三章练习"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/&is_video=false&description=CSAPP第三章练习"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CSAPP第三章练习&body=Check out this article: https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/&title=CSAPP第三章练习"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/&title=CSAPP第三章练习"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/&title=CSAPP第三章练习"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/&title=CSAPP第三章练习"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/&name=CSAPP第三章练习&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/&t=CSAPP第三章练习"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021
+    ainexur
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

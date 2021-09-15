@@ -6,20 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="练习题 3.1假设下面的值存放在指明的内存地址和寄存器中    地址 值    0x100 0xFF   0x104 0xAB   0x108 0x13   0x10C 0x11      寄存器 值    %rax 0x100   %rcx 0x1   %rdx 0x3   填写下表，给出所示操作数的值：    操作数 值    %rax 0x100   0x104 0xAB   $0x">
+    <meta name="description" content="寄存器  搬运指令    练习题 3.1  假设下面的值存放在指明的内存地址和寄存器中    地址 值    0x100 0xFF   0x104 0xAB   0x108 0x13   0x10C 0x11      寄存器 值    %rax 0x100   %rcx 0x1   %rdx 0x3   填写下表，给出所示操作数的值：    操作数 值    %rax 0x100   0x104">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSAPP第三章练习">
 <meta property="og:url" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/index.html">
-<meta property="og:site_name" content="光">
-<meta property="og:description" content="练习题 3.1假设下面的值存放在指明的内存地址和寄存器中    地址 值    0x100 0xFF   0x104 0xAB   0x108 0x13   0x10C 0x11      寄存器 值    %rax 0x100   %rcx 0x1   %rdx 0x3   填写下表，给出所示操作数的值：    操作数 值    %rax 0x100   0x104 0xAB   $0x">
+<meta property="og:site_name" content="寻人启事">
+<meta property="og:description" content="寄存器  搬运指令    练习题 3.1  假设下面的值存放在指明的内存地址和寄存器中    地址 值    0x100 0xFF   0x104 0xAB   0x108 0x13   0x10C 0x11      寄存器 值    %rax 0x100   %rcx 0x1   %rdx 0x3   填写下表，给出所示操作数的值：    操作数 值    %rax 0x100   0x104">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.1.1.png">
+<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.0.1.png">
+<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.0.2.png">
+<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.1.png">
+<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.2.png">
+<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.3.png">
+<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.4.1.png">
+<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.4.2.png">
+<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.5.png">
 <meta property="article:published_time" content="2021-09-10T08:27:52.000Z">
-<meta property="article:modified_time" content="2021-09-10T09:27:53.986Z">
+<meta property="article:modified_time" content="2021-09-15T16:56:43.139Z">
 <meta property="article:author" content="ainexur">
 <meta property="article:tag" content="深入理解计算机操作系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.1.1.png">
+<meta name="twitter:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.0.1.png">
     
     
       
@@ -71,6 +78,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" aria-label="上一篇 " href="/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
         
         <li><a class="icon" aria-label="下一篇 " href="/2021/09/10/CSAPP%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%AE%B6%E5%BA%AD%E4%BD%9C%E4%B8%9A2-63/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
@@ -100,7 +109,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-1"><span class="toc-number">1.</span> <span class="toc-text">练习题 3.1</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AC%E8%BF%90%E6%8C%87%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">搬运指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-1"><span class="toc-number">3.</span> <span class="toc-text">练习题 3.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-2"><span class="toc-number">4.</span> <span class="toc-text">练习题 3.2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-3"><span class="toc-number">5.</span> <span class="toc-text">练习题 3.3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-4"><span class="toc-number">6.</span> <span class="toc-text">练习题 3.4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-5"><span class="toc-number">7.</span> <span class="toc-text">练习题  3.5</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -144,11 +153,15 @@
   
 
   <div class="content" itemprop="articleBody">
-    <img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.1.1.png" class="" title="3.1.1">
+    <h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.0.1.png" class="" title="3.0.1">
+
+<h3 id="搬运指令"><a href="#搬运指令" class="headerlink" title="搬运指令"></a>搬运指令</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.0.2.png" class="" title="3.0.2">
 
 
 
-<h3 id="练习题-3-1"><a href="#练习题-3-1" class="headerlink" title="练习题 3.1"></a>练习题 3.1</h3><p><strong>假设下面的值存放在指明的内存地址和寄存器中</strong></p>
+<h3 id="练习题-3-1"><a href="#练习题-3-1" class="headerlink" title="练习题 3.1"></a>练习题 3.1</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.1.png" class="" title="3.1">
+
+<p><strong>假设下面的值存放在指明的内存地址和寄存器中</strong></p>
 <table>
 <thead>
 <tr>
@@ -238,6 +251,117 @@
 <td>0x11</td>
 </tr>
 </tbody></table>
+<h3 id="练习题-3-2"><a href="#练习题-3-2" class="headerlink" title="练习题 3.2"></a>练习题 3.2</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.2.png" class="" title="3.2">
+
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>源操作数</th>
+<th>目标操作数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mov<u> l</u></td>
+<td>%eax</td>
+<td>(%rsp)</td>
+</tr>
+<tr>
+<td>mov<u> w</u></td>
+<td>(%rax)</td>
+<td>%dx</td>
+</tr>
+<tr>
+<td>mov<u> b</u></td>
+<td>$0xFF</td>
+<td>%bl</td>
+</tr>
+<tr>
+<td>mov<u> b</u></td>
+<td>(%rsp, %rdx, 4)</td>
+<td>%dl</td>
+</tr>
+<tr>
+<td>mov<u> q</u></td>
+<td>(%rdx)</td>
+<td>%rax</td>
+</tr>
+<tr>
+<td>mov<u> w</u></td>
+<td>%dx</td>
+<td>(%rax)</td>
+</tr>
+</tbody></table>
+<p>​    </p>
+<h3 id="练习题-3-3"><a href="#练习题-3-3" class="headerlink" title="练习题 3.3"></a>练习题 3.3</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.3.png" class="" title="3.3">
+
+<p><strong>答：</strong></p>
+<ol>
+<li>立即数要先写入寄存器， 再写入内存（？</li>
+<li>mov指令大小错误， 应该用movq, rax是绝对四字寄存器</li>
+<li>mov指令源操作数和目的操作数同为内存。</li>
+<li>不存在名为sl的寄存器</li>
+<li>立即操作数不能作为目的寄存器</li>
+<li>源操作数和目的操作数字不匹配</li>
+<li>不懂</li>
+</ol>
+<h3 id="练习题-3-4"><a href="#练习题-3-4" class="headerlink" title="练习题 3.4"></a>练习题 3.4</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.4.1.png" class="" title="3.4.1">
+
+<img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.4.2.png" class="" title="3.4.2">
+
+<p><strong>答：</strong></p>
+<blockquote>
+<p>src_t in %rdi    dest_t in rsi</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>src_t</th>
+<th>dest_t</th>
+<th>指令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>long</td>
+<td>long</td>
+<td>movq(%rdi), %rax <br />movq %rax, (%rsi)</td>
+</tr>
+<tr>
+<td>char</td>
+<td>int</td>
+<td>movswq (%di), %eax<br />movq %eax, (%rsi)</td>
+</tr>
+<tr>
+<td>char</td>
+<td>unsigned</td>
+<td>movzwl (%di), %eax<br />movq %eax, (%rsi)</td>
+</tr>
+<tr>
+<td>unsigned char</td>
+<td>long</td>
+<td>movzbq (%di),  %eax<br />movq %eax, (%rsi)</td>
+</tr>
+<tr>
+<td>int</td>
+<td>char</td>
+<td>mov</td>
+</tr>
+<tr>
+<td>unsigned</td>
+<td>unsigned char</td>
+<td></td>
+</tr>
+<tr>
+<td>char</td>
+<td>short</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="练习题-3-5"><a href="#练习题-3-5" class="headerlink" title="练习题  3.5"></a>练习题  3.5</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.5.png" class="" title="3.5">
+
+<p>答：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">decode1</span> <span class="params">(<span class="keyword">long</span> *xp, <span class="keyword">long</span> *yp, <span class="keyword">long</span> *zp)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> x = *xp;</span><br><span class="line">    <span class="keyword">long</span> y = *yp;</span><br><span class="line">    <span class="keyword">long</span> z = *xp;</span><br><span class="line">    *yp = x;</span><br><span class="line">    *zp = y;</span><br><span class="line">    *xp = z;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
   </div>
 </article>
@@ -259,7 +383,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-1"><span class="toc-number">1.</span> <span class="toc-text">练习题 3.1</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AC%E8%BF%90%E6%8C%87%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">搬运指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-1"><span class="toc-number">3.</span> <span class="toc-text">练习题 3.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-2"><span class="toc-number">4.</span> <span class="toc-text">练习题 3.2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-3"><span class="toc-number">5.</span> <span class="toc-text">练习题 3.3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-4"><span class="toc-number">6.</span> <span class="toc-text">练习题 3.4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-5"><span class="toc-number">7.</span> <span class="toc-text">练习题  3.5</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

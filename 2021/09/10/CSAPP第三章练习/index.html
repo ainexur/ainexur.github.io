@@ -21,8 +21,18 @@
 <meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.4.1.png">
 <meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.4.2.png">
 <meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.5.png">
+<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.5.1.png">
+<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.6.png">
+<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.7.png">
+<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.8.png">
+<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.9.png">
+<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.10.png">
+<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.11.png">
+<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.12.png">
+<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.5.2.png">
+<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.13.png">
 <meta property="article:published_time" content="2021-09-10T08:27:52.000Z">
-<meta property="article:modified_time" content="2021-09-15T16:56:43.139Z">
+<meta property="article:modified_time" content="2021-09-17T03:47:56.113Z">
 <meta property="article:author" content="ainexur">
 <meta property="article:tag" content="深入理解计算机操作系统">
 <meta name="twitter:card" content="summary">
@@ -109,7 +119,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AC%E8%BF%90%E6%8C%87%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">搬运指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-1"><span class="toc-number">3.</span> <span class="toc-text">练习题 3.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-2"><span class="toc-number">4.</span> <span class="toc-text">练习题 3.2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-3"><span class="toc-number">5.</span> <span class="toc-text">练习题 3.3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-4"><span class="toc-number">6.</span> <span class="toc-text">练习题 3.4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-5"><span class="toc-number">7.</span> <span class="toc-text">练习题  3.5</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AC%E8%BF%90%E6%8C%87%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">搬运指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-1"><span class="toc-number">3.</span> <span class="toc-text">练习题 3.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-2"><span class="toc-number">4.</span> <span class="toc-text">练习题 3.2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-3"><span class="toc-number">5.</span> <span class="toc-text">练习题 3.3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-4"><span class="toc-number">6.</span> <span class="toc-text">练习题 3.4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-5"><span class="toc-number">7.</span> <span class="toc-text">练习题  3.5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF%E5%92%8C%E9%80%BB%E8%BE%91%E6%8C%87%E4%BB%A4"><span class="toc-number">8.</span> <span class="toc-text">算术和逻辑指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-6"><span class="toc-number">9.</span> <span class="toc-text">练习题 3.6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-7"><span class="toc-number">10.</span> <span class="toc-text">练习题 3.7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-8"><span class="toc-number">11.</span> <span class="toc-text">练习题 3.8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%983-9"><span class="toc-number">12.</span> <span class="toc-text">练习题3.9</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%983-10"><span class="toc-number">13.</span> <span class="toc-text">练习题3.10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-11"><span class="toc-number">14.</span> <span class="toc-text">练习题 3.11</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-12"><span class="toc-number">15.</span> <span class="toc-text">练习题 3.12</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E5%92%8C%E6%B5%8B%E8%AF%95%E6%8C%87%E4%BB%A4"><span class="toc-number">16.</span> <span class="toc-text">比较和测试指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-13"><span class="toc-number">17.</span> <span class="toc-text">练习题 3.13</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -362,6 +372,131 @@
 <p>答：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">decode1</span> <span class="params">(<span class="keyword">long</span> *xp, <span class="keyword">long</span> *yp, <span class="keyword">long</span> *zp)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> x = *xp;</span><br><span class="line">    <span class="keyword">long</span> y = *yp;</span><br><span class="line">    <span class="keyword">long</span> z = *xp;</span><br><span class="line">    *yp = x;</span><br><span class="line">    *zp = y;</span><br><span class="line">    *xp = z;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<hr>
+<h3 id="算术和逻辑指令"><a href="#算术和逻辑指令" class="headerlink" title="算术和逻辑指令"></a>算术和逻辑指令</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.5.1.png" class="" title="3.5.1">
+
+<hr>
+<h3 id="练习题-3-6"><a href="#练习题-3-6" class="headerlink" title="练习题 3.6"></a>练习题 3.6</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.6.png" class="" title="3.6">
+
+<p>答：</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>leaq 6(%ax), %rdx</td>
+<td>6 + (x &amp; 0xFFFF)</td>
+</tr>
+<tr>
+<td>leaq (%rax, %rcx), %rdx</td>
+<td>x + y</td>
+</tr>
+<tr>
+<td>leaq (%rax, %rcx, 4), %rdx</td>
+<td>x + y * 4</td>
+</tr>
+<tr>
+<td>leaq 7(%rax, %rax, 8), %rdx</td>
+<td>8 + x * 5</td>
+</tr>
+<tr>
+<td>leaq 0xA (, %rcx, 4), %rdx</td>
+<td>0xA + (y * 4)</td>
+</tr>
+<tr>
+<td>leaq 9(%rax, %rcx, 2), %rdx</td>
+<td>9 + (x + y * 2)</td>
+</tr>
+</tbody></table>
+<h3 id="练习题-3-7"><a href="#练习题-3-7" class="headerlink" title="练习题 3.7"></a>练习题 3.7</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.7.png" class="" title="3.7">
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">scale2</span><span class="params">(<span class="keyword">long</span> x, <span class="keyword">long</span> y, <span class="keyword">long</span> z)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> t = <span class="number">5</span> * x + y * <span class="number">2</span> + <span class="number">8</span> * z;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="练习题-3-8"><a href="#练习题-3-8" class="headerlink" title="练习题 3.8"></a>练习题 3.8</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.8.png" class="" title="3.8">
+
+<p>答：</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>目的</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>addq %rcx, (%rax)</td>
+<td>0x100</td>
+<td>0x100</td>
+</tr>
+<tr>
+<td>subq %rdx, 8(rax)</td>
+<td>0x108</td>
+<td>0xA8</td>
+</tr>
+<tr>
+<td>imulq $16, (%rax, %rdx, 8)</td>
+<td>0x118</td>
+<td>0x176</td>
+</tr>
+<tr>
+<td>incq 16（%rax)</td>
+<td>0x100</td>
+<td>0x100</td>
+</tr>
+<tr>
+<td>decq %rcx</td>
+<td>%rcx</td>
+<td>0x00</td>
+</tr>
+<tr>
+<td>subq %rdx, %rax</td>
+<td>%rax</td>
+<td>0xFD</td>
+</tr>
+</tbody></table>
+<h3 id="练习题3-9"><a href="#练习题3-9" class="headerlink" title="练习题3.9"></a>练习题3.9</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.9.png" class="" title="3.9">
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sal	<span class="number">4</span> %rax </span><br><span class="line">sarl %ecx %rax</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="练习题3-10"><a href="#练习题3-10" class="headerlink" title="练习题3.10"></a>练习题3.10</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.10.png" class="" title="3.10">
+
+<p>答：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">arith2</span><span class="params">(<span class="keyword">long</span> x, <span class="keyword">long</span> y, <span class="keyword">long</span> z)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> t1 = x | y;</span><br><span class="line">    <span class="keyword">long</span> t2 = t1 &gt;&gt; <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">long</span> t3 = !t2;</span><br><span class="line">    <span class="keyword">long</span> t4 = z - t3;</span><br><span class="line">    <span class="keyword">return</span> t4;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="练习题-3-11"><a href="#练习题-3-11" class="headerlink" title="练习题 3.11"></a>练习题 3.11</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.11.png" class="" title="3.11">
+
+<p>答：</p>
+<p>A: 寄存器%rdx值置零</p>
+<p>B:    subq %rdx %rdx 或者 movq $0 %rdx</p>
+<p>C: </p>
+<h3 id="练习题-3-12"><a href="#练习题-3-12" class="headerlink" title="练习题 3.12"></a>练习题 3.12</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.12.png" class="" title="3.12">
+
+<p>答：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">remdiv:</span><br><span class="line">	movq %rdx, %r8</span><br><span class="line">    movq %rdi, %rax</span><br><span class="line">    cqto</span><br><span class="line">    xorq %rdx, %rdx</span><br><span class="line">    divq %rsi</span><br><span class="line">    movq %rax, (%r8)</span><br><span class="line">    movq %rdx, (%rcx)</span><br><span class="line">    ret</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="比较和测试指令"><a href="#比较和测试指令" class="headerlink" title="比较和测试指令"></a>比较和测试指令</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.5.2.png" class="" title="3.5.2">
+
+<h3 id="练习题-3-13"><a href="#练习题-3-13" class="headerlink" title="练习题 3.13"></a>练习题 3.13</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.13.png" class="" title="3.13">
+
+
+
 
   </div>
 </article>
@@ -383,7 +518,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AC%E8%BF%90%E6%8C%87%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">搬运指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-1"><span class="toc-number">3.</span> <span class="toc-text">练习题 3.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-2"><span class="toc-number">4.</span> <span class="toc-text">练习题 3.2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-3"><span class="toc-number">5.</span> <span class="toc-text">练习题 3.3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-4"><span class="toc-number">6.</span> <span class="toc-text">练习题 3.4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-5"><span class="toc-number">7.</span> <span class="toc-text">练习题  3.5</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AC%E8%BF%90%E6%8C%87%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">搬运指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-1"><span class="toc-number">3.</span> <span class="toc-text">练习题 3.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-2"><span class="toc-number">4.</span> <span class="toc-text">练习题 3.2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-3"><span class="toc-number">5.</span> <span class="toc-text">练习题 3.3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-4"><span class="toc-number">6.</span> <span class="toc-text">练习题 3.4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-5"><span class="toc-number">7.</span> <span class="toc-text">练习题  3.5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF%E5%92%8C%E9%80%BB%E8%BE%91%E6%8C%87%E4%BB%A4"><span class="toc-number">8.</span> <span class="toc-text">算术和逻辑指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-6"><span class="toc-number">9.</span> <span class="toc-text">练习题 3.6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-7"><span class="toc-number">10.</span> <span class="toc-text">练习题 3.7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-8"><span class="toc-number">11.</span> <span class="toc-text">练习题 3.8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%983-9"><span class="toc-number">12.</span> <span class="toc-text">练习题3.9</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%983-10"><span class="toc-number">13.</span> <span class="toc-text">练习题3.10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-11"><span class="toc-number">14.</span> <span class="toc-text">练习题 3.11</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-12"><span class="toc-number">15.</span> <span class="toc-text">练习题 3.12</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E5%92%8C%E6%B5%8B%E8%AF%95%E6%8C%87%E4%BB%A4"><span class="toc-number">16.</span> <span class="toc-text">比较和测试指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-3-13"><span class="toc-number">17.</span> <span class="toc-text">练习题 3.13</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

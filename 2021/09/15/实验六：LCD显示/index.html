@@ -1,11 +1,21 @@
+
+
 <!DOCTYPE html>
-<html lang=zh>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ainexur">
+  <meta name="keywords" content="博客">
+  
     <meta name="description" content="实验一：1. 实验原理LCD显示原理：通过TFT上的信号与电压改变来控制液晶分子的转动方向，从而达到控制每个像素点偏振光射出的目的。 LCD1602指令集说明：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;aslmer&#x2F;p&#x2F;5801363.html 2. 材料清单   元器件名称 信号参数规格 数量 参考实物图    Arduino开发板 Uno R3 1    面包包 840孔无焊板 1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="实验六：LCD显示">
@@ -17,134 +27,218 @@
 <meta property="article:modified_time" content="2021-09-15T16:59:10.876Z">
 <meta property="article:author" content="ainexur">
 <meta property="article:tag" content="Arduino">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>实验六：LCD显示 - 寻人启事</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
     
     
       
-        
-          <link rel="shortcut icon" href="/images/favicon.ico">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
     
-    <!-- title -->
-    <title>实验六：LCD显示</title>
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/css/style.css">
-
-    <!-- persian styles -->
-    
-    <!-- rss -->
-    
-    
-<meta name="generator" content="Hexo 5.4.0"></head>
-
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-         
-          <li><a href="/">首页</a></li>
-         
-          <li><a href="/archives/">归档</a></li>
-        
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" aria-label="上一篇 " href="/2021/09/20/win7-USB%E7%BD%91%E5%8D%A1%E5%BC%80%E7%83%AD%E7%82%B9/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" aria-label="下一篇 " href="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" aria-label="返回顶部 " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="分享文章 " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/&text=实验六：LCD显示"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/&title=实验六：LCD显示"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/&is_video=false&description=实验六：LCD显示"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=实验六：LCD显示&body=Check out this article: https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/&title=实验六：LCD显示"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/&title=实验六：LCD显示"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/&title=实验六：LCD显示"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/&title=实验六：LCD显示"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/&name=实验六：LCD显示&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/&t=实验六：LCD显示"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-    <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E4%B8%80%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">实验一：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9E%E9%AA%8C%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">1. 实验原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%9D%90%E6%96%99%E6%B8%85%E5%8D%95"><span class="toc-number">1.2.</span> <span class="toc-text">2. 材料清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.3.</span> <span class="toc-text">3. 硬件连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.4.</span> <span class="toc-text">4. 程序设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E7%A8%8B%E5%BA%8F%E6%BA%90%E7%A0%81"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 程序源码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%B0%83%E8%AF%95%E5%8F%8A%E5%AE%9E%E9%AA%8C%E7%8E%B0%E8%B1%A1"><span class="toc-number">1.5.</span> <span class="toc-text">5. 调试及实验现象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%BB%A3%E7%A0%81%E5%9B%9E%E9%A1%BE"><span class="toc-number">1.6.</span> <span class="toc-text">6. 代码回顾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%89%A9%E5%B1%95%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.7.</span> <span class="toc-text">7. 扩展实验</span></a></li></ol></li></ol>
-    </div>
-  </span>
-</div>
-
-    
-    <div class="content index py4">
-        
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle" itemprop="name headline">
-        实验六：LCD显示
-    </h1>
-
-
-
-    <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">ainexur</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2021-09-15T11:43:11.000Z" itemprop="datePublished">2021-09-15</time>
-        
-      
-    </div>
-
-
-      
-
-      
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/Arduino/" rel="tag">Arduino</a>
-    </div>
-
-
-    </div>
-  </header>
   
 
-  <div class="content" itemprop="articleBody">
-    <h1 id="实验一："><a href="#实验一：" class="headerlink" title="实验一："></a>实验一：</h1><h2 id="1-实验原理"><a href="#1-实验原理" class="headerlink" title="1. 实验原理"></a>1. 实验原理</h2><p>LCD显示原理：通过TFT上的信号与电压改变来控制液晶分子的转动方向，从而达到控制每个像素点偏振光射出的目的。</p>
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="实验六：LCD显示">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-15 19:43" pubdate>
+        2021年9月15日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      undefined 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      NaN 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">实验六：LCD显示</h1>
+            
+            <div class="markdown-body">
+              <h1 id="实验一："><a href="#实验一：" class="headerlink" title="实验一："></a>实验一：</h1><h2 id="1-实验原理"><a href="#1-实验原理" class="headerlink" title="1. 实验原理"></a>1. 实验原理</h2><p>LCD显示原理：通过TFT上的信号与电压改变来控制液晶分子的转动方向，从而达到控制每个像素点偏振光射出的目的。</p>
 <p>LCD1602指令集说明：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/aslmer/p/5801363.html">https://www.cnblogs.com/aslmer/p/5801363.html</a></p>
 <h2 id="2-材料清单"><a href="#2-材料清单" class="headerlink" title="2. 材料清单"></a>2. 材料清单</h2><table>
 <thead>
@@ -185,132 +279,201 @@
 
 
 <h2 id="5-调试及实验现象"><a href="#5-调试及实验现象" class="headerlink" title="5. 调试及实验现象"></a>5. 调试及实验现象</h2><h2 id="6-代码回顾"><a href="#6-代码回顾" class="headerlink" title="6. 代码回顾"></a>6. 代码回顾</h2><h2 id="7-扩展实验"><a href="#7-扩展实验" class="headerlink" title="7. 扩展实验"></a>7. 扩展实验</h2>
-  </div>
-</article>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Arduino/">Arduino</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/20/win7-USB%E7%BD%91%E5%8D%A1%E5%BC%80%E7%83%AD%E7%82%B9/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">win7-USB网卡开热点</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/">
+                        <span class="hidden-mobile">CSAPP第三章练习</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-
-
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-         
-          <li><a href="/">首页</a></li>
-         
-          <li><a href="/archives/">归档</a></li>
-        
-      </ul>
+            
+          </article>
+        </div>
+      </div>
     </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
 
-    <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E4%B8%80%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">实验一：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9E%E9%AA%8C%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">1. 实验原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%9D%90%E6%96%99%E6%B8%85%E5%8D%95"><span class="toc-number">1.2.</span> <span class="toc-text">2. 材料清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.3.</span> <span class="toc-text">3. 硬件连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.4.</span> <span class="toc-text">4. 程序设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E7%A8%8B%E5%BA%8F%E6%BA%90%E7%A0%81"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 程序源码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%B0%83%E8%AF%95%E5%8F%8A%E5%AE%9E%E9%AA%8C%E7%8E%B0%E8%B1%A1"><span class="toc-number">1.5.</span> <span class="toc-text">5. 调试及实验现象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%BB%A3%E7%A0%81%E5%9B%9E%E9%A1%BE"><span class="toc-number">1.6.</span> <span class="toc-text">6. 代码回顾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%89%A9%E5%B1%95%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.7.</span> <span class="toc-text">7. 扩展实验</span></a></li></ol></li></ol>
-    </div>
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/&text=实验六：LCD显示"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/&title=实验六：LCD显示"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/&is_video=false&description=实验六：LCD显示"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=实验六：LCD显示&body=Check out this article: https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/&title=实验六：LCD显示"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/&title=实验六：LCD显示"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/&title=实验六：LCD显示"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/&title=实验六：LCD显示"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/&name=实验六：LCD显示&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://ainexur.github.io/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/&t=实验六：LCD显示"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
-    </div>
-
+      </div>
+    
   </div>
 </div>
 
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
+<!-- Custom -->
+
+
     
+
     
-    2021-2022
-    ainexur
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
   </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/">首页</a></li>
-         
-          <li><a href="/archives/">归档</a></li>
-        
-      </ul>
-    </nav>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
+  
+
+  
+
+  
 </footer>
 
-    </div>
-    <!-- styles -->
 
-
-
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
-
-    <!-- jquery -->
- 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
-
-
-
-
-<!-- clipboard -->
-
+  <!-- SCRIPTS -->
   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
-  
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
-    btn += '<i class="far fa-clone"></i>';
-    btn += '</span>'; 
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功!");
-      e.clearSelection();
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
     })
-  })
   </script>
 
 
-<script src="/js/main.js"></script>
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
-<!-- search -->
+<!-- Plugins -->
 
-<!-- Google Analytics -->
 
-<!-- Baidu Analytics -->
+  <script  src="/js/local-search.js" ></script>
 
-<!-- Cloudflare Analytics -->
 
-<!-- Umami Analytics -->
 
-<!-- Disqus Comments -->
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>

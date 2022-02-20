@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=dark>
 
 
 
@@ -42,7 +42,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/google-dark-gist.min.css" />
     
   
 
@@ -67,7 +67,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -79,7 +79,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Nexur</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -121,33 +121,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
               </a>
             </li>
           
@@ -171,12 +147,14 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/2.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
             <span class="h2" id="subtitle" title="CentOS7常用命令">
+              
+                CentOS7常用命令
               
             </span>
 
@@ -197,7 +175,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      undefined 字
+      173 字
     </span>
   
 
@@ -206,7 +184,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      NaN 分钟
+      2 分钟
     </span>
   
 
@@ -238,13 +216,13 @@
             <h1 style="display: none">CentOS7常用命令</h1>
             
             <div class="markdown-body">
-              <h1 id="1-常用命令和操作"><a href="#1-常用命令和操作" class="headerlink" title="1.常用命令和操作"></a>1.常用命令和操作</h1><h2 id="1-1-查看包名和安装位置"><a href="#1-1-查看包名和安装位置" class="headerlink" title="1.1 查看包名和安装位置"></a>1.1 查看包名和安装位置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">先查看一波软件包名</span></span><br><span class="line">rpm -qa|grep mysql</span><br><span class="line"><span class="meta">#</span><span class="bash">再使用rpm -ql 包名查看目录，例如：</span></span><br><span class="line">rpm -ql mysql80-community-release-el8-2.noarch</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+              <h1 id="1-常用命令和操作"><a href="#1-常用命令和操作" class="headerlink" title="1.常用命令和操作"></a>1.常用命令和操作</h1><h2 id="1-1-查看包名和安装位置"><a href="#1-1-查看包名和安装位置" class="headerlink" title="1.1 查看包名和安装位置"></a>1.1 查看包名和安装位置</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">先查看一波软件包名</span><br>rpm -qa|grep mysql<br><span class="hljs-meta">#</span><span class="bash">再使用rpm -ql 包名查看目录，例如：</span><br>rpm -ql mysql80-community-release-el8-2.noarch<br><br><br></code></pre></div></td></tr></table></figure>
 
 
 
-<h2 id="1-2-查看所有已安装的包"><a href="#1-2-查看所有已安装的包" class="headerlink" title="1.2 查看所有已安装的包"></a>1.2 查看所有已安装的包</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list installed </span><br></pre></td></tr></table></figure>
+<h2 id="1-2-查看所有已安装的包"><a href="#1-2-查看所有已安装的包" class="headerlink" title="1.2 查看所有已安装的包"></a>1.2 查看所有已安装的包</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yum list installed <br></code></pre></div></td></tr></table></figure>
 
-<h2 id="1-3-更新具体的yum包"><a href="#1-3-更新具体的yum包" class="headerlink" title="1.3 更新具体的yum包"></a>1.3 更新具体的yum包</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum update mysql</span><br></pre></td></tr></table></figure>
+<h2 id="1-3-更新具体的yum包"><a href="#1-3-更新具体的yum包" class="headerlink" title="1.3 更新具体的yum包"></a>1.3 更新具体的yum包</h2><figure class="highlight ruby"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ruby">yum update mysql<br></code></pre></div></td></tr></table></figure>
 
 
             </div>
@@ -414,17 +392,6 @@
 
 
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-        typing(title);
-      
-    })(window, document);
-  </script>
 
 
 

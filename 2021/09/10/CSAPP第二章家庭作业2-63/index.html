@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=dark>
 
 
 
@@ -44,7 +44,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/google-dark-gist.min.css" />
     
   
 
@@ -69,7 +69,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -81,7 +81,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Nexur</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -123,33 +123,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
               </a>
             </li>
           
@@ -173,12 +149,14 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/2.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
             <span class="h2" id="subtitle" title="CSAPP第二章家庭作业2.63">
+              
+                CSAPP第二章家庭作业2.63
               
             </span>
 
@@ -199,7 +177,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      undefined 字
+      737 字
     </span>
   
 
@@ -208,7 +186,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      NaN 分钟
+      7 分钟
     </span>
   
 
@@ -244,7 +222,7 @@
 
 
 
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="title">srl</span><span class="params">(<span class="keyword">unsigned</span> x, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//Perform shift arithmetically</span></span><br><span class="line">	<span class="keyword">unsigned</span> xsra = (<span class="keyword">int</span>)x &gt;&gt; k;</span><br><span class="line">	<span class="comment">//将算术右移补符号位替换成0，完成逻辑右移</span></span><br><span class="line">	xsra &amp;= ((<span class="keyword">unsigned</span>)<span class="number">-1</span> &gt;&gt; k);</span><br><span class="line">	<span class="keyword">return</span> xsra;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sra</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//Perform shift logically</span></span><br><span class="line">	<span class="keyword">int</span> xsrl = (<span class="keyword">unsigned</span>)x &gt;&gt; k;</span><br><span class="line">	<span class="comment">//将逻辑右移的补高位0替换成算术右移的符号位</span></span><br><span class="line">	<span class="keyword">int</span> w = <span class="keyword">sizeof</span>(<span class="keyword">int</span>) &lt;&lt; <span class="number">3</span>;	<span class="comment">//获取位长w</span></span><br><span class="line">	<span class="keyword">int</span> z = <span class="number">1</span> &lt;&lt; (w - k - <span class="number">1</span>);	<span class="comment">//</span></span><br><span class="line">	<span class="keyword">int</span> mark = z - <span class="number">1</span>;	<span class="comment">//</span></span><br><span class="line">	<span class="keyword">int</span> right = xsrl &amp; mark;</span><br><span class="line">	<span class="keyword">int</span> left = ~mark &amp; (~(z&amp;xsrl)+z);	<span class="comment">//不理解。</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">// printf(&quot;%x\n&quot;, xsrl);</span></span><br><span class="line">	<span class="comment">// printf(&quot;%x\n&quot;, (z&amp;xsrl));</span></span><br><span class="line">	<span class="comment">// printf(&quot;%x\n&quot;, (~(z&amp;xsrl)+z));</span></span><br><span class="line">	<span class="keyword">return</span> left | right;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%x\n&quot;</span>, srl(<span class="number">0xF2345678</span>, <span class="number">8</span>));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%x\n&quot;</span>, sra(<span class="number">0xF2345678</span>, <span class="number">8</span>));</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-title">srl</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> x, <span class="hljs-keyword">int</span> k)</span> </span>&#123;<br>	<span class="hljs-comment">//Perform shift arithmetically</span><br>	<span class="hljs-keyword">unsigned</span> xsra = (<span class="hljs-keyword">int</span>)x &gt;&gt; k;<br>	<span class="hljs-comment">//将算术右移补符号位替换成0，完成逻辑右移</span><br>	xsra &amp;= ((<span class="hljs-keyword">unsigned</span>)<span class="hljs-number">-1</span> &gt;&gt; k);<br>	<span class="hljs-keyword">return</span> xsra;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">sra</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> k)</span> </span>&#123;<br>	<span class="hljs-comment">//Perform shift logically</span><br>	<span class="hljs-keyword">int</span> xsrl = (<span class="hljs-keyword">unsigned</span>)x &gt;&gt; k;<br>	<span class="hljs-comment">//将逻辑右移的补高位0替换成算术右移的符号位</span><br>	<span class="hljs-keyword">int</span> w = <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>) &lt;&lt; <span class="hljs-number">3</span>;	<span class="hljs-comment">//获取位长w</span><br>	<span class="hljs-keyword">int</span> z = <span class="hljs-number">1</span> &lt;&lt; (w - k - <span class="hljs-number">1</span>);	<span class="hljs-comment">//</span><br>	<span class="hljs-keyword">int</span> mark = z - <span class="hljs-number">1</span>;	<span class="hljs-comment">//</span><br>	<span class="hljs-keyword">int</span> right = xsrl &amp; mark;<br>	<span class="hljs-keyword">int</span> left = ~mark &amp; (~(z&amp;xsrl)+z);	<span class="hljs-comment">//不理解。</span><br>	<br>	<span class="hljs-comment">// printf(&quot;%x\n&quot;, xsrl);</span><br>	<span class="hljs-comment">// printf(&quot;%x\n&quot;, (z&amp;xsrl));</span><br>	<span class="hljs-comment">// printf(&quot;%x\n&quot;, (~(z&amp;xsrl)+z));</span><br>	<span class="hljs-keyword">return</span> left | right;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%x\n&quot;</span>, srl(<span class="hljs-number">0xF2345678</span>, <span class="hljs-number">8</span>));<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%x\n&quot;</span>, sra(<span class="hljs-number">0xF2345678</span>, <span class="hljs-number">8</span>));<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 
 
@@ -419,17 +397,6 @@
 
 
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-        typing(title);
-      
-    })(window, document);
-  </script>
 
 
 

@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=dark>
 
 
 
@@ -45,7 +45,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/google-dark-gist.min.css" />
     
   
 
@@ -70,7 +70,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -82,7 +82,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Nexur</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -124,33 +124,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
               </a>
             </li>
           
@@ -174,12 +150,14 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/2.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
             <span class="h2" id="subtitle" title="Git配置教程">
+              
+                Git配置教程
               
             </span>
 
@@ -200,7 +178,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      undefined 字
+      1.1k 字
     </span>
   
 
@@ -209,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      NaN 分钟
+      10 分钟
     </span>
   
 
@@ -258,32 +236,32 @@
 </ol>
 <h1 id="2-初次运行前的配置"><a href="#2-初次运行前的配置" class="headerlink" title="2. 初次运行前的配置"></a>2. 初次运行前的配置</h1><p>git提供一个–config来管理所有配置</p>
 <h2 id="2-1-用户信息"><a href="#2-1-用户信息" class="headerlink" title="2.1 用户信息"></a>2.1 用户信息</h2><p>必要设置</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">设置用户信息</span></span><br><span class="line">git config --global user.name &quot;k&quot; #名字</span><br><span class="line">git config --global user.email 1186996418@qq.com	#邮箱</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">设置用户信息</span><br>git config --global user.name &quot;k&quot; #名字<br>git config --global user.email 1186996418@qq.com	#邮箱<br></code></pre></div></td></tr></table></figure>
 
 <h2 id="2-2-文本编辑器"><a href="#2-2-文本编辑器" class="headerlink" title="2.2 文本编辑器"></a>2.2 文本编辑器</h2><p>可选设置：修改<code>core.editor</code>项，可指定文本编辑器。</p>
 <p><strong>Linux:</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">Linux</span></span><br><span class="line"><span class="meta">#</span><span class="bash">Emacs</span></span><br><span class="line">git config --global core.editor emacs</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">Linux</span><br><span class="hljs-meta">#</span><span class="bash">Emacs</span><br>git config --global core.editor emacs<br></code></pre></div></td></tr></table></figure>
 
 <p><strong>Windows</strong>：</p>
 <p>必须指定可执行文件的完整路径，例如<code>Sublime Text 3</code>安装路径在<code>&quot;D:\Program Files\Sublime Text 3\sublime_text.exe&quot;</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">Windows</span></span><br><span class="line"><span class="meta">#</span><span class="bash">Sublime Text 3</span></span><br><span class="line">git config --global core.editor &quot;D:\Program Files\Sublime Text 3\sublime_text.exe&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">Windows</span><br><span class="hljs-meta">#</span><span class="bash">Sublime Text 3</span><br>git config --global core.editor &quot;D:\Program Files\Sublime Text 3\sublime_text.exe&quot;<br></code></pre></div></td></tr></table></figure>
 
 
 
-<h2 id="2-3-检查配置信息"><a href="#2-3-检查配置信息" class="headerlink" title="2.3 检查配置信息"></a>2.3 检查配置信息</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-检查配置信息"><a href="#2-3-检查配置信息" class="headerlink" title="2.3 检查配置信息"></a>2.3 检查配置信息</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">git config --list<br></code></pre></div></td></tr></table></figure>
 
 <p><img src="https://gitee.com/ainexur/topora-drawing-bed/raw/master/img/202112020954998.png" srcset="/img/loading.gif" lazyload alt="image-20211202095425820"></p>
 <blockquote>
 <p>可能会看到重复的变量名，因为 Git 会从不同的文件中读取同一个配置（例如：<code>/etc/gitconfig</code> 与 <code>~/.gitconfig</code>）。 这种情况下，Git 会使用它找到的每一个变量的最后一个配置。</p>
 </blockquote>
 <p>可以通过输入<code>git config &lt;key&gt;</code>： 来检查 Git 的某一项配置</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config user.name</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">git config user.name<br></code></pre></div></td></tr></table></figure>
 
 <blockquote>
 <p>由于 Git 会从多个文件中读取同一配置变量的不同值，因此你可能会在其中看到意料之外的值而不知道为什么。 此时，你可以查询 Git 中该变量的 <strong>原始</strong> 值，它会告诉你哪一个配置文件最后设置了该值：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --show-origin rerere.autoUpdate</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">git config --show-origin rerere.autoUpdate<br></code></pre></div></td></tr></table></figure>
 </blockquote>
-<h2 id="2-4-生成-SSH-公钥"><a href="#2-4-生成-SSH-公钥" class="headerlink" title="2.4 生成 SSH 公钥"></a>2.4 生成 SSH 公钥</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -o</span><br></pre></td></tr></table></figure>
+<h2 id="2-4-生成-SSH-公钥"><a href="#2-4-生成-SSH-公钥" class="headerlink" title="2.4 生成 SSH 公钥"></a>2.4 生成 SSH 公钥</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">ssh-keygen -o<br></code></pre></div></td></tr></table></figure>
 
 <p>有三处需要输入，直接回车就行</p>
 
@@ -454,17 +432,6 @@
 
 
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-        typing(title);
-      
-    })(window, document);
-  </script>
 
 
 

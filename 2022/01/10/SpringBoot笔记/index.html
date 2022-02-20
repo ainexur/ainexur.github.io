@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=dark>
 
 
 
@@ -44,7 +44,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/google-dark-gist.min.css" />
     
   
 
@@ -69,7 +69,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -81,7 +81,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Nexur</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -123,33 +123,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
               </a>
             </li>
           
@@ -173,12 +149,14 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/2.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
             <span class="h2" id="subtitle" title="SpringBoot笔记">
+              
+                SpringBoot笔记
               
             </span>
 
@@ -272,16 +250,16 @@
 <li>springboot-boot-dependencies: 核心依赖在父工程中</li>
 <li>在引入SprinBoot依赖时，不需要指定版本，就因为有这些版本仓库</li>
 </ul>
-<h2 id="启动器（starter）"><a href="#启动器（starter）" class="headerlink" title="启动器（starter）"></a>启动器（starter）</h2><h1 id="2-是什么"><a href="#2-是什么" class="headerlink" title="2. 是什么"></a>2. 是什么</h1><h1 id="3-配置文件"><a href="#3-配置文件" class="headerlink" title="3. 配置文件"></a>3. 配置文件</h1><h2 id="配置文件强大之处："><a href="#配置文件强大之处：" class="headerlink" title="配置文件强大之处："></a>配置文件强大之处：</h2><h3 id="通过配置文件，修改自动配置的默认值"><a href="#通过配置文件，修改自动配置的默认值" class="headerlink" title="通过配置文件，修改自动配置的默认值"></a>通过配置文件，修改自动配置的默认值</h3><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Configuration()</span> <span class="hljs-comment">//表示这是一个配置类</span><br><span class="hljs-meta">@EnableConfigurationProperties(CodecProperties.class)</span> <span class="hljs-comment">//自动配置属性，值为</span><br><span class="hljs-comment">//CodecProperties.class</span><br><span class="hljs-meta">@ConfigurationProperties(prefix = &quot;spring.codec&quot;)</span> <span class="hljs-comment">//配置绑定，可以在配置文件修改该属性，达到自动修改自动配置的属性的目的</span><br><br><span class="hljs-meta">@ConditionalOnClass()</span> <span class="hljs-comment">//判断条件，条件不吻合则配置不生效</span><br><br></code></pre></td></tr></table></figure>
+<h2 id="启动器（starter）"><a href="#启动器（starter）" class="headerlink" title="启动器（starter）"></a>启动器（starter）</h2><h1 id="2-是什么"><a href="#2-是什么" class="headerlink" title="2. 是什么"></a>2. 是什么</h1><h1 id="3-配置文件"><a href="#3-配置文件" class="headerlink" title="3. 配置文件"></a>3. 配置文件</h1><h2 id="配置文件强大之处："><a href="#配置文件强大之处：" class="headerlink" title="配置文件强大之处："></a>配置文件强大之处：</h2><h3 id="通过配置文件，修改自动配置的默认值"><a href="#通过配置文件，修改自动配置的默认值" class="headerlink" title="通过配置文件，修改自动配置的默认值"></a>通过配置文件，修改自动配置的默认值</h3><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Configuration()</span> <span class="hljs-comment">//表示这是一个配置类</span><br><span class="hljs-meta">@EnableConfigurationProperties(CodecProperties.class)</span> <span class="hljs-comment">//自动配置属性，值为</span><br><span class="hljs-comment">//CodecProperties.class</span><br><span class="hljs-meta">@ConfigurationProperties(prefix = &quot;spring.codec&quot;)</span> <span class="hljs-comment">//配置绑定，可以在配置文件修改该属性，达到自动修改自动配置的属性的目的</span><br><br><span class="hljs-meta">@ConditionalOnClass()</span> <span class="hljs-comment">//判断条件，条件不吻合则配置不生效</span><br><br></code></pre></div></td></tr></table></figure>
 
 <p>解释：</p>
 <p>xxxxAutoConfiguration.class提供默认配置。能通过配置文件修改的默认值，即通过某个xxxProperties.class来和配置文件绑定， 就可以使用自定义的配置。</p>
-<h2 id="3-1-yaml给实体类赋值"><a href="#3-1-yaml给实体类赋值" class="headerlink" title="3.1 yaml给实体类赋值"></a>3.1 yaml给实体类赋值</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@ConfigurationProperties(prefix = &quot;person&quot;)</span> <span class="hljs-comment">//类注解,默认配置文件</span><br></code></pre></td></tr></table></figure>
+<h2 id="3-1-yaml给实体类赋值"><a href="#3-1-yaml给实体类赋值" class="headerlink" title="3.1 yaml给实体类赋值"></a>3.1 yaml给实体类赋值</h2><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@ConfigurationProperties(prefix = &quot;person&quot;)</span> <span class="hljs-comment">//类注解,默认配置文件</span><br></code></pre></div></td></tr></table></figure>
 
 <p>代替 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Vaule(&quot;张三&quot;)</span><span class="hljs-comment">//属性注解</span><br><span class="hljs-meta">@Vaule(&quot;16&quot;)</span><br><span class="hljs-comment">//...</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Vaule(&quot;张三&quot;)</span><span class="hljs-comment">//属性注解</span><br><span class="hljs-meta">@Vaule(&quot;16&quot;)</span><br><span class="hljs-comment">//...</span><br></code></pre></div></td></tr></table></figure>
 
-<h2 id="3-2-加载自定义配置文件"><a href="#3-2-加载自定义配置文件" class="headerlink" title="3.2 加载自定义配置文件"></a>3.2 加载自定义配置文件</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@PropertySource(value = &quot;classpath:xxx.properties&quot;)</span> <span class="hljs-comment">//类注解，加载自定义配置文件</span><br><br><span class="hljs-meta">@Value(&quot;$&#123;name&#125;&quot;)</span> <span class="hljs-comment">//属性注解</span><br></code></pre></td></tr></table></figure>
+<h2 id="3-2-加载自定义配置文件"><a href="#3-2-加载自定义配置文件" class="headerlink" title="3.2 加载自定义配置文件"></a>3.2 加载自定义配置文件</h2><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@PropertySource(value = &quot;classpath:xxx.properties&quot;)</span> <span class="hljs-comment">//类注解，加载自定义配置文件</span><br><br><span class="hljs-meta">@Value(&quot;$&#123;name&#125;&quot;)</span> <span class="hljs-comment">//属性注解</span><br></code></pre></div></td></tr></table></figure>
 
 
 
@@ -298,14 +276,14 @@
 <li>国际化 （中英文切换）</li>
 </ul>
 <h2 id="静态资源"><a href="#静态资源" class="headerlink" title="静态资源"></a>静态资源</h2><p>看源码配置：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addResourceHandlers</span><span class="hljs-params">(ResourceHandlerRegistry registry)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.resourceProperties.isAddMappings()) &#123;<br>        logger.debug(<span class="hljs-string">&quot;Default resource handling disabled&quot;</span>);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    addResourceHandler(registry, <span class="hljs-string">&quot;/webjars/**&quot;</span>, <span class="hljs-string">&quot;classpath:/META-INF/resources/webjars/&quot;</span>);<br>    addResourceHandler(registry, <span class="hljs-keyword">this</span>.mvcProperties.getStaticPathPattern(), (registration) -&gt; &#123;<br>        registration.addResourceLocations(<span class="hljs-keyword">this</span>.resourceProperties.getStaticLocations());<br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.servletContext != <span class="hljs-keyword">null</span>) &#123;<br>            ServletContextResource resource = <span class="hljs-keyword">new</span> ServletContextResource(<span class="hljs-keyword">this</span>.servletContext, SERVLET_LOCATION);<br>            registration.addResourceLocations(resource);<br>        &#125;<br>    &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addResourceHandlers</span><span class="hljs-params">(ResourceHandlerRegistry registry)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.resourceProperties.isAddMappings()) &#123;<br>        logger.debug(<span class="hljs-string">&quot;Default resource handling disabled&quot;</span>);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    addResourceHandler(registry, <span class="hljs-string">&quot;/webjars/**&quot;</span>, <span class="hljs-string">&quot;classpath:/META-INF/resources/webjars/&quot;</span>);<br>    addResourceHandler(registry, <span class="hljs-keyword">this</span>.mvcProperties.getStaticPathPattern(), (registration) -&gt; &#123;<br>        registration.addResourceLocations(<span class="hljs-keyword">this</span>.resourceProperties.getStaticLocations());<br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.servletContext != <span class="hljs-keyword">null</span>) &#123;<br>            ServletContextResource resource = <span class="hljs-keyword">new</span> ServletContextResource(<span class="hljs-keyword">this</span>.servletContext, SERVLET_LOCATION);<br>            registration.addResourceLocations(resource);<br>        &#125;<br>    &#125;);<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <p>如果自定义了静态资源路径，则不适用默认配置。否则使用如下配置：</p>
 <h3 id="引入静态文件的方式："><a href="#引入静态文件的方式：" class="headerlink" title="引入静态文件的方式："></a>引入静态文件的方式：</h3><ol>
 <li><p>WebJars：访问方式：localhost:8080/webjars/</p>
 </li>
 <li><p>resources文件夹xia ：访问：localhost:8080/</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">String</span>[] CLASSPATH_RESOURCE_LOCATIONS = &#123; <span class="hljs-string">&quot;classpath:/META-INF/resources/&quot;</span>,<br><span class="hljs-string">&quot;classpath:/resources/&quot;</span>, <span class="hljs-string">&quot;classpath:/static/&quot;</span>, <span class="hljs-string">&quot;classpath:/public/&quot;</span> &#125;;<br></code></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs arduino"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">String</span>[] CLASSPATH_RESOURCE_LOCATIONS = &#123; <span class="hljs-string">&quot;classpath:/META-INF/resources/&quot;</span>,<br><span class="hljs-string">&quot;classpath:/resources/&quot;</span>, <span class="hljs-string">&quot;classpath:/static/&quot;</span>, <span class="hljs-string">&quot;classpath:/public/&quot;</span> &#125;;<br></code></pre></div></td></tr></table></figure>
 
 
 
@@ -321,17 +299,17 @@
 <h2 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h2><p>读源码。在静态资源页面新建<code>index.html</code>即可。</p>
 <p>在templates目录下的所有页面只能通过Controller跳转</p>
 <h2 id="templates模板引擎-thymeleaf"><a href="#templates模板引擎-thymeleaf" class="headerlink" title="templates模板引擎 (thymeleaf)"></a>templates模板引擎 (thymeleaf)</h2><p><strong>依赖</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java">&lt;!--Thymeleaf--&gt;<br>&lt;dependency&gt;<br>   &lt;groupId&gt;org.thymeleaf&lt;/groupId&gt;<br>   &lt;artifactId&gt;thymeleaf-spring5&lt;/artifactId&gt;<br>&lt;/dependency&gt;<br><br>&lt;dependency&gt;<br>   &lt;groupId&gt;org.thymeleaf.extras&lt;/groupId&gt;<br>   &lt;artifactId&gt;thymeleaf-extras-java8time&lt;/artifactId&gt;<br>&lt;/dependency&gt;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">&lt;!--Thymeleaf--&gt;<br>&lt;dependency&gt;<br>   &lt;groupId&gt;org.thymeleaf&lt;/groupId&gt;<br>   &lt;artifactId&gt;thymeleaf-spring5&lt;/artifactId&gt;<br>&lt;/dependency&gt;<br><br>&lt;dependency&gt;<br>   &lt;groupId&gt;org.thymeleaf.extras&lt;/groupId&gt;<br>   &lt;artifactId&gt;thymeleaf-extras-java8time&lt;/artifactId&gt;<br>&lt;/dependency&gt;<br></code></pre></div></td></tr></table></figure>
 
 <p>导入依赖后，必然有对应的xxxxProperties：public class ThymeleafProperties{}：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Charset DEFAULT_ENCODING = StandardCharsets.UTF_8;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String DEFAULT_PREFIX = <span class="hljs-string">&quot;classpath:/templates/&quot;</span>;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String DEFAULT_SUFFIX = <span class="hljs-string">&quot;.html&quot;</span>;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Charset DEFAULT_ENCODING = StandardCharsets.UTF_8;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String DEFAULT_PREFIX = <span class="hljs-string">&quot;classpath:/templates/&quot;</span>;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String DEFAULT_SUFFIX = <span class="hljs-string">&quot;.html&quot;</span>;<br></code></pre></div></td></tr></table></figure>
 
 <p><strong>使用：</strong></p>
 <ol>
 <li><p>在<code>DEFAULT_PREFIX</code>路径下，新建一个<code>DEFAULT_SUFFIX</code>后缀的文件<code>test.html</code>。</p>
 </li>
 <li><p>新建controller</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//在templates目录下的所有页面只能通过Controller跳转</span><br><span class="hljs-meta">@Controller</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IndexController</span> </span>&#123;<br><br>    <span class="hljs-meta">@RequestMapping(&quot;/test&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">test</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;test&quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">//在templates目录下的所有页面只能通过Controller跳转</span><br><span class="hljs-meta">@Controller</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IndexController</span> </span>&#123;<br><br>    <span class="hljs-meta">@RequestMapping(&quot;/test&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">test</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;test&quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
 <li><p>浏览器访问<code>http://localhost:8080/test</code>，发现通过controller正常访问templates下的文件。</p>
 </li>
 </ol>
@@ -510,17 +488,6 @@
 
 
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-        typing(title);
-      
-    })(window, document);
-  </script>
 
 
 

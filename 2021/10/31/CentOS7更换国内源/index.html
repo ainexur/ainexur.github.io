@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=dark>
 
 
 
@@ -42,7 +42,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/google-dark-gist.min.css" />
     
   
 
@@ -67,7 +67,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -79,7 +79,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Nexur</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -121,33 +121,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
               </a>
             </li>
           
@@ -171,12 +147,14 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/2.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
             <span class="h2" id="subtitle" title="CentOS7更换国内源">
+              
+                CentOS7更换国内源
               
             </span>
 
@@ -197,7 +175,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      undefined 字
+      1.6k 字
     </span>
   
 
@@ -206,7 +184,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      NaN 分钟
+      14 分钟
     </span>
   
 
@@ -238,13 +216,13 @@
             <h1 style="display: none">CentOS7更换国内源</h1>
             
             <div class="markdown-body">
-              <h2 id="1-替换CentOS的yum-源-为-国内的yum源–阿里yum源"><a href="#1-替换CentOS的yum-源-为-国内的yum源–阿里yum源" class="headerlink" title="1. 替换CentOS的yum 源 为 国内的yum源–阿里yum源"></a>1. 替换CentOS的yum 源 为 国内的yum源–阿里yum源</h2><h3 id="1-备份"><a href="#1-备份" class="headerlink" title="1.备份"></a>1.备份</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak</span><br></pre></td></tr></table></figure>
+              <h2 id="1-替换CentOS的yum-源-为-国内的yum源–阿里yum源"><a href="#1-替换CentOS的yum-源-为-国内的yum源–阿里yum源" class="headerlink" title="1. 替换CentOS的yum 源 为 国内的yum源–阿里yum源"></a>1. 替换CentOS的yum 源 为 国内的yum源–阿里yum源</h2><h3 id="1-备份"><a href="#1-备份" class="headerlink" title="1.备份"></a>1.备份</h3><figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">mv <span class="hljs-regexp">/etc/yum</span>.repos.d<span class="hljs-regexp">/CentOS-Base.repo /</span>etc<span class="hljs-regexp">/yum.repos.d/</span>CentOS-Base.repo.bak<br></code></pre></div></td></tr></table></figure>
 
 <h3 id="2-下载新的-CentOS-Base-repo-到-etc-yum-repos-d"><a href="#2-下载新的-CentOS-Base-repo-到-etc-yum-repos-d" class="headerlink" title="2.下载新的 CentOS-Base.repo 到 /etc/yum.repos.d/"></a>2.下载新的 CentOS-Base.repo 到 /etc/yum.repos.d/</h3><p><strong>CentOS6</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">wget -O <span class="hljs-regexp">/etc/yum</span>.repos.d<span class="hljs-regexp">/CentOS-Base.repo http:/</span><span class="hljs-regexp">/mirrors.aliyun.com/</span>repo/Centos-<span class="hljs-number">6</span>.repo<br></code></pre></div></td></tr></table></figure>
 
 <p><strong>CentOS7</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">wget -O <span class="hljs-regexp">/etc/yum</span>.repos.d<span class="hljs-regexp">/CentOS-Base.repo http:/</span><span class="hljs-regexp">/mirrors.aliyun.com/</span>repo/Centos-<span class="hljs-number">7</span>.repo<br></code></pre></div></td></tr></table></figure>
 
 <p>wget 命令 -O 参数含义：</p>
 <blockquote>
@@ -253,15 +231,15 @@
 <p>的含义即为<br>将 <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/repo/Centos-7.repo">http://mirrors.aliyun.com/repo/Centos-7.repo</a> 文件中的数据写入到/etc/yum.repos.d/CentOS-Base.repo文件中，CentOS-Base.repo文件不需要事先创建。</p>
 <p>参考链接：wget命令详解 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2e2ba8ecc22a">https://www.jianshu.com/p/2e2ba8ecc22a</a></p>
 </blockquote>
-<h3 id="3-运行yum-makecache生成缓存"><a href="#3-运行yum-makecache生成缓存" class="headerlink" title="3.运行yum makecache生成缓存"></a>3.运行yum makecache生成缓存</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+<h3 id="3-运行yum-makecache生成缓存"><a href="#3-运行yum-makecache生成缓存" class="headerlink" title="3.运行yum makecache生成缓存"></a>3.运行yum makecache生成缓存</h3><figure class="highlight ebnf"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">yum makecache</span><br></code></pre></div></td></tr></table></figure>
 
 <p>这一步还是比较耗时的，而且速度不快几k到几十k每秒之间，可以不执行。</p>
 <p>-———————————————-</p>
-<h2 id="2-替换CentOS的yum-源-为-国内的yum源–清华yum源"><a href="#2-替换CentOS的yum-源-为-国内的yum源–清华yum源" class="headerlink" title="2. 替换CentOS的yum 源 为 国内的yum源–清华yum源"></a>2. 替换CentOS的yum 源 为 国内的yum源–清华yum源</h2><h3 id="1-备份-1"><a href="#1-备份-1" class="headerlink" title="1.备份"></a>1.备份</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak</span><br></pre></td></tr></table></figure>
+<h2 id="2-替换CentOS的yum-源-为-国内的yum源–清华yum源"><a href="#2-替换CentOS的yum-源-为-国内的yum源–清华yum源" class="headerlink" title="2. 替换CentOS的yum 源 为 国内的yum源–清华yum源"></a>2. 替换CentOS的yum 源 为 国内的yum源–清华yum源</h2><h3 id="1-备份-1"><a href="#1-备份-1" class="headerlink" title="1.备份"></a>1.备份</h3><figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">mv <span class="hljs-regexp">/etc/yum</span>.repos.d<span class="hljs-regexp">/CentOS-Base.repo /</span>etc<span class="hljs-regexp">/yum.repos.d/</span>CentOS-Base.repo.bak<br></code></pre></div></td></tr></table></figure>
 
-<h3 id="2-创建-etc-yum-repos-d"><a href="#2-创建-etc-yum-repos-d" class="headerlink" title="2.创建 /etc/yum.repos.d/"></a><strong>2.创建 /etc/yum.repos.d/</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch /etc/yum.repos.d/CentOS-Base.repo</span><br></pre></td></tr></table></figure>
+<h3 id="2-创建-etc-yum-repos-d"><a href="#2-创建-etc-yum-repos-d" class="headerlink" title="2.创建 /etc/yum.repos.d/"></a><strong>2.创建 /etc/yum.repos.d/</strong></h3><figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">touch <span class="hljs-regexp">/etc/yum</span>.repos.d/CentOS-Base.repo<br></code></pre></div></td></tr></table></figure>
 
-<h3 id="3-向-etc-yum-repos-d-CentOS-Base-repo-写入-清华大学yum源配置"><a href="#3-向-etc-yum-repos-d-CentOS-Base-repo-写入-清华大学yum源配置" class="headerlink" title="3.向 /etc/yum.repos.d/CentOS-Base.repo 写入 清华大学yum源配置"></a>3.向 /etc/yum.repos.d/CentOS-Base.repo 写入 清华大学yum源配置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name=CentOS-$releasever - Basebaseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/os/$basearch/gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7name=CentOS-$releasever - Updatesbaseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/updates/$basearch/gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7name=CentOS-$releasever - Extrasbaseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/extras/$basearch/gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7name=CentOS-$releasever - Plusbaseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/centosplus/$basearch/gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</span><br></pre></td></tr></table></figure>
+<h3 id="3-向-etc-yum-repos-d-CentOS-Base-repo-写入-清华大学yum源配置"><a href="#3-向-etc-yum-repos-d-CentOS-Base-repo-写入-清华大学yum源配置" class="headerlink" title="3.向 /etc/yum.repos.d/CentOS-Base.repo 写入 清华大学yum源配置"></a>3.向 /etc/yum.repos.d/CentOS-Base.repo 写入 清华大学yum源配置</h3><figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">name=CentOS-<span class="hljs-variable">$releasever</span> - Basebaseurl=https:<span class="hljs-regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="hljs-regexp">/centos/</span><span class="hljs-variable">$releasever</span><span class="hljs-regexp">/os/</span><span class="hljs-variable">$basearch</span><span class="hljs-regexp">/gpgkey=file:/</span><span class="hljs-regexp">//</span>etc<span class="hljs-regexp">/pki/</span>rpm-gpg<span class="hljs-regexp">/RPM-GPG-KEY-CentOS-7name=CentOS-$releasever - Updatesbaseurl=https:/</span><span class="hljs-regexp">/mirrors.tuna.tsinghua.edu.cn/</span>centos<span class="hljs-regexp">/$releasever/u</span>pdates<span class="hljs-regexp">/$basearch/g</span>pgkey=file:<span class="hljs-regexp">//</span><span class="hljs-regexp">/etc/</span>pki<span class="hljs-regexp">/rpm-gpg/</span>RPM-GPG-KEY-CentOS-<span class="hljs-number">7</span>name=CentOS-<span class="hljs-variable">$releasever</span> - Extrasbaseurl=https:<span class="hljs-regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="hljs-regexp">/centos/</span><span class="hljs-variable">$releasever</span><span class="hljs-regexp">/extras/</span><span class="hljs-variable">$basearch</span><span class="hljs-regexp">/gpgkey=file:/</span><span class="hljs-regexp">//</span>etc<span class="hljs-regexp">/pki/</span>rpm-gpg<span class="hljs-regexp">/RPM-GPG-KEY-CentOS-7name=CentOS-$releasever - Plusbaseurl=https:/</span><span class="hljs-regexp">/mirrors.tuna.tsinghua.edu.cn/</span>centos<span class="hljs-regexp">/$releasever/</span>centosplus<span class="hljs-regexp">/$basearch/g</span>pgkey=file:<span class="hljs-regexp">//</span><span class="hljs-regexp">/etc/</span>pki<span class="hljs-regexp">/rpm-gpg/</span>RPM-GPG-KEY-CentOS-<span class="hljs-number">7</span><br></code></pre></div></td></tr></table></figure>
 
             </div>
             <hr>
@@ -430,17 +408,6 @@
 
 
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-        typing(title);
-      
-    })(window, document);
-  </script>
 
 
 

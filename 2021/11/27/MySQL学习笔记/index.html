@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=dark>
 
 
 
@@ -47,7 +47,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/google-dark-gist.min.css" />
     
   
 
@@ -72,7 +72,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -84,7 +84,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Nexur</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -126,33 +126,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
               </a>
             </li>
           
@@ -176,12 +152,14 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/2.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
             <span class="h2" id="subtitle" title="MySQL学习笔记">
+              
+                MySQL学习笔记
               
             </span>
 
@@ -202,7 +180,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      undefined 字
+      9.6k 字
     </span>
   
 
@@ -211,7 +189,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      NaN 分钟
+      80 分钟
     </span>
   
 
@@ -246,21 +224,21 @@
               <h1 id="安装（迁移）MySQL"><a href="#安装（迁移）MySQL" class="headerlink" title="安装（迁移）MySQL"></a>安装（迁移）MySQL</h1><p>系统：windows10</p>
 <p>将mysql目录所有文件复制到新机器时，要将mysql/bin添加到环境变量。</p>
 <p>然后执行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#安装mysql</span><br><span class="line">mysqld -install</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#安装mysql<br>mysqld -install<br></code></pre></div></td></tr></table></figure>
 
 <p>启动或停止mysql服务：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#start</span><br><span class="line">net start mysql</span><br><span class="line"></span><br><span class="line">#stop</span><br><span class="line">net stop mysql</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#start<br>net start mysql<br><br>#stop<br>net stop mysql<br></code></pre></div></td></tr></table></figure>
 
 <p>连接mysql</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#登录mysql</span><br><span class="line">mysql -u root -p	#root 替换成你自己的用户名</span><br><span class="line">#指定ip</span><br><span class="line">mysql -h localhost -u root -p	#适用远程登陆mysql</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#登录mysql<br>mysql -u root -p	#root 替换成你自己的用户名<br>#指定ip<br>mysql -h localhost -u root -p	#适用远程登陆mysql<br></code></pre></div></td></tr></table></figure>
 
 
 
-<h1 id="1-常用命令"><a href="#1-常用命令" class="headerlink" title="1. 常用命令"></a>1. 常用命令</h1><h2 id="1-1-use"><a href="#1-1-use" class="headerlink" title="1.1 use"></a>1.1 use</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE mysql;	#选择数据库</span><br></pre></td></tr></table></figure>
+<h1 id="1-常用命令"><a href="#1-常用命令" class="headerlink" title="1. 常用命令"></a>1. 常用命令</h1><h2 id="1-1-use"><a href="#1-1-use" class="headerlink" title="1.1 use"></a>1.1 use</h2><figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">USE mysql;	#选择数据库<br></code></pre></div></td></tr></table></figure>
 
 
 
-<h2 id="1-2-show"><a href="#1-2-show" class="headerlink" title="1.2 show"></a>1.2 show</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SHOW DATABASES;	#显示可用的数据库列表</span><br><span class="line">SHOW TABLES;	#显示一个数据库内可用的表的列表</span><br><span class="line">SHOW COLUMNS FROM user;	#显示表列，表名（user）为必须项</span><br><span class="line">DESCRIBE user;	#是SHOW COLUMNS FROM user;的一种快捷方式</span><br><span class="line"></span><br><span class="line">SHOW ERRORS;	#显示服务器错误信息</span><br><span class="line">SHOW WARNINGS;	#显示服务器警告信息</span><br></pre></td></tr></table></figure>
+<h2 id="1-2-show"><a href="#1-2-show" class="headerlink" title="1.2 show"></a>1.2 show</h2><figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">SHOW DATABASES;	#显示可用的数据库列表<br>SHOW TABLES;	#显示一个数据库内可用的表的列表<br>SHOW COLUMNS FROM user;	#显示表列，表名（user）为必须项<br>DESCRIBE user;	#是SHOW COLUMNS FROM user;的一种快捷方式<br><br>SHOW ERRORS;	#显示服务器错误信息<br>SHOW WARNINGS;	#显示服务器警告信息<br></code></pre></div></td></tr></table></figure>
 
 <blockquote>
 <p>更多命令，可输入’HELP SHOW’查看。</p>
@@ -271,13 +249,13 @@
 <li>从哪里检索</li>
 </ul>
 <p>示例：检索mysql的user列</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">USE school;</span><br><span class="line"></span><br><span class="line">#基本查询</span><br><span class="line"></span><br><span class="line">#检索单个列</span><br><span class="line">SELECT prod_name FROM products;	</span><br><span class="line">#检索单个列</span><br><span class="line">SELECT prod_id, prod_name, prod_price FROM products;	</span><br><span class="line">#检索所有列</span><br><span class="line">SELECT * FROM products;	</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">USE school;<br><br>#基本查询<br><br>#检索单个列<br>SELECT prod_name FROM products;	<br>#检索单个列<br>SELECT prod_id, prod_name, prod_price FROM products;	<br>#检索所有列<br>SELECT * FROM products;	<br></code></pre></div></td></tr></table></figure>
 
 
 
 
 
-<h2 id="2-2-SELET-限制结果"><a href="#2-2-SELET-限制结果" class="headerlink" title="2.2 SELET  限制结果"></a>2.2 SELET  限制结果</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#返回不同的行	DISTINCT</span><br><span class="line">#&#x27;DISTINCT&#x27;只返回不同的vend_id的行</span><br><span class="line">#&#x27;DISTINCT&#x27;应用于所有而不仅是前置他的列</span><br><span class="line">SELECT DISTINCT vend_id FROM products;	</span><br><span class="line"></span><br><span class="line">#限制结果 LIMIT	</span><br><span class="line">#参数5：不多于5行</span><br><span class="line">SELECT prod_name FROM products LIMIT 5;</span><br><span class="line">#参数5，5：从第5开始，不多于5行</span><br><span class="line">SELECT prod_name FROM products LIMIT 5, 5;</span><br><span class="line">#由于容易弄混参数，所以从MySQL 5 开始支持另一种替代的语法,如：从行3开始取4行</span><br><span class="line">SELECT prod_name FROM products LIMIT 4 OFFSET 3;</span><br><span class="line">#使用完全限定的表名</span><br><span class="line">SELECT products.prod_name FROM products;</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-SELET-限制结果"><a href="#2-2-SELET-限制结果" class="headerlink" title="2.2 SELET  限制结果"></a>2.2 SELET  限制结果</h2><figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#返回不同的行	DISTINCT<br>#&#x27;DISTINCT&#x27;只返回不同的vend_id的行<br>#&#x27;DISTINCT&#x27;应用于所有而不仅是前置他的列<br>SELECT DISTINCT vend_id FROM products;	<br><br>#限制结果 LIMIT	<br>#参数5：不多于5行<br>SELECT prod_name FROM products LIMIT 5;<br>#参数5，5：从第5开始，不多于5行<br>SELECT prod_name FROM products LIMIT 5, 5;<br>#由于容易弄混参数，所以从MySQL 5 开始支持另一种替代的语法,如：从行3开始取4行<br>SELECT prod_name FROM products LIMIT 4 OFFSET 3;<br>#使用完全限定的表名<br>SELECT products.prod_name FROM products;<br></code></pre></div></td></tr></table></figure>
 
 
 
@@ -285,14 +263,14 @@
 <blockquote>
 <p> 允许非检索需要的列进行排序</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#单个列排序</span><br><span class="line">SELECT prod_name FROM products ORDER BY prod_name;</span><br><span class="line"></span><br><span class="line">#多列排序，优先级从前往后</span><br><span class="line">SELECT prod_id, prod_price, prod_name FROM products ORDER BY prod_price, prod_name;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#单个列排序<br>SELECT prod_name FROM products ORDER BY prod_name;<br><br>#多列排序，优先级从前往后<br>SELECT prod_id, prod_price, prod_name FROM products ORDER BY prod_price, prod_name;<br></code></pre></div></td></tr></table></figure>
 
 <h2 id="2-4-ORDER-BY-指定排序方向"><a href="#2-4-ORDER-BY-指定排序方向" class="headerlink" title="2.4 ORDER BY 指定排序方向"></a>2.4 ORDER BY 指定排序方向</h2><p>如不指定排序方向，则默认是升序排序（也可指定升序排序， 关键字<code>ASC</code>，通常是不必要的，SELECT默认是升序排序）。</p>
 <p><code>ORDER BY</code>字句为了进行降序排序，必须指定<code>DESC</code>关键字。</p>
 <blockquote>
 <p>需注意：DESC只作用于其前面的单个列</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#单个列,降序排序</span><br><span class="line">SELECT prod_name FROM products ORDER BY prod_name DESC;</span><br><span class="line"></span><br><span class="line">#多列降序排序，优先级从前往后</span><br><span class="line">SELECT prod_id, prod_price, prod_name FROM products ORDER BY prod_price DESC, prod_name DESC;</span><br><span class="line"></span><br><span class="line">#price降序， name升序</span><br><span class="line">SELECT prod_id, prod_price, prod_name FROM products ORDER BY prod_price DESC, prod_name;</span><br><span class="line"></span><br><span class="line">#最贵的prod_name</span><br><span class="line">SELECT prod_name FROM products ORDER BY prod_price DESC LIMIT 1;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#单个列,降序排序<br>SELECT prod_name FROM products ORDER BY prod_name DESC;<br><br>#多列降序排序，优先级从前往后<br>SELECT prod_id, prod_price, prod_name FROM products ORDER BY prod_price DESC, prod_name DESC;<br><br>#price降序， name升序<br>SELECT prod_id, prod_price, prod_name FROM products ORDER BY prod_price DESC, prod_name;<br><br>#最贵的prod_name<br>SELECT prod_name FROM products ORDER BY prod_price DESC LIMIT 1;<br></code></pre></div></td></tr></table></figure>
 
 <blockquote>
 <p>使用<code>ORDER BY</code>字句，必须位于<code>FROM</code>字句之后；<code>LIMIT</code>字句必须位于<code>ORDER BY</code>字句</p>
@@ -310,7 +288,7 @@
 <li><code>BETWEEN</code></li>
 <li></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#price = 2.50</span><br><span class="line">SELECT prod_name, prod_price FROM products WHERE prod_price = 2.50;</span><br><span class="line"></span><br><span class="line">#name = &#x27;fuses&#x27;, MYSQL在执行匹配时默认不区分大小写</span><br><span class="line">SELECT prod_name, prod_price FROM products WHERE prod_name = &#x27;fuses&#x27;;</span><br><span class="line"></span><br><span class="line">#price &lt;= 10，小于等于</span><br><span class="line">SELECT prod_name, prod_price FROM products WHERE prod_price &lt;= 10;</span><br><span class="line"></span><br><span class="line">#vend_id &lt;&gt; 1003，不匹配检查</span><br><span class="line">SELECT vend_id, prod_name FROM products WHERE vend_id &lt;&gt; 1003;</span><br><span class="line">#vend_id != 1003，不匹配检查</span><br><span class="line">SELECT vend_id, prod_name FROM products WHERE vend_id != 1003;</span><br><span class="line"></span><br><span class="line">#prod_price BETWEEN 5 AND 10</span><br><span class="line">SELECT prod_name, prod_price FROM products WHERE prod_price BETWEEN 5 AND 10;</span><br><span class="line"></span><br><span class="line">#cust_email is NULL</span><br><span class="line">SELECT cust_email, cust_id FROM customers WHERE cust_email is NULL;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#price = 2.50<br>SELECT prod_name, prod_price FROM products WHERE prod_price = 2.50;<br><br>#name = &#x27;fuses&#x27;, MYSQL在执行匹配时默认不区分大小写<br>SELECT prod_name, prod_price FROM products WHERE prod_name = &#x27;fuses&#x27;;<br><br>#price &lt;= 10，小于等于<br>SELECT prod_name, prod_price FROM products WHERE prod_price &lt;= 10;<br><br>#vend_id &lt;&gt; 1003，不匹配检查<br>SELECT vend_id, prod_name FROM products WHERE vend_id &lt;&gt; 1003;<br>#vend_id != 1003，不匹配检查<br>SELECT vend_id, prod_name FROM products WHERE vend_id != 1003;<br><br>#prod_price BETWEEN 5 AND 10<br>SELECT prod_name, prod_price FROM products WHERE prod_price BETWEEN 5 AND 10;<br><br>#cust_email is NULL<br>SELECT cust_email, cust_id FROM customers WHERE cust_email is NULL;<br></code></pre></div></td></tr></table></figure>
 
 <blockquote>
 <ul>
@@ -321,7 +299,7 @@
 </ul>
 </blockquote>
 <p><strong>组合<code>WHERE</code>字句</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#AND关键字：逻辑与</span><br><span class="line">SELECT prod_id, prod_name, prod_price FROM products WHERE vend_id = 1003 AND prod_price &lt;= 10;</span><br><span class="line"></span><br><span class="line">#OR关键字：逻辑或</span><br><span class="line">SELECT vend_id, prod_name FROM products WHERE vend_id = 1002 OR vend_id =1003;</span><br><span class="line"></span><br><span class="line">#IN关键字：在这些值里</span><br><span class="line">SELECT prod_name, vend_id FROM products WHERE vend_id IN (1002, 1003);</span><br><span class="line"></span><br><span class="line">#NOT关键字：否定紧跟在后面的条件</span><br><span class="line">SELECT prod_name, vend_id FROM products WHERE vend_id NOT IN (1002, 1003);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#AND关键字：逻辑与<br>SELECT prod_id, prod_name, prod_price FROM products WHERE vend_id = 1003 AND prod_price &lt;= 10;<br><br>#OR关键字：逻辑或<br>SELECT vend_id, prod_name FROM products WHERE vend_id = 1002 OR vend_id =1003;<br><br>#IN关键字：在这些值里<br>SELECT prod_name, vend_id FROM products WHERE vend_id IN (1002, 1003);<br><br>#NOT关键字：否定紧跟在后面的条件<br>SELECT prod_name, vend_id FROM products WHERE vend_id NOT IN (1002, 1003);<br><br></code></pre></div></td></tr></table></figure>
 
 <blockquote>
 <p><code>IN</code>和<code>OR</code>操作符功能等价，但<code>IN</code>操作符具有如下优点：</p>
@@ -332,7 +310,7 @@
 <li><code>IN</code>最大的优点是可以包含其他<code>SELECT</code>语句</li>
 </ol>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#price &gt;= 10 且由1002或1003造的产品</span><br><span class="line">SELECT prod_id, prod_name, prod_price FROM products WHERE (vend_id = 1002 OR vend_id = 1003) AND prod_price &gt;= 10;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#price &gt;= 10 且由1002或1003造的产品<br>SELECT prod_id, prod_name, prod_price FROM products WHERE (vend_id = 1002 OR vend_id = 1003) AND prod_price &gt;= 10;<br></code></pre></div></td></tr></table></figure>
 
 <blockquote>
 <ul>
@@ -344,25 +322,25 @@
 </blockquote>
 <h2 id="2-6-通配符过滤"><a href="#2-6-通配符过滤" class="headerlink" title="2.6 通配符过滤"></a>2.6 通配符过滤</h2><p><strong>LIKE操作符</strong></p>
 <p>LIKE操作符指示MySQL，后跟的搜索模式利用通配符匹配而不是直接相等匹配等进行比较。SQL支持几种通配符：%、_、</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#%:百分号通配符，表示任意字符出现任意次。</span><br><span class="line">#例：查找所有jet开头的产品</span><br><span class="line">SELECT prod_id, prod_name FROM products WHERE prod_name LIKE &#x27;jet%&#x27;;</span><br><span class="line">#例：匹配任何文本含anvil的值</span><br><span class="line">SELECT prod_id, prod_name FROM products WHERE prod_name LIKE &#x27;%anvil%&#x27;;</span><br><span class="line">#例：%在中间</span><br><span class="line">SELECT prod_id, prod_name FROM products WHERE prod_name LIKE &#x27;s%e&#x27;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#%:百分号通配符，表示任意字符出现任意次。<br>#例：查找所有jet开头的产品<br>SELECT prod_id, prod_name FROM products WHERE prod_name LIKE &#x27;jet%&#x27;;<br>#例：匹配任何文本含anvil的值<br>SELECT prod_id, prod_name FROM products WHERE prod_name LIKE &#x27;%anvil%&#x27;;<br>#例：%在中间<br>SELECT prod_id, prod_name FROM products WHERE prod_name LIKE &#x27;s%e&#x27;;<br></code></pre></div></td></tr></table></figure>
 
-<h2 id="2-7-正则表达式"><a href="#2-7-正则表达式" class="headerlink" title="2.7 正则表达式"></a>2.7 正则表达式</h2><h3 id="2-7-1-REGEXP关键字"><a href="#2-7-1-REGEXP关键字" class="headerlink" title="2.7.1 REGEXP关键字"></a>2.7.1 <code>REGEXP</code>关键字</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#基本字符匹配：匹配id含有ANV的所有行</span><br><span class="line">SELECT prod_id, prod_name FROM products WHERE prod_id REGEXP &#x27;ANV&#x27;;</span><br><span class="line">#&#x27;.000&#x27;</span><br><span class="line">SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;.000&#x27;;</span><br><span class="line">#OR匹配</span><br><span class="line">SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;1000|2000&#x27;;</span><br><span class="line">#匹配几个字符之一:1 Ton|2 Ton|3 Ton</span><br><span class="line">SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;[123] Ton&#x27;;</span><br><span class="line">#同上</span><br><span class="line">SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;[1|2|3] Ton&#x27;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="2-7-正则表达式"><a href="#2-7-正则表达式" class="headerlink" title="2.7 正则表达式"></a>2.7 正则表达式</h2><h3 id="2-7-1-REGEXP关键字"><a href="#2-7-1-REGEXP关键字" class="headerlink" title="2.7.1 REGEXP关键字"></a>2.7.1 <code>REGEXP</code>关键字</h3><figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#基本字符匹配：匹配id含有ANV的所有行<br>SELECT prod_id, prod_name FROM products WHERE prod_id REGEXP &#x27;ANV&#x27;;<br>#&#x27;.000&#x27;<br>SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;.000&#x27;;<br>#OR匹配<br>SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;1000|2000&#x27;;<br>#匹配几个字符之一:1 Ton|2 Ton|3 Ton<br>SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;[123] Ton&#x27;;<br>#同上<br>SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;[1|2|3] Ton&#x27;;<br><br></code></pre></div></td></tr></table></figure>
 
 <blockquote>
 <ul>
 <li><p><code>.</code>是正则表达式的一个特殊字符，表示匹配任意一个字符</p>
 </li>
 <li><p>自<code>3.23.4</code>后，正则匹配默认不区分大小写。可用<code>BINARY</code>关键字区分大小写</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#例：</span><br><span class="line">#匹配行：0</span><br><span class="line">SELECT prod_id, prod_name FROM products WHERE prod_id REGEXP BINARY &#x27;aNV&#x27;;</span><br><span class="line">#匹配行：3</span><br><span class="line">SELECT prod_id, prod_name FROM products WHERE prod_id REGEXP BINARY &#x27;aNV&#x27;;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#例：<br>#匹配行：0<br>SELECT prod_id, prod_name FROM products WHERE prod_id REGEXP BINARY &#x27;aNV&#x27;;<br>#匹配行：3<br>SELECT prod_id, prod_name FROM products WHERE prod_id REGEXP BINARY &#x27;aNV&#x27;;<br></code></pre></div></td></tr></table></figure></li>
 <li><p><code>^</code>表否定</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#匹配除1、2、3外的所有</span><br><span class="line">SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;[^123] Ton&#x27;;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#匹配除1、2、3外的所有<br>SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;[^123] Ton&#x27;;<br></code></pre></div></td></tr></table></figure></li>
 <li></li>
 </ul>
 </blockquote>
-<h3 id="2-7-2-匹配范围"><a href="#2-7-2-匹配范围" class="headerlink" title="2.7.2 匹配范围"></a>2.7.2 匹配范围</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#-可用来定义范围你:0-9</span><br><span class="line">SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;[0-9] Ton&#x27;;</span><br></pre></td></tr></table></figure>
+<h3 id="2-7-2-匹配范围"><a href="#2-7-2-匹配范围" class="headerlink" title="2.7.2 匹配范围"></a>2.7.2 匹配范围</h3><figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#-可用来定义范围你:0-9<br>SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;[0-9] Ton&#x27;;<br></code></pre></div></td></tr></table></figure>
 
 <h3 id="2-7-3-转译（匹配特殊字符）"><a href="#2-7-3-转译（匹配特殊字符）" class="headerlink" title="2..7.3 转译（匹配特殊字符）"></a>2..7.3 转译（匹配特殊字符）</h3><p>使用<code>\\</code>转义特殊字符</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#匹配.</span><br><span class="line">SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;\\.&#x27;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#匹配.<br>SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;\\.&#x27;;<br></code></pre></div></td></tr></table></figure>
 
 <blockquote>
 <p><code>\\</code>也用来引用元字符</p>
@@ -399,7 +377,7 @@
 <li><code>&#123;n,m&#125;</code> ：匹配数目的范围（m不超过255）</li>
 </ul>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#例1</span><br><span class="line">SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;\\([0-9] sticks?\\)&#x27;;</span><br><span class="line">#例2：连在一起的4位数字</span><br><span class="line">SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;[[:digit:]]&#123;4&#125;&#x27;;</span><br><span class="line">#同上</span><br><span class="line">SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;[:digit:]&#123;4&#125;&#x27;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#例1<br>SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;\\([0-9] sticks?\\)&#x27;;<br>#例2：连在一起的4位数字<br>SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;[[:digit:]]&#123;4&#125;&#x27;;<br>#同上<br>SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;[:digit:]&#123;4&#125;&#x27;;<br></code></pre></div></td></tr></table></figure>
 
 <h3 id="2-7-6-定位元字符"><a href="#2-7-6-定位元字符" class="headerlink" title="2.7.6 定位元字符"></a>2.7.6 定位元字符</h3><blockquote>
 <ul>
@@ -409,7 +387,7 @@
 <li><code>[]</code>：</li>
 </ul>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#匹配以数字或.开始的串</span><br><span class="line">SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;^[0-9\\.]&#x27;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#匹配以数字或.开始的串<br>SELECT prod_name FROM products WHERE prod_name REGEXP &#x27;^[0-9\\.]&#x27;;<br></code></pre></div></td></tr></table></figure>
 
 <blockquote>
 <p><code>LIKE</code>与<code>REGEXP</code>：<code>LIKE</code>匹配整个串，<code>REGEXP</code>匹配子串。</p>
@@ -422,11 +400,11 @@
 <li>1：匹配</li>
 </ul>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#返回0，因为&#x27;hello&#x27;没有数字</span><br><span class="line">SELECT &#x27;hello&#x27; REGEXP &#x27;[0-9]&#x27;;</span><br><span class="line">#返回1，有数字匹配。</span><br><span class="line">SELECT &#x27;11&#x27; REGEXP &#x27;[0-9]&#x27;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#返回0，因为&#x27;hello&#x27;没有数字<br>SELECT &#x27;hello&#x27; REGEXP &#x27;[0-9]&#x27;;<br>#返回1，有数字匹配。<br>SELECT &#x27;11&#x27; REGEXP &#x27;[0-9]&#x27;;<br></code></pre></div></td></tr></table></figure>
 
 <h1 id="3-创建计算字段"><a href="#3-创建计算字段" class="headerlink" title="3. 创建计算字段"></a>3. 创建计算字段</h1><h2 id="3-1-拼接字段"><a href="#3-1-拼接字段" class="headerlink" title="3.1 拼接字段"></a>3.1 拼接字段</h2><p>拼接字段使用**<code>Concat</code>**关键字。</p>
 <p>由两列组成的标题的简单例子</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#两列组成标题</span><br><span class="line">SELECT Concat(vend_name, &#x27;(&#x27;, vend_country, &#x27;)&#x27;) FROM vendors ORDER BY vend_name;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#两列组成标题<br>SELECT Concat(vend_name, &#x27;(&#x27;, vend_country, &#x27;)&#x27;) FROM vendors ORDER BY vend_name;<br></code></pre></div></td></tr></table></figure>
 
 <blockquote>
 <ul>
@@ -435,7 +413,7 @@
 <li><p><code>RTrim</code>：去除右边的空格</p>
 </li>
 <li><p><code>LTrim</code>：去掉左边的空格</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#两列组成标题</span><br><span class="line">SELECT Concat(RTrim(vend_name), &#x27;(&#x27;, RTrim(vend_country), &#x27;)&#x27;) FROM vendors ORDER BY vend_name;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#两列组成标题<br>SELECT Concat(RTrim(vend_name), &#x27;(&#x27;, RTrim(vend_country), &#x27;)&#x27;) FROM vendors ORDER BY vend_name;<br></code></pre></div></td></tr></table></figure></li>
 </ul>
 </blockquote>
 <h2 id="3-2-使用别名"><a href="#3-2-使用别名" class="headerlink" title="3.2 使用别名"></a>3.2 使用别名</h2><p>列别名使用<code>AS</code>关键字</p>
@@ -447,9 +425,9 @@
 </li>
 </ul>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#使用别名</span><br><span class="line">SELECT Concat(RTrim(vend_name), &#x27;(&#x27;, RTrim(vend_country), &#x27;)&#x27;) AS vend_title FROM vendors ORDER BY vend_name;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#使用别名<br>SELECT Concat(RTrim(vend_name), &#x27;(&#x27;, RTrim(vend_country), &#x27;)&#x27;) AS vend_title FROM vendors ORDER BY vend_name;<br></code></pre></div></td></tr></table></figure>
 
-<h2 id="3-3-执行算数计算"><a href="#3-3-执行算数计算" class="headerlink" title="3.3 执行算数计算"></a>3.3 执行算数计算</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#计算单价*数量 = 总价格</span><br><span class="line">SELECT prod_id, quantity, item_price, quantity * item_price AS expanded_price FROM orderitems WHERE order_num = 20005;</span><br></pre></td></tr></table></figure>
+<h2 id="3-3-执行算数计算"><a href="#3-3-执行算数计算" class="headerlink" title="3.3 执行算数计算"></a>3.3 执行算数计算</h2><figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#计算单价*数量 = 总价格<br>SELECT prod_id, quantity, item_price, quantity * item_price AS expanded_price FROM orderitems WHERE order_num = 20005;<br></code></pre></div></td></tr></table></figure>
 
 <h1 id="4-使用数据处理函数"><a href="#4-使用数据处理函数" class="headerlink" title="4. 使用数据处理函数"></a>4. 使用数据处理函数</h1><h2 id="4-1-文本处理函数"><a href="#4-1-文本处理函数" class="headerlink" title="4.1 文本处理函数"></a>4.1 文本处理函数</h2><blockquote>
 <ul>
@@ -468,7 +446,7 @@
 <li><p><code>RTrim</code> ：去掉串右边的空格</p>
 </li>
 <li><p><code>Soundex</code> ：返回串的SOUNDEX值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#Soundex：将任何文本串转换为描述其语音表示的字母数字模式的算法</span><br><span class="line">SELECT cust_name, cust_contact FROM customers WHERE Soundex(cust_contact) = Soundex(&#x27;Y Lie&#x27;);</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#Soundex：将任何文本串转换为描述其语音表示的字母数字模式的算法<br>SELECT cust_name, cust_contact FROM customers WHERE Soundex(cust_contact) = Soundex(&#x27;Y Lie&#x27;);<br><br></code></pre></div></td></tr></table></figure></li>
 <li><p><code>SubString</code> ：返回子串的字符</p>
 </li>
 <li><p><code>Upper</code> ：将串转换为大写</p>
@@ -477,10 +455,10 @@
 </blockquote>
 <h2 id="4-2-日期和时间处理函数"><a href="#4-2-日期和时间处理函数" class="headerlink" title="4.2 日期和时间处理函数"></a>4.2 日期和时间处理函数</h2><blockquote>
 <p>假如列的值包含日期和时间，我们想找出<code>2005-09-01</code>这个日期的所有行，这样</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#因为没有跟时间段，时间段默认为00:00:00</span><br><span class="line">SELECT cust_id, order_num, order_date FROM orders WHERE order_date = &#x27;2005-09-01&#x27;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#因为没有跟时间段，时间段默认为00:00:00<br>SELECT cust_id, order_num, order_date FROM orders WHERE order_date = &#x27;2005-09-01&#x27;;<br></code></pre></div></td></tr></table></figure>
 
 <p><img src="C:\Users\k\AppData\Roaming\Typora\typora-user-images\image-20211201232509287.png" srcset="/img/loading.gif" lazyload alt="image-20211201232509287"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#Date, 讲字段的值转换成日期（去掉时间）再比较，匹配当天所有的行</span><br><span class="line">SELECT cust_id, order_num, order_date FROM orders WHERE Date(order_date) = &#x27;2005-09-01&#x27;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#Date, 讲字段的值转换成日期（去掉时间）再比较，匹配当天所有的行<br>SELECT cust_id, order_num, order_date FROM orders WHERE Date(order_date) = &#x27;2005-09-01&#x27;;<br></code></pre></div></td></tr></table></figure>
 
 <p><img src="https://gitee.com/ainexur/topora-drawing-bed/raw/master/img/202112012325936.png" srcset="/img/loading.gif" lazyload alt="image-20211201232524887"></p>
 </blockquote>
@@ -507,9 +485,9 @@
 <li><code>Year</code>：</li>
 </ul>
 </blockquote>
-<h3 id="4-2-1-查找某个月的订单"><a href="#4-2-1-查找某个月的订单" class="headerlink" title="4.2.1 查找某个月的订单"></a>4.2.1 查找某个月的订单</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT cust_id, order_num FROM orders WHERE Date(order_date) in (&#x27;2005-09-01&#x27;, &#x27;2005-09-30&#x27;);</span><br><span class="line">#上面的缺点是，当不知道某天有没有订单时，要不要写在in里, 不写肯定匹配不出来</span><br></pre></td></tr></table></figure>
+<h3 id="4-2-1-查找某个月的订单"><a href="#4-2-1-查找某个月的订单" class="headerlink" title="4.2.1 查找某个月的订单"></a>4.2.1 查找某个月的订单</h3><figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">SELECT cust_id, order_num FROM orders WHERE Date(order_date) in (&#x27;2005-09-01&#x27;, &#x27;2005-09-30&#x27;);<br>#上面的缺点是，当不知道某天有没有订单时，要不要写在in里, 不写肯定匹配不出来<br></code></pre></div></td></tr></table></figure>
 <p><img src="https://gitee.com/ainexur/topora-drawing-bed/raw/master/img/202112012332678.png" srcset="/img/loading.gif" lazyload alt="image-20211201233249613"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#更好的方法：</span><br><span class="line">SELECT cust_id, order_num FROM orders WHERE Year(order_date) = 2005 AND Month(order_date) = 9;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#更好的方法：<br>SELECT cust_id, order_num FROM orders WHERE Year(order_date) = 2005 AND Month(order_date) = 9;<br></code></pre></div></td></tr></table></figure>
 
 <p><img src="https://gitee.com/ainexur/topora-drawing-bed/raw/master/img/202112012333058.png" srcset="/img/loading.gif" lazyload alt="image-20211201233303002"></p>
 <h2 id="4-3-数值处理函数"><a href="#4-3-数值处理函数" class="headerlink" title="4.3 数值处理函数"></a>4.3 数值处理函数</h2><p>数值处理函数主要用于代数、三角或几何运算</p>
@@ -576,7 +554,7 @@
 <blockquote>
 <p><code>MySQL</code>还涉及一系列标准偏差聚集函数</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#AVG</span><br><span class="line">SELECT AVG(prod_price) AS avg_price FROM products;</span><br><span class="line">SELECT AVG(prod_price) AS avg_price FROM products WHERE vend_id = 1003;</span><br><span class="line"></span><br><span class="line">#COUNT</span><br><span class="line">SELECT COUNT(*) AS num_cust FROM customers;</span><br><span class="line">#具有电子邮件地址的客户计数</span><br><span class="line">SELECT COUNT(cust_email) AS num_cust FROM customers;</span><br><span class="line"></span><br><span class="line">#MAX</span><br><span class="line">SELECT MAX(prod_price) AS max_price FROM products;</span><br><span class="line"></span><br><span class="line">#MIN</span><br><span class="line">SELECT MIN(prod_price) AS min_price FROM products;</span><br><span class="line"></span><br><span class="line">#SUM</span><br><span class="line">SELECT SUM(quantity) AS items_ordered FROM orderitems WHERE order_num = 20005;</span><br><span class="line">#SUM也可以用来计算值</span><br><span class="line">SELECT SUM(item_price * quantity) AS items_ordered FROM orderitems WHERE order_num = 20005;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#AVG<br>SELECT AVG(prod_price) AS avg_price FROM products;<br>SELECT AVG(prod_price) AS avg_price FROM products WHERE vend_id = 1003;<br><br>#COUNT<br>SELECT COUNT(*) AS num_cust FROM customers;<br>#具有电子邮件地址的客户计数<br>SELECT COUNT(cust_email) AS num_cust FROM customers;<br><br>#MAX<br>SELECT MAX(prod_price) AS max_price FROM products;<br><br>#MIN<br>SELECT MIN(prod_price) AS min_price FROM products;<br><br>#SUM<br>SELECT SUM(quantity) AS items_ordered FROM orderitems WHERE order_num = 20005;<br>#SUM也可以用来计算值<br>SELECT SUM(item_price * quantity) AS items_ordered FROM orderitems WHERE order_num = 20005;<br><br></code></pre></div></td></tr></table></figure>
 
 <blockquote>
 <ul>
@@ -590,15 +568,15 @@
 <h2 id="5-2-聚集不同值"><a href="#5-2-聚集不同值" class="headerlink" title="5.2 聚集不同值"></a>5.2 聚集不同值</h2><blockquote>
 <p>聚集函数的<code>DISTINCT</code>被添加到MySQL 5.0.3，更低版本不可用</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#AVG DISTINCT</span><br><span class="line">SELECT AVG(DISTINCT prod_price) AS avg_price FROM products WHERE vend_id = 1003;</span><br><span class="line">#上面的代码没有很好的体现应用场景，只是做一个示例。（2021/12/2）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#AVG DISTINCT<br>SELECT AVG(DISTINCT prod_price) AS avg_price FROM products WHERE vend_id = 1003;<br>#上面的代码没有很好的体现应用场景，只是做一个示例。（2021/12/2）<br></code></pre></div></td></tr></table></figure>
 
 <blockquote>
 <p>使用DISTINCT后，平均值提高了，因为有多个物品具有相同的较低价格。</p>
 </blockquote>
-<h2 id="5-3-组合聚集函数"><a href="#5-3-组合聚集函数" class="headerlink" title="5.3 组合聚集函数"></a>5.3 组合聚集函数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#包含多个聚合函数</span><br><span class="line">SELECT COUNT(*) AS num_items, MIN(prod_price) AS min_price, MAX(prod_price) AS max_price, AVG(prod_price) AS price_avg FROM products;</span><br></pre></td></tr></table></figure>
+<h2 id="5-3-组合聚集函数"><a href="#5-3-组合聚集函数" class="headerlink" title="5.3 组合聚集函数"></a>5.3 组合聚集函数</h2><figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#包含多个聚合函数<br>SELECT COUNT(*) AS num_items, MIN(prod_price) AS min_price, MAX(prod_price) AS max_price, AVG(prod_price) AS price_avg FROM products;<br></code></pre></div></td></tr></table></figure>
 
 <h2 id="5-4-小结"><a href="#5-4-小结" class="headerlink" title="5.4 小结"></a>5.4 小结</h2><h1 id="6-分组数据"><a href="#6-分组数据" class="headerlink" title="6. 分组数据"></a>6. 分组数据</h1><h2 id="6-2-创建分组-GROUP-BY"><a href="#6-2-创建分组-GROUP-BY" class="headerlink" title="6.2 创建分组**GROUP BY**"></a>6.2 创建分组**<code>GROUP BY</code>**</h2><p>分组是在<code>SELECT</code>的<code>GROUP BY</code>字句中建立的。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#统计每个vend_id的行数</span><br><span class="line">SELECT vend_id, COUNT(*) FROM products GROUP BY vend_id;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#统计每个vend_id的行数<br>SELECT vend_id, COUNT(*) FROM products GROUP BY vend_id;<br></code></pre></div></td></tr></table></figure>
 
 <blockquote>
 <p><code>GROUP BY</code>字句指示MySQL分组数据，然后对每个组而不是整个结果集进行聚集。</p>
@@ -606,14 +584,14 @@
 <h2 id="6-3-过滤分组-HAVING"><a href="#6-3-过滤分组-HAVING" class="headerlink" title="6.3 过滤分组 HAVING"></a>6.3 过滤分组 <strong><code>HAVING</code></strong></h2><blockquote>
 <p>所有的<code>WHERE</code>字句都可以用<code>HAVING</code>字句来代替，唯一的差别就是<code>WHERE</code>过滤行，而<code>HAVING</code>过滤分组（换一种理解就是：<code>WHERE</code>在分组前过滤，而<code>HAVING</code>在分组后过滤）。</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#最后COUNT(*) &gt;= 2：过滤两个以上的订单。</span><br><span class="line">SELECT cust_id, COUNT(*) AS orders FROM orders GROUP BY cust_id HAVING COUNT(*) &gt;= 2;</span><br><span class="line"></span><br><span class="line">#具有两个以上价格&gt;=10的产品的供应商</span><br><span class="line">SELECT vend_id, COUNT(*) AS num_prods FROM products WHERE prod_price &gt;= 10 GROUP BY vend_id HAVING  COUNT(*) &gt;= 2;</span><br><span class="line"></span><br><span class="line">SELECT vend_id, COUNT(*) AS num_prods FROM products WHERE prod_price &gt;= 10 GROUP BY vend_id HAVING  COUNT(*) &gt;= 2;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#最后COUNT(*) &gt;= 2：过滤两个以上的订单。<br>SELECT cust_id, COUNT(*) AS orders FROM orders GROUP BY cust_id HAVING COUNT(*) &gt;= 2;<br><br>#具有两个以上价格&gt;=10的产品的供应商<br>SELECT vend_id, COUNT(*) AS num_prods FROM products WHERE prod_price &gt;= 10 GROUP BY vend_id HAVING  COUNT(*) &gt;= 2;<br><br>SELECT vend_id, COUNT(*) AS num_prods FROM products WHERE prod_price &gt;= 10 GROUP BY vend_id HAVING  COUNT(*) &gt;= 2;<br></code></pre></div></td></tr></table></figure>
 
 <h2 id="6-4-分组和排序"><a href="#6-4-分组和排序" class="headerlink" title="6.4 分组和排序"></a>6.4 分组和排序</h2><p> <strong><code>ORDER BY</code></strong>:排序产生的输出</p>
 <p><strong><code>GROUP BY</code></strong>:分组行,但输出可能不是分组的顺序(虽然经常是以分组的顺序给出,但情况并不总是这样,这不是mysql规范所要求的)</p>
 <blockquote>
 <p>当要求分组数据时,并不表示需要以相同的方式排序输出.所以应该提供明确的<code>ORDER BY</code>语句.</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#总价按照order_num汇总</span><br><span class="line">SELECT order_num, SUM(quantity * item_price) AS ordertotal FROM orderitems GROUP BY order_num HAVING SUM(quantity * item_price) &gt;= 50;</span><br><span class="line">#根据总价排序</span><br><span class="line">SELECT order_num, SUM(quantity * item_price) AS ordertotal FROM orderitems GROUP BY order_num HAVING SUM(quantity * item_price) &gt;= 50 ORDER BY ordertotal;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">#总价按照order_num汇总<br>SELECT order_num, SUM(quantity * item_price) AS ordertotal FROM orderitems GROUP BY order_num HAVING SUM(quantity * item_price) &gt;= 50;<br>#根据总价排序<br>SELECT order_num, SUM(quantity * item_price) AS ordertotal FROM orderitems GROUP BY order_num HAVING SUM(quantity * item_price) &gt;= 50 ORDER BY ordertotal;<br></code></pre></div></td></tr></table></figure>
 
 <h2 id="6-5-SELECT-子句顺序"><a href="#6-5-SELECT-子句顺序" class="headerlink" title="6.5 SELECT 子句顺序"></a>6.5 SELECT 子句顺序</h2>
             </div>
@@ -783,17 +761,6 @@
 
 
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-        typing(title);
-      
-    })(window, document);
-  </script>
 
 
 

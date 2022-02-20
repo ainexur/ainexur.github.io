@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=dark>
 
 
 
@@ -42,7 +42,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/google-dark-gist.min.css" />
     
   
 
@@ -67,7 +67,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -79,7 +79,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Nexur</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -121,33 +121,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
               </a>
             </li>
           
@@ -171,12 +147,14 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/2.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
             <span class="h2" id="subtitle" title="Docker之qinglong">
+              
+                Docker之qinglong
               
             </span>
 
@@ -242,28 +220,28 @@
 <h2 id="2-青龙面板安装"><a href="#2-青龙面板安装" class="headerlink" title="2.青龙面板安装"></a>2.青龙面板安装</h2><ul>
 <li>  拉取青龙的镜像文件（官方）</li>
 </ul>
-<figure class="highlight nginx"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">docker</span> pull whyour/qinglong:latest<br></code></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs nginx"><span class="hljs-attribute">docker</span> pull whyour/qinglong:latest<br></code></pre></div></td></tr></table></figure>
 
 <ul>
 <li>  创建容器</li>
 </ul>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs awk">docker run -dit \<br>-v <span class="hljs-variable">$pwd</span><span class="hljs-regexp">/ql/</span>config:<span class="hljs-regexp">/ql/</span>config \<br>-v <span class="hljs-variable">$pwd</span><span class="hljs-regexp">/ql/</span>log:<span class="hljs-regexp">/ql/</span>log \<br>-v <span class="hljs-variable">$pwd</span><span class="hljs-regexp">/ql/</span>db:<span class="hljs-regexp">/ql/</span>db \<br>-v <span class="hljs-variable">$pwd</span><span class="hljs-regexp">/ql/</span>scripts:<span class="hljs-regexp">/ql/</span>scripts \<br>-v <span class="hljs-variable">$pwd</span><span class="hljs-regexp">/ql/</span>jbot:<span class="hljs-regexp">/ql/</span>jbot \<br>-v <span class="hljs-variable">$pwd</span><span class="hljs-regexp">/ql/</span>repo:<span class="hljs-regexp">/ql/</span>repo \<br>-p <span class="hljs-number">5700</span>:<span class="hljs-number">5700</span> \<br>-e ENABLE_HANGUP=true \<br>-e ENABLE_WEB_PANEL=true \<br>--name qinglong \<br>--hostname qinglong \<br>--restart always \<br>whyour/qinglong:latest<br></code></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">docker run -dit \<br>-v <span class="hljs-variable">$pwd</span><span class="hljs-regexp">/ql/</span>config:<span class="hljs-regexp">/ql/</span>config \<br>-v <span class="hljs-variable">$pwd</span><span class="hljs-regexp">/ql/</span>log:<span class="hljs-regexp">/ql/</span>log \<br>-v <span class="hljs-variable">$pwd</span><span class="hljs-regexp">/ql/</span>db:<span class="hljs-regexp">/ql/</span>db \<br>-v <span class="hljs-variable">$pwd</span><span class="hljs-regexp">/ql/</span>scripts:<span class="hljs-regexp">/ql/</span>scripts \<br>-v <span class="hljs-variable">$pwd</span><span class="hljs-regexp">/ql/</span>jbot:<span class="hljs-regexp">/ql/</span>jbot \<br>-v <span class="hljs-variable">$pwd</span><span class="hljs-regexp">/ql/</span>repo:<span class="hljs-regexp">/ql/</span>repo \<br>-p <span class="hljs-number">5700</span>:<span class="hljs-number">5700</span> \<br>-e ENABLE_HANGUP=true \<br>-e ENABLE_WEB_PANEL=true \<br>--name qinglong \<br>--hostname qinglong \<br>--restart always \<br>whyour/qinglong:latest<br></code></pre></div></td></tr></table></figure>
 
 <blockquote>
 <p>通过<a href="https://link.zhihu.com/?target=http://ip:5700">http://ip:5700</a>访问面板</p>
 </blockquote>
 <p>定时任务：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">ql repo https://ghproxy.com/https://github.com/shufflewzc/faker2.git &quot;jd_|jx_|gua_|jddj_|getJDCookie&quot; &quot;activity|backUp&quot; &quot;^jd[^_]|USER|function|utils|sendnotify|ZooFaker_Necklace.js|JDJRValidator_Pure|sign_graphics_validate|ql&quot;<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">ql repo https://ghproxy.com/https://github.com/shufflewzc/faker2.git &quot;jd_|jx_|gua_|jddj_|getJDCookie&quot; &quot;activity|backUp&quot; &quot;^jd[^_]|USER|function|utils|sendnotify|ZooFaker_Necklace.js|JDJRValidator_Pure|sign_graphics_validate|ql&quot;<br><br></code></pre></div></td></tr></table></figure>
 
 <p>账号列表：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cat /ql/config/auth.json<br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">cat /ql/config/auth.json<br></code></pre></div></td></tr></table></figure>
 
 <p>进入qinglong bash</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker exec -it qinglong bash<br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">docker exec -it qinglong bash<br></code></pre></div></td></tr></table></figure>
 
-<h2 id="内置命令"><a href="#内置命令" class="headerlink" title="内置命令"></a>内置命令</h2><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-meta"># 更新并重启青龙</span><br>ql update                                                    <br><span class="hljs-meta"># 运行自定义脚本extra.sh</span><br>ql extra                                                     <br><span class="hljs-meta"># 添加单个脚本文件</span><br>ql raw <span class="hljs-params">&lt;file_url&gt;</span>                                             <br><span class="hljs-meta"># 添加单个仓库的指定脚本</span><br>ql repo <span class="hljs-params">&lt;repo_url&gt;</span> <span class="hljs-params">&lt;whitelist&gt;</span> <span class="hljs-params">&lt;blacklist&gt;</span> <span class="hljs-params">&lt;dependence&gt;</span> <span class="hljs-params">&lt;branch&gt;</span>   <br><span class="hljs-meta"># 删除旧日志</span><br>ql rmlog <span class="hljs-params">&lt;days&gt;</span>                                              <br><span class="hljs-meta"># 启动tg-bot</span><br>ql bot                                                       <br><span class="hljs-meta"># 检测青龙环境并修复</span><br>ql check                                                     <br><span class="hljs-meta"># 重置登录错误次数</span><br>ql resetlet                                                  <br><span class="hljs-meta"># 禁用两步登录</span><br>ql resettfa                                                  <br><br><span class="hljs-meta"># 依次执行，如果设置了随机延迟，将随机延迟一定秒数</span><br>task <span class="hljs-params">&lt;file_path&gt;</span>                                             <br><span class="hljs-meta"># 依次执行，无论是否设置了随机延迟，均立即运行，前台会输出日，同时记录在日志文件中</span><br>task <span class="hljs-params">&lt;file_path&gt;</span> now                                         <br><span class="hljs-meta"># 并发执行，无论是否设置了随机延迟，均立即运行，前台不产生日，直接记录在日志文件中，且可指定账号执行</span><br>task <span class="hljs-params">&lt;file_path&gt;</span> conc <span class="hljs-params">&lt;env_name&gt;</span> <span class="hljs-params">&lt;account_number&gt;</span>(可选的) <br><span class="hljs-meta"># 指定账号执行，无论是否设置了随机延迟，均立即运行 </span><br>task <span class="hljs-params">&lt;file_path&gt;</span> desi <span class="hljs-params">&lt;env_name&gt;</span> <span class="hljs-params">&lt;account_number&gt;</span>         <br></code></pre></td></tr></table></figure>
+<h2 id="内置命令"><a href="#内置命令" class="headerlink" title="内置命令"></a>内置命令</h2><figure class="highlight dts"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs dts"><span class="hljs-meta"># 更新并重启青龙</span><br>ql update                                                    <br><span class="hljs-meta"># 运行自定义脚本extra.sh</span><br>ql extra                                                     <br><span class="hljs-meta"># 添加单个脚本文件</span><br>ql raw <span class="hljs-params">&lt;file_url&gt;</span>                                             <br><span class="hljs-meta"># 添加单个仓库的指定脚本</span><br>ql repo <span class="hljs-params">&lt;repo_url&gt;</span> <span class="hljs-params">&lt;whitelist&gt;</span> <span class="hljs-params">&lt;blacklist&gt;</span> <span class="hljs-params">&lt;dependence&gt;</span> <span class="hljs-params">&lt;branch&gt;</span>   <br><span class="hljs-meta"># 删除旧日志</span><br>ql rmlog <span class="hljs-params">&lt;days&gt;</span>                                              <br><span class="hljs-meta"># 启动tg-bot</span><br>ql bot                                                       <br><span class="hljs-meta"># 检测青龙环境并修复</span><br>ql check                                                     <br><span class="hljs-meta"># 重置登录错误次数</span><br>ql resetlet                                                  <br><span class="hljs-meta"># 禁用两步登录</span><br>ql resettfa                                                  <br><br><span class="hljs-meta"># 依次执行，如果设置了随机延迟，将随机延迟一定秒数</span><br>task <span class="hljs-params">&lt;file_path&gt;</span>                                             <br><span class="hljs-meta"># 依次执行，无论是否设置了随机延迟，均立即运行，前台会输出日，同时记录在日志文件中</span><br>task <span class="hljs-params">&lt;file_path&gt;</span> now                                         <br><span class="hljs-meta"># 并发执行，无论是否设置了随机延迟，均立即运行，前台不产生日，直接记录在日志文件中，且可指定账号执行</span><br>task <span class="hljs-params">&lt;file_path&gt;</span> conc <span class="hljs-params">&lt;env_name&gt;</span> <span class="hljs-params">&lt;account_number&gt;</span>(可选的) <br><span class="hljs-meta"># 指定账号执行，无论是否设置了随机延迟，均立即运行 </span><br>task <span class="hljs-params">&lt;file_path&gt;</span> desi <span class="hljs-params">&lt;env_name&gt;</span> <span class="hljs-params">&lt;account_number&gt;</span>         <br></code></pre></div></td></tr></table></figure>
 
-<h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$</span> git clone git@github.com:whyour/qinglong.git<br><span class="hljs-variable">$</span> <span class="hljs-built_in">cd</span> qinglong<br><span class="hljs-variable">$</span> <span class="hljs-built_in">cp</span> .env.example .env<br><span class="hljs-variable">$</span> yarn install<br><span class="hljs-variable">$</span> yarn <span class="hljs-built_in">start</span><br></code></pre></td></tr></table></figure>
+<h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-variable">$</span> git clone git@github.com:whyour/qinglong.git<br><span class="hljs-variable">$</span> <span class="hljs-built_in">cd</span> qinglong<br><span class="hljs-variable">$</span> <span class="hljs-built_in">cp</span> .env.example .env<br><span class="hljs-variable">$</span> yarn install<br><span class="hljs-variable">$</span> yarn <span class="hljs-built_in">start</span><br></code></pre></div></td></tr></table></figure>
 
 <h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p><a href="https://gitee.com/link?target=https://t.me/jiao_long">telegram频道</a></p>
 
@@ -434,17 +412,6 @@
 
 
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-        typing(title);
-      
-    })(window, document);
-  </script>
 
 
 

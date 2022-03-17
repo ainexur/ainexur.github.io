@@ -16,17 +16,20 @@
   <meta name="author" content="ainexur">
   <meta name="keywords" content="博客">
   
-    <meta name="description" content="Spring下载地址：https:&#x2F;&#x2F;repo.spring.io&#x2F;ui&#x2F;native&#x2F;libs-release&#x2F;org&#x2F;springframework&#x2F;spring 全栈轻量级开源框架，以Ioc和AOP为内核。 IoC（控制反转目的：降低耦合性。     控制反转是软件工程中的一项原则，它将对对象或程序部分的控制转移到容器或框架中。我们最常在面向对象编程的上下文中使用它。   与我们的自定义代码">
+    <meta name="description" content="Spring下载地址：https:&#x2F;&#x2F;repo.spring.io&#x2F;ui&#x2F;native&#x2F;libs-release&#x2F;org&#x2F;springframework&#x2F;spring 全栈轻量级开源框架，以Ioc和AOP为内核。 IoC（控制反转）IOC目的：降低耦合性。     控制反转是软件工程中的一项原则，它将对对象或程序部分的控制转移到容器或框架中。我们最常在面向对象编程的上下文中使用它。   与我们的自">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring笔记">
 <meta property="og:url" content="https://ainexur.github.io/2022/01/10/Spring%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="寻人启事">
-<meta property="og:description" content="Spring下载地址：https:&#x2F;&#x2F;repo.spring.io&#x2F;ui&#x2F;native&#x2F;libs-release&#x2F;org&#x2F;springframework&#x2F;spring 全栈轻量级开源框架，以Ioc和AOP为内核。 IoC（控制反转目的：降低耦合性。     控制反转是软件工程中的一项原则，它将对对象或程序部分的控制转移到容器或框架中。我们最常在面向对象编程的上下文中使用它。   与我们的自定义代码">
+<meta property="og:description" content="Spring下载地址：https:&#x2F;&#x2F;repo.spring.io&#x2F;ui&#x2F;native&#x2F;libs-release&#x2F;org&#x2F;springframework&#x2F;spring 全栈轻量级开源框架，以Ioc和AOP为内核。 IoC（控制反转）IOC目的：降低耦合性。     控制反转是软件工程中的一项原则，它将对对象或程序部分的控制转移到容器或框架中。我们最常在面向对象编程的上下文中使用它。   与我们的自">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="c:/Users/coco/AppData/Roaming/Typora/typora-user-images/image-20220314074220155.png">
 <meta property="og:image" content="c:/Users/coco/AppData/Roaming/Typora/typora-user-images/image-20220316103821056.png">
+<meta property="og:image" content="https://gitee.com/ainexur/topora-drawing-bed/raw/master/img/image-20220316233206706.png">
+<meta property="og:image" content="https://gitee.com/ainexur/topora-drawing-bed/raw/master/img/image-20220317003631476.png">
+<meta property="og:image" content="https://gitee.com/ainexur/topora-drawing-bed/raw/master/img/image-20220317024524526.png">
 <meta property="article:published_time" content="2022-01-10T09:59:34.000Z">
-<meta property="article:modified_time" content="2022-03-16T02:47:52.138Z">
+<meta property="article:modified_time" content="2022-03-16T19:44:35.901Z">
 <meta property="article:author" content="ainexur">
 <meta property="article:tag" content="spring">
 <meta name="twitter:card" content="summary_large_image">
@@ -178,7 +181,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.3k 字
+      9.8k 字
     </span>
   
 
@@ -187,7 +190,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      45 分钟
+      82 分钟
     </span>
   
 
@@ -221,24 +224,32 @@
             <div class="markdown-body">
               <h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><p>下载地址：<a target="_blank" rel="noopener" href="https://repo.spring.io/ui/native/libs-release/org/springframework/spring">https://repo.spring.io/ui/native/libs-release/org/springframework/spring</a></p>
 <p>全栈轻量级开源框架，以Ioc和AOP为内核。</p>
-<h1 id="IoC（控制反转"><a href="#IoC（控制反转" class="headerlink" title="IoC（控制反转"></a>IoC（控制反转</h1><p>目的：降低耦合性。   </p>
+<h1 id="IoC（控制反转）"><a href="#IoC（控制反转）" class="headerlink" title="IoC（控制反转）"></a>IoC（控制反转）</h1><h2 id="IOC"><a href="#IOC" class="headerlink" title="IOC"></a>IOC</h2><p>目的：降低耦合性。   </p>
 <blockquote>
 <p>控制反转是软件工程中的一项原则，它将对对象或程序部分的控制转移到容器或框架中。我们最常在面向对象编程的上下文中使用它。</p>
 </blockquote>
 <blockquote>
 <p>与我们的自定义代码调用库的传统编程相比，IoC 使框架能够控制程序的流程并调用我们的自定义代码。为了实现这一点，框架使用内置附加行为的抽象。<strong>如果我们想添加自己的行为，我们需要扩展框架的类或插入我们自己的类。</strong></p>
-<p>这种架构的优点是：</p>
-<ul>
-<li>将任务的执行与其实现分离</li>
-<li>更容易在不同的实现之间切换</li>
-<li>程序的更大模块化</li>
-<li>通过隔离组件或模拟其依赖关系并允许组件通过合约进行通信，从而更轻松地测试程序</li>
-</ul>
 <p>我们可以通过各种机制来实现控制反转，例如：策略设计模式、服务定位器模式、工厂模式和依赖注入（DI）。</p>
 </blockquote>
 <h3 id="IOC操作Bean管理（FactoryBean）"><a href="#IOC操作Bean管理（FactoryBean）" class="headerlink" title="IOC操作Bean管理（FactoryBean）"></a>IOC操作Bean管理（FactoryBean）</h3><p>Spring里的Bean分为普通Bean和工厂Bean（FactoryBean），普通Bean在配置文件中配置的类即是Bean实例类型；工厂Bean返回的类型可以和配置文件中定义的类型不同。</p>
 <p>工厂Bean实现：</p>
-<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">```<br><br><br><br><br><br><br><br>## DI<br><br>&gt; 依赖注入是我们可以用来实现 IoC 的一种模式，其中被反转的控制是设置对象的依赖关系。<br>&gt;<br>&gt; 将对象与其他对象连接起来，或将对象“注入”到其他对象中，是由汇编程序完成的，而不是由对象本身完成的。<br><br># AOP (<br><br>不改变源码的前提下，增强源码功能。实现手段有JDK动态代理和cglib动态代理。<br><br><br><br>## 优势<br><br>- 方便解耦、简化开发<br>- AOP的编程支持<br>- 声明式事务的支持<br>- 方便程序的测试<br>- 方便继承各种优秀的框架<br>- 降低Java EE API的使用难度<br>- Java源码是经典学习范例<br><br>## 实现手段<br><br>### 接口的JDK动态代理<br><br>`UserDao.java`：接口类<br><br>```java<br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UserDao</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span></span>;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(String id)</span></span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h2 id="DI-（依赖注入）"><a href="#DI-（依赖注入）" class="headerlink" title="DI （依赖注入）"></a>DI （依赖注入）</h2><blockquote>
+<p>依赖注入是我们可以用来实现 IoC 的一种模式，其中被反转的控制是设置对象的依赖关系。</p>
+<p>将对象与其他对象连接起来，或将对象“注入”到其他对象中，是由汇编程序完成的，而不是由对象本身完成的。</p>
+</blockquote>
+<h1 id="AOP-切面编程）"><a href="#AOP-切面编程）" class="headerlink" title="AOP (切面编程）"></a>AOP (切面编程）</h1><p>不改变源码的前提下，增强源码功能。实现手段有<strong>JDK动态代理</strong>和<strong>cglib动态代理</strong>。</p>
+<h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><ul>
+<li>方便解耦、简化开发</li>
+<li>AOP的编程支持</li>
+<li>声明式事务的支持</li>
+<li>方便程序的测试</li>
+<li>方便继承各种优秀的框架</li>
+<li>降低Java EE API的使用难度</li>
+<li>Java源码是经典学习范例</li>
+</ul>
+<h2 id="实现手段"><a href="#实现手段" class="headerlink" title="实现手段"></a>实现手段</h2><h3 id="接口的JDK动态代理"><a href="#接口的JDK动态代理" class="headerlink" title="接口的JDK动态代理"></a>接口的JDK动态代理</h3><p><code>UserDao.java</code>：接口类</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UserDao</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span></span>;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(String id)</span></span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <p><code>UserDaoImpl.java</code>：接口实现类</p>
 <figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserDaoImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">UserDao</span></span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;add()方法执行..&quot;</span>);<br>         <span class="hljs-keyword">return</span> a + b;<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(String id)</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;update()方法执行..&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;id = &quot;</span> + id);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
@@ -322,12 +333,116 @@
 </li>
 </ol>
 <p>在Spring进行声明式事务管理，底层使用AOP</p>
-<p>Spring事务管理API</p>
+<p>Spring事务管理API：提供一个接口，代表事务管理，这个接口针对不同的框架提供不同的实现类。</p>
 <img src="C:\Users\coco\AppData\Roaming\Typora\typora-user-images\image-20220316103821056.png" srcset="/img/loading.gif" lazyload alt="image-20220316103821056" style="zoom:50%;" />
 
+<h2 id="基于注解-amp-XML的声明式事务管理"><a href="#基于注解-amp-XML的声明式事务管理" class="headerlink" title="基于注解&amp;XML的声明式事务管理"></a>基于注解&amp;XML的声明式事务管理</h2><p><strong>xml配置事务管理器</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--    创建事务管理器--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;transactionManager&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;dataSource&quot;</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;dataSource&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p><strong>xml开始事务管理</strong></p>
+<ul>
+<li><p>引入<code>tx</code>命名空间</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns:tx</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/tx&quot;</span></span><br><span class="hljs-tag">       <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd&quot;</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>开启事务注解</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--    开启事务注解--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">tx:annotation-driven</span> <span class="hljs-attr">transaction-manager</span>=<span class="hljs-string">&quot;transactionManager&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">tx:annotation-driven</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>在Service类上（或者Service类里面方法上）添加注解</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Service</span><br><span class="hljs-meta">@Transactional</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BookService</span> </span>&#123;<br>    <span class="hljs-comment">//...</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<ol>
+<li><code>@Transactional</code>该注解添加到类上，则类里所有方法都添加事务</li>
+<li><code>@Transactional</code>该注解添加到方法上，则只为该方法添加事务</li>
+</ol>
+</li>
+</ul>
+<h2 id="声明式事务管理参数配置（注解配置相关参数）"><a href="#声明式事务管理参数配置（注解配置相关参数）" class="headerlink" title="声明式事务管理参数配置（注解配置相关参数）"></a>声明式事务管理参数配置（注解配置相关参数）</h2><p><img src="https://gitee.com/ainexur/topora-drawing-bed/raw/master/img/image-20220316233206706.png" srcset="/img/loading.gif" lazyload alt="image-20220316233206706"></p>
+<h3 id="propagation"><a href="#propagation" class="headerlink" title="propagation"></a>propagation</h3><p>事务传播行为</p>
+<ol>
+<li><p>多事务方法直接进行调用，这个过程事务是如何进行管理的</p>
+<ul>
+<li>事务方法：对数据库表数据进行变化的操作(增删改是，查不是)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Transactional</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">()</span> </span>&#123;<br>    update();<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">upadte</span><span class="hljs-params">()</span> </span>&#123;<br>    <br>&#125;<br><span class="hljs-comment">//通过add()调用upadte()，事务是怎么处理的，这个过程就叫传播行为</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>Spring框架事务传播有七种传播行为</p>
+<p><img src="https://gitee.com/ainexur/topora-drawing-bed/raw/master/img/image-20220317003631476.png" srcset="/img/loading.gif" lazyload alt="image-20220317003631476"></p>
+</li>
+<li><p>主要使用前两种，其他了解有个印象就行</p>
+</li>
+</ol>
+<p>配置举例：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Transactional(propagation = Propagation.REQUIRED)</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="ioslation"><a href="#ioslation" class="headerlink" title="ioslation"></a>ioslation</h3><p>事务隔离级别</p>
+<ol>
+<li><p>事务有特性称为隔离性，多事务操作之间不会产生影响。不考虑隔离性产生很多问题：</p>
+</li>
+<li><p>三个读问题</p>
+<ul>
+<li>脏读：一个未提交事务读取到另一个未提交事务的数据（问题）</li>
+<li>不可重复读：一个未提交事务读到一个已经提交事务的数据（现象）</li>
+<li>幻读（虚读）：一个未提交事务读到另一个提交事务添加数据（）</li>
+</ul>
+</li>
+<li><p>通过设置事务隔离性，解决读问题</p>
+<p>四个隔离级别：</p>
+<p><img src="https://gitee.com/ainexur/topora-drawing-bed/raw/master/img/image-20220317024524526.png" srcset="/img/loading.gif" lazyload alt="image-20220317024524526"></p>
+</li>
+</ol>
+<p>配置举例：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.REPEATABLE_READ)</span><br></code></pre></div></td></tr></table></figure>
+
+<p>MySQL中默认的隔离级别</p>
+<h3 id="timeout"><a href="#timeout" class="headerlink" title="timeout"></a>timeout</h3><p>超时时间：</p>
+<ol>
+<li>事务需要在一定的时间内进行提交，如果不提交进行回滚</li>
+<li>默认为-1（即不超时），设置时间以秒为单位进行计算</li>
+</ol>
+<p>配置举例</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Transactional(timeout = 100)</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="readOnly"><a href="#readOnly" class="headerlink" title="readOnly"></a>readOnly</h3><p>是否只读：</p>
+<ol>
+<li>读：查询操作，写：添加修改删除操作</li>
+<li>readOnly默认值是False，表示可以增删改查</li>
+<li>设置readOnly为True时，只能使用查询</li>
+</ol>
+<p>配置举例</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Transactional(readOnly = true)</span><br></code></pre></div></td></tr></table></figure>
 
 
-<h1 id="Spring快速入门"><a href="#Spring快速入门" class="headerlink" title="Spring快速入门"></a>Spring快速入门</h1><h2 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h2><ol>
+
+<h3 id="rollbackFor"><a href="#rollbackFor" class="headerlink" title="rollbackFor"></a>rollbackFor</h3><p>回滚：</p>
+<ol>
+<li>设置出现哪些异常进行事务回滚</li>
+</ol>
+<h3 id="noRollbackFor"><a href="#noRollbackFor" class="headerlink" title="noRollbackFor"></a>noRollbackFor</h3><p>不回滚：</p>
+<ol>
+<li>设置出现哪些异常不进行事务回滚</li>
+</ol>
+<h2 id="基于XML配置的方式声明式事务管理"><a href="#基于XML配置的方式声明式事务管理" class="headerlink" title="基于XML配置的方式声明式事务管理"></a>基于XML配置的方式声明式事务管理</h2><ul>
+<li>配置事务管理器</li>
+<li>配置通知（增强的类）</li>
+<li>配置切入点和切面（要增强的类，即要使用事务的类）</li>
+</ul>
+<p>XML配置例子：</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><br><span class="hljs-comment">&lt;!--1, 创建事务管理器--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;transactionManager&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;dataSource&quot;</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;dataSource&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--2。配置通知--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">tx:advice</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;txadvice&quot;</span>&gt;</span><br>    <span class="hljs-comment">&lt;!--配置事务参数--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">tx:attributes</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 指定哪种方法上添加事务--&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;acountMoney&quot;</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">&quot;REQUIRED&quot;</span>/&gt;</span><br>        <span class="hljs-comment">&lt;!--&lt;tx:method name=&quot;acount*&quot;/&gt;--&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">tx:attributes</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">tx:advice</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--3.配置切入点和切面--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">aop:config</span>&gt;</span><br>    <span class="hljs-comment">&lt;!--配置切入点--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">aop:pointcut</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;pt&quot;</span> <span class="hljs-attr">expression</span>=<span class="hljs-string">&quot;execution(* io.ainexur.spring5.service.UserService.* (..)&quot;</span>/&gt;</span><br>    <span class="hljs-comment">&lt;!--配置切面--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">aop:advisor</span> <span class="hljs-attr">advice-ref</span>=<span class="hljs-string">&quot;txadvice&quot;</span> <span class="hljs-attr">pointcut-ref</span>=<span class="hljs-string">&quot;pt&quot;</span>/&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">aop:config</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<h2 id="完全注解方式的声明式事务管理"><a href="#完全注解方式的声明式事务管理" class="headerlink" title="完全注解方式的声明式事务管理"></a>完全注解方式的声明式事务管理</h2><p><strong>创建配置类<code>TxConfig.java</code></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><br><span class="hljs-keyword">import</span> com.alibaba.druid.pool.DruidDataSource;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.ComponentScan;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;<br><span class="hljs-keyword">import</span> org.springframework.jdbc.core.JdbcTemplate;<br><span class="hljs-keyword">import</span> org.springframework.jdbc.datasource.DataSourceTransactionManager;<br><span class="hljs-keyword">import</span> org.springframework.transaction.annotation.EnableTransactionManagement;<br><br><span class="hljs-keyword">import</span> javax.sql.DataSource;<br><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-meta">@ComponentScan(basePackages = &quot;io.ainexur&quot;)</span><br><span class="hljs-meta">@EnableTransactionManagement</span>    <span class="hljs-comment">//开启事务</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TxConfig</span> </span>&#123;<br><br>    <span class="hljs-comment">//创建配置类的连接池</span><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> DruidDataSource <span class="hljs-title">getDruidDataSource</span><span class="hljs-params">()</span> </span>&#123;<br>        DruidDataSource druidDataSource = <span class="hljs-keyword">new</span> DruidDataSource();<br>        druidDataSource.setDriverClassName(<span class="hljs-string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>);<br>        druidDataSource.setUrl(<span class="hljs-string">&quot;jdbc:mysql:///user_db?allowPublicKeyRetrieval=true&amp;useSSL=false&quot;</span>);<br>        druidDataSource.setUsername(<span class="hljs-string">&quot;root&quot;</span>);<br>        druidDataSource.setPassword(<span class="hljs-string">&quot;root&quot;</span>);<br><br>        <span class="hljs-keyword">return</span> druidDataSource;<br>    &#125;<br><br>    <span class="hljs-comment">//创建JdbcTemplate对象</span><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> JdbcTemplate <span class="hljs-title">getJdbcTemplate</span><span class="hljs-params">(DataSource dataSource)</span> </span>&#123;    <span class="hljs-comment">//到IOC容器里自动寻找DataSource对象</span><br>        JdbcTemplate jdbcTemplate = <span class="hljs-keyword">new</span> JdbcTemplate();<br>        jdbcTemplate.setDataSource(dataSource);<br>        <span class="hljs-keyword">return</span> jdbcTemplate;<br>    &#125;<br><br>    <span class="hljs-comment">//创建事务管理容器</span><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> DataSourceTransactionManager <span class="hljs-title">getDataSourceTransactionManager</span><span class="hljs-params">(DataSource dataSource)</span> </span>&#123;<br>        DataSourceTransactionManager dataSourceTransactionManager =<br>                <span class="hljs-keyword">new</span> DataSourceTransactionManager();<br>        dataSourceTransactionManager.setDataSource(dataSource);<br>        <span class="hljs-keyword">return</span> dataSourceTransactionManager;<br>    &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+
+<p><strong>测试</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testTransactional2</span><span class="hljs-params">()</span> </span>&#123;<br>    ApplicationContext context =<br>        <span class="hljs-keyword">new</span> AnnotationConfigApplicationContext(TxConfig.class);<br><br>    UserService userService = context.getBean(<span class="hljs-string">&quot;userService&quot;</span>, UserService.class);<br>    userService.accountMoney();<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p><strong>结果</strong></p>
+<p>配置类代理XML配置，和XML配置运行结果一致。</p>
+<h1 id="Spring5新功能和特性"><a href="#Spring5新功能和特性" class="headerlink" title="Spring5新功能和特性"></a>Spring5新功能和特性</h1><ol>
+<li>整个Spring5框架基于Java8，运行时兼容JDK9，许多不建议使用的类和方法在代码库中删除</li>
+<li>Spring5框架自带了日志的封装<ul>
+<li>Spring5已经移除了Log4jConfigListener，官方建议使用Log4j2</li>
+<li><h2 id="Spring5框架整合Log4j2"><a href="#Spring5框架整合Log4j2" class="headerlink" title="Spring5框架整合Log4j2"></a>Spring5框架整合Log4j2</h2></li>
+</ul>
+</li>
+</ol>
+<h1 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h1><ol>
 <li>maven导入Spring包</li>
 <li>创建Dao接口和实现</li>
 <li>创建Spring核心配置文件</li>

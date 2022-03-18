@@ -18,8 +18,8 @@
   
     <meta name="description" content="Spring下载地址：https:&#x2F;&#x2F;repo.spring.io&#x2F;ui&#x2F;native&#x2F;libs-release&#x2F;org&#x2F;springframework&#x2F;spring 全栈轻量级开源框架，以Ioc和AOP为内核。 IoC（控制反转）IOC目的：降低耦合性。     控制反转是软件工程中的一项原则，它将对对象或程序部分的控制转移到容器或框架中。我们最常在面向对象编程的上下文中使用它。   与我们的自">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring笔记">
-<meta property="og:url" content="https://ainexur.github.io/2022/01/10/Spring%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="Spring5笔记">
+<meta property="og:url" content="https://ainexur.github.io/2022/03/10/Spring%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="寻人启事">
 <meta property="og:description" content="Spring下载地址：https:&#x2F;&#x2F;repo.spring.io&#x2F;ui&#x2F;native&#x2F;libs-release&#x2F;org&#x2F;springframework&#x2F;spring 全栈轻量级开源框架，以Ioc和AOP为内核。 IoC（控制反转）IOC目的：降低耦合性。     控制反转是软件工程中的一项原则，它将对对象或程序部分的控制转移到容器或框架中。我们最常在面向对象编程的上下文中使用它。   与我们的自">
 <meta property="og:locale" content="zh_CN">
@@ -28,15 +28,16 @@
 <meta property="og:image" content="https://gitee.com/ainexur/topora-drawing-bed/raw/master/img/image-20220316233206706.png">
 <meta property="og:image" content="https://gitee.com/ainexur/topora-drawing-bed/raw/master/img/image-20220317003631476.png">
 <meta property="og:image" content="https://gitee.com/ainexur/topora-drawing-bed/raw/master/img/image-20220317024524526.png">
-<meta property="article:published_time" content="2022-01-10T09:59:34.000Z">
-<meta property="article:modified_time" content="2022-03-16T19:44:35.901Z">
+<meta property="og:image" content="https://gitee.com/ainexur/topora-drawing-bed/raw/master/img/image-20220317174135264.png">
+<meta property="article:published_time" content="2022-03-10T09:59:34.000Z">
+<meta property="article:modified_time" content="2022-03-17T10:41:37.263Z">
 <meta property="article:author" content="ainexur">
 <meta property="article:tag" content="spring">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="c:/Users/coco/AppData/Roaming/Typora/typora-user-images/image-20220314074220155.png">
   
   
-  <title>Spring笔记 - 寻人启事</title>
+  <title>Spring5笔记 - 寻人启事</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -158,9 +159,9 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Spring笔记">
+            <span class="h2" id="subtitle" title="Spring5笔记">
               
-                Spring笔记
+                Spring5笔记
               
             </span>
 
@@ -170,8 +171,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-01-10 17:59" pubdate>
-        2022年1月10日 下午
+      <time datetime="2022-03-10 17:59" pubdate>
+        2022年3月10日 下午
       </time>
     </span>
   
@@ -181,7 +182,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      9.8k 字
+      12k 字
     </span>
   
 
@@ -190,7 +191,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      82 分钟
+      97 分钟
     </span>
   
 
@@ -219,7 +220,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Spring笔记</h1>
+            <h1 style="display: none">Spring5笔记</h1>
             
             <div class="markdown-body">
               <h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><p>下载地址：<a target="_blank" rel="noopener" href="https://repo.spring.io/ui/native/libs-release/org/springframework/spring">https://repo.spring.io/ui/native/libs-release/org/springframework/spring</a></p>
@@ -339,7 +340,7 @@
 <h2 id="基于注解-amp-XML的声明式事务管理"><a href="#基于注解-amp-XML的声明式事务管理" class="headerlink" title="基于注解&amp;XML的声明式事务管理"></a>基于注解&amp;XML的声明式事务管理</h2><p><strong>xml配置事务管理器</strong></p>
 <figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--    创建事务管理器--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;transactionManager&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;dataSource&quot;</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;dataSource&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
 
-<p><strong>xml开始事务管理</strong></p>
+<p><strong>xml开启事务管理</strong></p>
 <ul>
 <li><p>引入<code>tx</code>命名空间</p>
 <figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns:tx</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/tx&quot;</span></span><br><span class="hljs-tag">       <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd&quot;</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
@@ -434,15 +435,58 @@
 
 <p><strong>结果</strong></p>
 <p>配置类代理XML配置，和XML配置运行结果一致。</p>
-<h1 id="Spring5新功能和特性"><a href="#Spring5新功能和特性" class="headerlink" title="Spring5新功能和特性"></a>Spring5新功能和特性</h1><ol>
-<li>整个Spring5框架基于Java8，运行时兼容JDK9，许多不建议使用的类和方法在代码库中删除</li>
-<li>Spring5框架自带了日志的封装<ul>
+<h1 id="Spring5新功能和特性"><a href="#Spring5新功能和特性" class="headerlink" title="Spring5新功能和特性"></a>Spring5新功能和特性</h1><h2 id="更"><a href="#更" class="headerlink" title="更"></a>更</h2><ol>
+<li><p>整个Spring5框架基于Java8，运行时兼容JDK9，许多不建议使用的类和方法在代码库中删除</p>
+</li>
+<li><p>Spring5框架自带了日志的封装</p>
+<ul>
 <li>Spring5已经移除了Log4jConfigListener，官方建议使用Log4j2</li>
-<li><h2 id="Spring5框架整合Log4j2"><a href="#Spring5框架整合Log4j2" class="headerlink" title="Spring5框架整合Log4j2"></a>Spring5框架整合Log4j2</h2></li>
+<li>Spring5框架整合Log4j2</li>
+<li>整合Log4j2<ul>
+<li>引入jar包</li>
+<li>创建<code>Log4j2.xml</code>配置文件，<code>log4j2.xml</code>文件名字是固定的。</li>
 </ul>
 </li>
+</ul>
+</li>
+<li><p>Spring5框架核心容器支持<code>@Nullable</code>注解</p>
+<p><code>@Nullable</code>注解可以用在方法、属性、参数上</p>
+<ul>
+<li>用在方法上，表示返回值可以为空</li>
+<li>用在属性上，表示属性值可以为空</li>
+<li>用在参数上，表示参数可以为空</li>
+</ul>
+</li>
+<li><p>Spring5核心容器支持函数式风格<code>GenericApplicationContext</code></p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testGenericApplicationContext</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">//创建GenericApplicationContext对象</span><br>    GenericApplicationContext context =<br>        <span class="hljs-keyword">new</span> GenericApplicationContext();<br>    <span class="hljs-comment">//调用context方法对象注册</span><br>    context.refresh();<br>    context.registerBean(User.class, () -&gt; <span class="hljs-keyword">new</span> User());<br>    <span class="hljs-comment">//获取在Spring中注册的对象</span><br>    User user = context.getBean(User.class);<br>    System.out.println(user);<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>Spring5支持整合JUnit5</p>
+</li>
 </ol>
-<h1 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h1><ol>
+<h2 id="新"><a href="#新" class="headerlink" title="新"></a>新</h2><ol>
+<li>SpringWebFlux</li>
+</ol>
+<h2 id="Spring单元测试"><a href="#Spring单元测试" class="headerlink" title="Spring单元测试"></a>Spring单元测试</h2><h3 id="Spring整合JUnit4"><a href="#Spring整合JUnit4" class="headerlink" title="Spring整合JUnit4"></a>Spring整合JUnit4</h3><ol>
+<li><p>引入Spring相关依赖<code>spring-test-5.3.16.jar</code>、<code>hamcrest-core-1.3.jar</code>、<code>junit-4.13.1.jar</code></p>
+</li>
+<li><p>创建测试类<code>JTest4.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@RunWith(SpringJUnit4ClassRunner.class)</span> <span class="hljs-comment">//单元测试框架</span><br><span class="hljs-meta">@ContextConfiguration(&quot;classpath:bean1.xml&quot;)</span>    <span class="hljs-comment">//加载配置文件</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JTest4</span> </span>&#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> UserService userService;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test1</span><span class="hljs-params">()</span> </span>&#123;<br>        userService.accountMoney();<br>    &#125;<br>&#125;<br><span class="hljs-comment">//通过注解自动加载配置文件，省去每个测试方法都需要手动加载配置文件。</span><br><span class="hljs-comment">//自动加载配置文件后，可以通过注解注入属性</span><br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<h3 id="Spring5整合JUnit5"><a href="#Spring5整合JUnit5" class="headerlink" title="Spring5整合JUnit5"></a>Spring5整合JUnit5</h3><ol>
+<li><p>引入相关依赖</p>
+<img src="https://gitee.com/ainexur/topora-drawing-bed/raw/master/img/image-20220317174135264.png" srcset="/img/loading.gif" lazyload alt="image-20220317174135264" style="zoom:50%;" />
+
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">apiguardian-api-<span class="hljs-number">1.1</span><span class="hljs-number">.2</span>.jar<br>junit-jupiter-<span class="hljs-number">5.8</span><span class="hljs-number">.1</span>.jar<br>junit-jupiter-api-<span class="hljs-number">5.8</span><span class="hljs-number">.1</span>.jar <br>junit-jupiter-engine-<span class="hljs-number">5.8</span><span class="hljs-number">.1</span>.jar<br>junit-jupiter-params-<span class="hljs-number">5.8</span><span class="hljs-number">.1</span>.jar<br>junit-platform-commons-<span class="hljs-number">1.8</span><span class="hljs-number">.1</span>.jar<br>junit-platform-engine-<span class="hljs-number">1.8</span><span class="hljs-number">.1</span>.jar<br>opentest4j-<span class="hljs-number">1.2</span><span class="hljs-number">.0</span>.jar<br></code></pre></div></td></tr></table></figure></li>
+<li><p>创建测试类<code>JTest5.java</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">//@ExtendWith(SpringExtension.class)</span><br><span class="hljs-comment">//@ContextConfiguration(&quot;classpath:bean1.xml&quot;)</span><br><span class="hljs-meta">@SpringJUnitConfig(locations = &quot;classpath:bean1.xml&quot;)</span> 	<span class="hljs-comment">//复合注解，代替上面两个，简化配置</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JTest5</span> </span>&#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> UserService userService;<br><br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test1</span><span class="hljs-params">()</span> </span>&#123;<br>        userService.accountMoney();<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<h2 id="SpringWebFlux"><a href="#SpringWebFlux" class="headerlink" title="*SpringWebFlux"></a>*SpringWebFlux</h2><h3 id="1-什么是SpringWebFlux"><a href="#1-什么是SpringWebFlux" class="headerlink" title="1.什么是SpringWebFlux"></a>1.什么是SpringWebFlux</h3><ul>
+<li>Spring5添加的新模块，用于Web开发，功能和SpringMVC类似， WebFlux为当前一种比较流行的响应式编程出现的框架。</li>
+<li>使用传统Web框架，比如SpringMVC，这些都基于Servlet容器；WebFlux是一种异步非阻塞的框架，异步非阻塞的框架在Servlet3.1以后才支持。核心<strong>基于Reactor的相关API实现</strong>。<ul>
+<li>异步非阻塞： </li>
+</ul>
+</li>
+</ul>
+<h3 id="2-响应式编程"><a href="#2-响应式编程" class="headerlink" title="2.响应式编程"></a>2.响应式编程</h3><h3 id="3-WebFlux执行流程和API"><a href="#3-WebFlux执行流程和API" class="headerlink" title="3.WebFlux执行流程和API"></a>3.WebFlux执行流程和API</h3><h3 id="4-SpringWebFlux（基于注解编程模型）"><a href="#4-SpringWebFlux（基于注解编程模型）" class="headerlink" title="4. SpringWebFlux（基于注解编程模型）"></a>4. SpringWebFlux（基于注解编程模型）</h3><h3 id="5-SpringWebFlux（基于注解编程模型）"><a href="#5-SpringWebFlux（基于注解编程模型）" class="headerlink" title="5.SpringWebFlux（基于注解编程模型）"></a>5.SpringWebFlux（基于注解编程模型）</h3><h1 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h1><ol>
 <li>maven导入Spring包</li>
 <li>创建Dao接口和实现</li>
 <li>创建Spring核心配置文件</li>
@@ -476,18 +520,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/01/11/Mybatis%E7%AC%94%E8%AE%B0/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Mybatis笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/01/10/JVM%E7%AC%94%E8%AE%B0/">
-                        <span class="hidden-mobile">JVM笔记</span>
+                      <a href="/2022/03/02/JavaWeb%E5%85%A8%E6%94%BB%E7%95%A5/">
+                        <span class="hidden-mobile">JavaWeb入门笔记</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

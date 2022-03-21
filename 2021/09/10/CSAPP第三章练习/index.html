@@ -16,16 +16,16 @@
   <meta name="author" content="ainexur">
   <meta name="keywords" content="博客">
   
-    <meta name="description" content="寄存器  搬运指令    练习题 3.1  假设下面的值存放在指明的内存地址和寄存器中    地址 值    0x100 0xFF   0x104 0xAB   0x108 0x13   0x10C 0x11      寄存器 值    %rax 0x100   %rcx 0x1   %rdx 0x3   填写下表，给出所示操作数的值：    操作数 值 注释    %rax 0x100 寄存器">
+    <meta name="description" content="寄存器 搬运指令 练习题 3.1 假设下面的值存放在指明的内存地址和寄存器中    地址 值    0x100 0xFF   0x104 0xAB   0x108 0x13   0x10C 0x11      寄存器 值    %rax 0x100   %rcx 0x1   %rdx 0x3   填写下表，给出所示操作数的值：    操作数 值 注释    %rax 0x100 寄存器   0x1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSAPP第三章练习">
 <meta property="og:url" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/index.html">
 <meta property="og:site_name" content="寻人启事">
-<meta property="og:description" content="寄存器  搬运指令    练习题 3.1  假设下面的值存放在指明的内存地址和寄存器中    地址 值    0x100 0xFF   0x104 0xAB   0x108 0x13   0x10C 0x11      寄存器 值    %rax 0x100   %rcx 0x1   %rdx 0x3   填写下表，给出所示操作数的值：    操作数 值 注释    %rax 0x100 寄存器">
+<meta property="og:description" content="寄存器 搬运指令 练习题 3.1 假设下面的值存放在指明的内存地址和寄存器中    地址 值    0x100 0xFF   0x104 0xAB   0x108 0x13   0x10C 0x11      寄存器 值    %rax 0x100   %rcx 0x1   %rdx 0x3   填写下表，给出所示操作数的值：    操作数 值 注释    %rax 0x100 寄存器   0x1">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.0.1.png">
-<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.0.2.png">
-<meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.1.png">
+<meta property="og:image" content="d:/GitProject/MyHexo/source_posts/CSAPP第三章练习/3.0.1.png">
+<meta property="og:image" content="https://gitee.com/ainexur/topora-drawing-bed/raw/master/img/3.0.2.png">
+<meta property="og:image" content="https://gitee.com/ainexur/topora-drawing-bed/raw/master/img/3.1.png">
 <meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.2.png">
 <meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.3.png">
 <meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.4.1.png">
@@ -66,11 +66,11 @@
 <meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.31.png">
 <meta property="og:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.32.png">
 <meta property="article:published_time" content="2021-09-10T08:27:52.000Z">
-<meta property="article:modified_time" content="2022-01-24T02:54:15.226Z">
+<meta property="article:modified_time" content="2022-03-21T22:36:57.034Z">
 <meta property="article:author" content="ainexur">
 <meta property="article:tag" content="深入理解计算机操作系统">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.0.1.png">
+<meta name="twitter:image" content="d:/GitProject/MyHexo/source_posts/CSAPP第三章练习/3.0.1.png">
   
   
   <title>CSAPP第三章练习 - 寻人启事</title>
@@ -259,14 +259,9 @@
             <h1 style="display: none">CSAPP第三章练习</h1>
             
             <div class="markdown-body">
-              <h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.0.1.png" srcset="/img/loading.gif" lazyload class="" title="3.0.1">
-
-<h3 id="搬运指令"><a href="#搬运指令" class="headerlink" title="搬运指令"></a>搬运指令</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.0.2.png" srcset="/img/loading.gif" lazyload class="" title="3.0.2">
-
-
-
-<h3 id="练习题-3-1"><a href="#练习题-3-1" class="headerlink" title="练习题 3.1"></a>练习题 3.1</h3><img src="/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/3.1.png" srcset="/img/loading.gif" lazyload class="" title="3.1">
-
+              <h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><p><img src="D:\GitProject\MyHexo\source_posts\CSAPP第三章练习\3.0.1.png" srcset="/img/loading.gif" lazyload alt="3.0.1"></p>
+<h3 id="搬运指令"><a href="#搬运指令" class="headerlink" title="搬运指令"></a>搬运指令</h3><p><img src="https://gitee.com/ainexur/topora-drawing-bed/raw/master/img/3.0.2.png" srcset="/img/loading.gif" lazyload alt="3.0.2"></p>
+<h3 id="练习题-3-1"><a href="#练习题-3-1" class="headerlink" title="练习题 3.1"></a>练习题 3.1</h3><p><img src="https://gitee.com/ainexur/topora-drawing-bed/raw/master/img/3.1.png" srcset="/img/loading.gif" lazyload alt="3.1"></p>
 <p><strong>假设下面的值存放在指明的内存地址和寄存器中</strong></p>
 <table>
 <thead>

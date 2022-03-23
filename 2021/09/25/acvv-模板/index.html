@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ainexur.github.io/2021/09/25/acvv-%E6%A8%A1%E6%9D%BF/%E6%9C%80%E7%9F%AD%E8%B7%AF.png">
 <meta property="article:published_time" content="2021-09-25T14:29:59.000Z">
-<meta property="article:modified_time" content="2022-02-21T02:14:43.746Z">
+<meta property="article:modified_time" content="2022-03-23T08:22:53.452Z">
 <meta property="article:author" content="ainexur">
 <meta property="article:tag" content="AcWing">
 <meta name="twitter:card" content="summary_large_image">
@@ -177,7 +177,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      33k 字
+      34k 字
     </span>
   
 
@@ -186,7 +186,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      274 分钟
+      283 分钟
     </span>
   
 
@@ -357,9 +357,28 @@
 
 <h2 id="2-5-滑动窗口-（单调队列）"><a href="#2-5-滑动窗口-（单调队列）" class="headerlink" title="2.5 滑动窗口 （单调队列）"></a>2.5 滑动窗口 （单调队列）</h2><figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">1000010</span>;<br><span class="hljs-keyword">int</span> n, k;<br><span class="hljs-keyword">int</span> a[N], q[N];<br><br><span class="hljs-keyword">int</span> hh = <span class="hljs-number">0</span>, tt = <span class="hljs-number">-1</span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) &#123;<br>    <span class="hljs-keyword">if</span> (hh &lt;= tt &amp;&amp; q[hh] &lt; i - k + <span class="hljs-number">1</span>) hh ++;<br>    <span class="hljs-comment">//单调递增</span><br>    <span class="hljs-keyword">while</span> (hh &lt;= tt &amp;&amp; a[q[tt]] &gt;= a[i]) tt--;<br>    q[++ tt] = i;<br>    <span class="hljs-keyword">if</span> (i &gt;= k - <span class="hljs-number">1</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, a[q[hh]]);<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
-<h2 id="2-6-KMP"><a href="#2-6-KMP" class="headerlink" title="2.6 KMP"></a>2.6 KMP</h2><p>非常顶的字符串匹配算法。学了好像懂了，又好像没懂</p>
-<p>重点：理解前后缀、理解为什么当前不匹配时可以跳到上一个最大匹配下标、理解next数组、理解next数组生成。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">100010</span>, M = <span class="hljs-number">1000010</span>;<br><span class="hljs-keyword">char</span> p[N], s[M];<br><span class="hljs-keyword">int</span> ne[N];<br><span class="hljs-comment">//求p的next数组</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>, j = <span class="hljs-number">0</span>; i &lt;= n; i ++) &#123;<br>    <span class="hljs-keyword">while</span> (j &amp;&amp; p[i] != p[j + <span class="hljs-number">1</span>]) j = ne[j];<br>    <span class="hljs-keyword">if</span> (p[i] == p[j + <span class="hljs-number">1</span>]) j ++;<br>    ne[i] = j;<br>&#125;<br><br><span class="hljs-comment">//KMP</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>, j = <span class="hljs-number">0</span>; i &lt;= m; i ++) <br>&#123;<br>    <span class="hljs-keyword">while</span> (j &amp;&amp; s[i] != p[j + <span class="hljs-number">1</span>]) j = ne[j];<br>    <span class="hljs-keyword">if</span> (s[i] == p[j + <span class="hljs-number">1</span>]) j ++;<br>    <span class="hljs-keyword">if</span> (j == n)  <span class="hljs-comment">//匹配成功</span><br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, i - n);<br>        j = ne[j];<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h2 id="2-6-KMP"><a href="#2-6-KMP" class="headerlink" title="2.6 KMP"></a>2.6 KMP</h2><p>利用要匹配的字符串p的前字串的最大前后缀匹配长度，来对当前s[i] != p[j]时的，利用next[j + 1]的最大匹配度，直接跳转到s[i]匹配p[j]的阶段，从而减少重复计算，优化时间复杂度的算法。</p>
+<p>重点：</p>
+<ul>
+<li>理解前后缀</li>
+<li>理解为什么当前不匹配时可以跳到上一个最大匹配下标</li>
+<li>理解next数组</li>
+<li>理解next数组生成。</li>
+</ul>
+<h3 id="变量定义"><a href="#变量定义" class="headerlink" title="变量定义"></a>变量定义</h3><figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">100010</span>, M = <span class="hljs-number">1000010</span>;	<span class="hljs-comment">//字符数组的最大长度</span><br><span class="hljs-keyword">char</span> p[N], s[M];	<span class="hljs-comment">//s中匹配字符串p，从下标1开始</span><br><span class="hljs-keyword">int</span> ne[N];	<span class="hljs-comment">//p的next数组，从下标1开始</span><br></code></pre></div></td></tr></table></figure>
+<h3 id="读入字符串"><a href="#读入字符串" class="headerlink" title="读入字符串"></a>读入字符串</h3><figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp">cin &gt;&gt; n &gt;&gt; p + <span class="hljs-number">1</span> &gt;&gt; m &gt;&gt; s + <span class="hljs-number">1</span>;	<span class="hljs-comment">//n为字符串p的长度，m为字符串s的长度。两个字符数组都从1开始，方便代码</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="next数组"><a href="#next数组" class="headerlink" title="next数组"></a>next数组</h3><p>next[i] ：前i个字符形成的字符串的，前缀和后缀最大匹配</p>
+<p>因为真前缀和真后缀不能取同样的起点和终点。同样的起点和终点不构成真前缀和真后缀。所以字符串长度最少为2，才有意义。</p>
+<p>即长度小于2时，最大匹配为0。所以next[i]的i从2开始计算</p>
+<ul>
+<li><code>ne[i]</code>：前i个字符的前后缀最大匹配长度</li>
+<li><code>j</code>：前i-1个字符的前后缀最大匹配长度</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>, j = <span class="hljs-number">0</span>; i &lt;= n; i ++) &#123;	<span class="hljs-comment">//i:前i个字符，j：前i-1个字符最大匹配长度</span><br>    <span class="hljs-keyword">while</span> (j &amp;&amp; p[i] != p[j + <span class="hljs-number">1</span>]) j = ne[j];	<span class="hljs-comment">//寻找最大匹配j，可能为0</span><br>    <span class="hljs-comment">//当j为0时说明前面的字串都没有任何匹配，就利用不到之前的匹配</span><br>    <span class="hljs-comment">//p[i]!=p[j + 1]，假如前一个字串的最大匹配长度是j，那么说明[1.j] 和[i-j,i-1]两个字串相同，那么就需要判断p[i]和p[j+1]</span><br>    <span class="hljs-comment">//1. p[i]==p[j+1]：即_abca时j=1, i=4;计算_abcab时，i=5, p[i]==p[j+1]，退出循环，即当前j对ne[i]是有效的</span><br>    <span class="hljs-comment">//2. p[i]!=p[j+1]: 即_abca时j=1, i=4;计算_abcaa时，i=5, p[i]!=p[j+1]意味着最大匹配不能以p[i-1]作为开始，要以多少作为开始，就从j=ne[j]开始（这里也利用到KMP思想），在这里j=ne[j]=ne[1]=0，这时j=0退出循环，即从头开始计算最大匹配</span><br>    <span class="hljs-keyword">if</span> (p[i] == p[j + <span class="hljs-number">1</span>]) j ++;	<span class="hljs-comment">//while循环处理好最大匹配</span><br>    <span class="hljs-comment">//可能为0，当为0时意味着从新匹配，就需要判断p[i]是否和p[j+1]（记住这里j+1即第一个字符，字符串数组从下标1开始），相等则匹配度为1；</span><br>    <span class="hljs-comment">//当j不为0即意味着不需要从头开始匹配，那么也意味着p[i]必定等于p[j+1]，这时候j++;</span><br>    ne[i] = j;	<span class="hljs-comment">//记录值</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="KMP求S中的P的字符串匹配"><a href="#KMP求S中的P的字符串匹配" class="headerlink" title="KMP求S中的P的字符串匹配"></a>KMP求S中的P的字符串匹配</h3><p>利用next数组求字符串匹配（查找S中是否存在子串P）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>, j = <span class="hljs-number">0</span>; i &lt;= m; i ++) &#123;	<span class="hljs-comment">//i=1从头开始，一开始的最大匹配是j=0</span><br>    <span class="hljs-keyword">while</span> (j &amp;&amp; s[i] != p[j + <span class="hljs-number">1</span>]) j = ne[j];	<span class="hljs-comment">//对于当前s[i]，求可利用的j的最大值</span><br>    <span class="hljs-comment">//如果j为0，意味从头开始匹配，j没法再退</span><br>    <span class="hljs-comment">//否则s[i]!=p[j+1]时，j=ne[j]表示左移P串，即拿s[i]与p[ne[j]]比较</span><br>    <span class="hljs-keyword">if</span> (s[i] == p[j + <span class="hljs-number">1</span>]) j ++;	<span class="hljs-comment">//如果两个字符相等，匹配长度+1</span><br>    <span class="hljs-keyword">if</span> (j == n)  &#123;	 <span class="hljs-comment">//如果匹配长度=p的长度，则匹配成功</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, i - n);<br>        j = ne[j]; <span class="hljs-comment">//求下一个匹配时，需要将j回退，也就是考虑当前s[i]!=p[j],</span><br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 
 

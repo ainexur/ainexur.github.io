@@ -172,6 +172,79 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/11/05/CentOS7%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7/" target="_self">
+          CentOS7添加用户
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/05/CentOS7%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7/" target="_self">
+          
+          1. 添加用户1sudo adduser k  2.  修改密码1passwd k    3. 给用户k加入sudo权限 将root用户的sudoers增加写权限， 使得下一步可以修改该文件  1chmod -v u+w &#x2F;etc&#x2F;sudoers	#root用户增加写权限， 使得可修改该文件 找到该位置root    ALL&#x3D;(ALL)    ALL， 并在接下来的一行新增  1k	ALL&#x3D;(AL
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-05 02:11" pubdate>
+              2021-11-05
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CentOS/">CentOS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/31/CentOS7%E5%AE%89%E8%A3%85nps/" target="_self">
+          CentOS7安装nps
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/10/31/CentOS7%E5%AE%89%E8%A3%85nps/" target="_self">
+          
+          项目GitHub地址**nps** 中文文档 安装步骤1. 下载包1wget https:&#x2F;&#x2F;github.com&#x2F;ehang-io&#x2F;nps&#x2F;releases&#x2F;download&#x2F;v0.26.10&#x2F;linux_amd64_server.tar.gz  2. 解压1tar zxvf linux_amd64_server.tar.gz  3. 安装1.&#x2F;nps install  4. 启动1nps st
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-31 18:20" pubdate>
+              2021-10-31
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/10/31/Docker%E5%AE%89%E8%A3%85%E9%9D%92%E9%BE%99%E9%9D%A2%E6%9D%BF/" target="_self">
           Docker之qinglong
         </a>
@@ -488,91 +561,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/09/20/win7-USB%E7%BD%91%E5%8D%A1%E5%BC%80%E7%83%AD%E7%82%B9/" target="_self">
-          win7-USB网卡开热点
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/09/20/win7-USB%E7%BD%91%E5%8D%A1%E5%BC%80%E7%83%AD%E7%82%B9/" target="_self">
-          
-          1. 创建无线网络12netsh wlan set hostednetwork mode&#x3D;allow ssid&#x3D;giegie key&#x3D;12345678&#x2F;&#x2F;WIFI : giegie  密码 ： 12345678    2. 无线网络共享    3. 启用无线网络1netsh wlan start hostednetwork    4. 连接热点
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-09-20 12:33" pubdate>
-              2021-09-20
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Windows/">Windows</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/" target="_self">
-          实验六：LCD显示
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/" target="_self">
-          
-          实验一：1. 实验原理LCD显示原理：通过TFT上的信号与电压改变来控制液晶分子的转动方向，从而达到控制每个像素点偏振光射出的目的。 LCD1602指令集说明：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;aslmer&#x2F;p&#x2F;5801363.html 2. 材料清单   元器件名称 信号参数规格 数量 参考实物图    Arduino开发板 Uno R3 1    面包包 840孔无焊板 1
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-09-15 19:43" pubdate>
-              2021-09-15
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Arduino/">Arduino</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

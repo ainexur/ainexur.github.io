@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20220330060408022.png">
 <meta property="article:published_time" content="2022-01-11T12:23:32.000Z">
-<meta property="article:modified_time" content="2022-03-30T08:47:50.935Z">
+<meta property="article:modified_time" content="2022-04-04T03:46:55.450Z">
 <meta property="article:author" content="ainexur">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Mybatis">
@@ -178,7 +178,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      13k 字
+      15k 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      108 分钟
+      127 分钟
     </span>
   
 
@@ -465,6 +465,8 @@
 <h2 id="insert-update-和-delete"><a href="#insert-update-和-delete" class="headerlink" title="insert, update 和 delete"></a>insert, update 和 delete</h2><p>数据变更语句 insert，update 和 delete 的实现非常接近：</p>
 <figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">insert</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;insertAuthor&quot;</span>&gt;</span><br>  insert into Author (id,username,password,email,bio)<br>  values (#&#123;id&#125;,#&#123;username&#125;,#&#123;password&#125;,#&#123;email&#125;,#&#123;bio&#125;)<br><span class="hljs-tag">&lt;/<span class="hljs-name">insert</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">update</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;updateAuthor&quot;</span>&gt;</span><br>  update Author set<br>    username = #&#123;username&#125;,<br>    password = #&#123;password&#125;,<br>    email = #&#123;email&#125;,<br>    bio = #&#123;bio&#125;<br>  where id = #&#123;id&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">update</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">delete</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;deleteAuthor&quot;</span>&gt;</span><br>  delete from Author where id = #&#123;id&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">delete</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
 
+
+
 <h3 id="Insert-Update-Delete-元素的属性"><a href="#Insert-Update-Delete-元素的属性" class="headerlink" title="Insert, Update, Delete 元素的属性"></a>Insert, Update, Delete 元素的属性</h3><table>
 <thead>
 <tr>
@@ -513,6 +515,42 @@
 <td align="left">如果配置了数据库厂商标识（databaseIdProvider），MyBatis 会加载所有不带 databaseId 或匹配当前 databaseId 的语句；如果带和不带的语句都有，则不带的会被忽略。</td>
 </tr>
 </tbody></table>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>之前的语句都使用了简单的参数形式，如果 User 类型的参数对象传递到了语句中，会查找 id、username 和 password 属性，然后将它们的值传入预处理语句的参数中。</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">insert</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;insertUser&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;User&quot;</span>&gt;</span><br>  insert into users (id, username, password)<br>  values (#&#123;id&#125;, #&#123;username&#125;, #&#123;password&#125;)<br><span class="hljs-tag">&lt;/<span class="hljs-name">insert</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>和 MyBatis 的其它部分一样，参数也可以指定一个特殊的数据类型。</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml">#&#123;property,javaType=int,jdbcType=NUMERIC&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>对象是一个 <code>HashMap</code>。这个时候，需要显式指定 <code>javaType</code> 来确保正确的类型处理器（<code>TypeHandler</code>）被使用。</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs pgsql">#&#123;age,javaType=<span class="hljs-type">int</span>,jdbcType=<span class="hljs-type">NUMERIC</span>,typeHandler=MyTypeHandler&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>设置 <code>numericScale</code> 指定小数点后保留的位数。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs arduino">#&#123;height,javaType=<span class="hljs-keyword">double</span>,jdbcType=NUMERIC,numericScale=<span class="hljs-number">2</span>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>尽管上面这些选项很强大，但<strong>大多时候，只须简单指定属性名</strong>，顶多要为可能为空的列指定 <code>jdbcType</code>，其他的事情交给 MyBatis 自己去推断就行了。</p>
+<figure class="highlight vala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs vala"><span class="hljs-meta">#&#123;firstName&#125;</span><br><span class="hljs-meta">#&#123;middleInitial,jdbcType=VARCHAR&#125;</span><br><span class="hljs-meta">#&#123;lastName&#125;</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+
+
+<h2 id="字符串替换"><a href="#字符串替换" class="headerlink" title="字符串替换"></a>字符串替换</h2><p>用 <code>#&#123;&#125;</code> 参数语法时，MyBatis 会创建 <code>PreparedStatement</code> 参数占位符，并通过占位符安全地设置参数（就像使用 ? 一样）。</p>
+<p>有时你就是想直接在 SQL 语句中直接插入一个不转义的字符串。 比如 ORDER BY 子句</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs crmsh"><span class="hljs-keyword">ORDER</span> <span class="hljs-title">BY</span> $&#123;columnName&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>这样MyBatis 就不会修改或转义该字符串了。</p>
+<p>当 SQL 语句中的元数据（如表名或列名）是动态生成的时候，字符串替换将会非常有用。 举个例子，如果你想 <code>select</code> 一个表任意一列的数据时，不需要这样写：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Select(&quot;select * from user where id = #&#123;id&#125;&quot;)</span><br><span class="hljs-function">User <span class="hljs-title">findById</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;id&quot;)</span> <span class="hljs-keyword">long</span> id)</span></span>;<br><br><span class="hljs-meta">@Select(&quot;select * from user where name = #&#123;name&#125;&quot;)</span><br><span class="hljs-function">User <span class="hljs-title">findByName</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;name&quot;)</span> String name)</span></span>;<br><br><span class="hljs-meta">@Select(&quot;select * from user where email = #&#123;email&#125;&quot;)</span><br><span class="hljs-function">User <span class="hljs-title">findByEmail</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;email&quot;)</span> String email)</span></span>;<br><br><span class="hljs-comment">// 其它的 &quot;findByXxx&quot; 方法</span><br></code></pre></div></td></tr></table></figure>
+
+<p>而是可以只写这样一个方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Select(&quot;select * from user where $&#123;column&#125; = #&#123;value&#125;&quot;)</span><br><span class="hljs-function">User <span class="hljs-title">findByColumn</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;column&quot;)</span> String column, <span class="hljs-meta">@Param(&quot;value&quot;)</span> String value)</span></span>;<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="结果映射"><a href="#结果映射" class="headerlink" title="结果映射"></a>结果映射</h2><p><code>resultMap</code> 元素是 MyBatis 中最重要最强大的元素。ResultMap 的设计思想是，对简单的语句做到零配置，对于复杂一点的语句，只需要描述语句之间的关系就行了。</p>
+<p>假如一个Pojo类User，基于 JavaBean 的规范，这个类有 3 个属性：id，username 和 hashedPassword。这些属性会对应到 select 语句中的列名。<br>这样的一个 JavaBean 可以被映射到 <code>ResultSet</code>，就像映射到 <code>HashMap</code> 一样简单。</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;selectUsers&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;com.someapp.model.User&quot;</span>&gt;</span><br>  select id, username, hashedPassword<br>  from some_table<br>  where id = #&#123;id&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="类别名"><a href="#类别名" class="headerlink" title="类别名"></a>类别名</h3><p>类型别名是你的好帮手。使用它们，你就可以不用输入类的全限定名了。比如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- mybatis-config.xml 中 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">typeAlias</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;com.someapp.model.User&quot;</span> <span class="hljs-attr">alias</span>=<span class="hljs-string">&quot;User&quot;</span>/&gt;</span><br><br><span class="hljs-comment">&lt;!-- SQL 映射 XML 中 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;selectUsers&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;User&quot;</span>&gt;</span><br>  select id, username, hashedPassword<br>  from some_table<br>  where id = #&#123;id&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
 
             </div>
             <hr>

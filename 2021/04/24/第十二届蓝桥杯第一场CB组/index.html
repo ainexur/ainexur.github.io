@@ -24,7 +24,7 @@
 <meta property="og:description" content="[TOC] 总起2021年蓝桥杯省赛第一场4月18号举行，赛后拿到题目：  比赛前：去年题目那么简单，今年省一肯定有希望 比赛中：我参加的是蓝桥杯还是ACM? 比赛结束后：能拿省三就算成功  填空题填空题答案一览   题目 答案 分值    A、空间 6710884 5   B、卡片 3181 5   C、直线 40257 10   D、货物摆放 2430 10   E、路径 10266837 1">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-24T14:23:32.000Z">
-<meta property="article:modified_time" content="2022-04-04T06:33:19.145Z">
+<meta property="article:modified_time" content="2022-04-08T18:49:23.546Z">
 <meta property="article:author" content="ainexur">
 <meta property="article:tag" content="蓝桥杯">
 <meta name="twitter:card" content="summary_large_image">
@@ -175,7 +175,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      9.8k 字
+      9.4k 字
     </span>
   
 
@@ -184,7 +184,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      83 分钟
+      79 分钟
     </span>
   
 
@@ -529,7 +529,7 @@
 <p><strong>解析</strong></p>
 <p>按题目模拟只能拿20%的分数。</p>
 <p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> maxn 10000</span><br><span class="hljs-keyword">int</span> idx = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">int</span> nums[maxn][maxn];<br><span class="hljs-keyword">int</span> N;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">memset</span>(nums, <span class="hljs-number">0</span> , <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(nums));<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;i&lt;maxn;i++)&#123;<br><br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;j&lt;i;j++)&#123;<br>            <span class="hljs-keyword">if</span>(j == <span class="hljs-number">0</span> || j == i<span class="hljs-number">-1</span>) nums[i][j] = <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">else</span>&#123;<br>                nums[i][j] = nums[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>] + nums[i<span class="hljs-number">-1</span>][j];<br>            &#125;<br>            ++idx;<br>            <span class="hljs-keyword">if</span>(nums[i][j] == N) <span class="hljs-keyword">return</span>;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin&gt;&gt; N;<br>    <span class="hljs-built_in">solve</span>();<br>    cout&lt;&lt; idx &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C++"><br></code></pre></div></td></tr></table></figure>
 
 
 

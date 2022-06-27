@@ -16,15 +16,15 @@
   <meta name="author" content="ainexur">
   <meta name="keywords" content="博客">
   
-    <meta name="description" content="Arch将一些操作记录下来，方便下次查找 安装Arch日用环境配置蓝牙Bluetooth-wiki 安装 12sudo pacman -S bluez bluez-utilssystemctl tart&#x2F;enable bluetooth.service  开机启动 开机后自动启动，将 AutoEnable&#x3D;true 添加在 &#x2F;etc&#x2F;bluetooth&#x2F;main.conf 底部的 [Policy]">
+    <meta name="description" content="将一些操作记录下来，方便翻阅 安装ArchAURgit clone安装以安装yay为例，执行安装的命令如下： 123git clone https:&#x2F;&#x2F;aur.archlinux.org&#x2F;yay.gitcd yaymakepkg -si  安装软件12yay -S 包名	#安装在线包yay -U 软件包路径	#安装本地软件包  更新&#x2F;升级 AUR 软件12yay -Syy  #更新 AUR 软件包">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Arch个人指南">
 <meta property="og:url" content="https://ainexur.github.io/2022/03/23/Arch%E4%B8%AA%E4%BA%BA%E6%8C%87%E5%8D%97/index.html">
 <meta property="og:site_name" content="寻人启事">
-<meta property="og:description" content="Arch将一些操作记录下来，方便下次查找 安装Arch日用环境配置蓝牙Bluetooth-wiki 安装 12sudo pacman -S bluez bluez-utilssystemctl tart&#x2F;enable bluetooth.service  开机启动 开机后自动启动，将 AutoEnable&#x3D;true 添加在 &#x2F;etc&#x2F;bluetooth&#x2F;main.conf 底部的 [Policy]">
+<meta property="og:description" content="将一些操作记录下来，方便翻阅 安装ArchAURgit clone安装以安装yay为例，执行安装的命令如下： 123git clone https:&#x2F;&#x2F;aur.archlinux.org&#x2F;yay.gitcd yaymakepkg -si  安装软件12yay -S 包名	#安装在线包yay -U 软件包路径	#安装本地软件包  更新&#x2F;升级 AUR 软件12yay -Syy  #更新 AUR 软件包">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-22T20:56:15.000Z">
-<meta property="article:modified_time" content="2022-03-27T07:50:44.940Z">
+<meta property="article:modified_time" content="2022-06-15T15:12:21.105Z">
 <meta property="article:author" content="ainexur">
 <meta property="article:tag" content="Arch">
 <meta property="article:tag" content="Linux">
@@ -176,7 +176,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      3.5k 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10 分钟
+      29 分钟
     </span>
   
 
@@ -217,21 +217,92 @@
             <h1 style="display: none">Arch个人指南</h1>
             
             <div class="markdown-body">
-              <h1 id="Arch"><a href="#Arch" class="headerlink" title="Arch"></a>Arch</h1><p>将一些操作记录下来，方便下次查找</p>
-<h1 id="安装Arch"><a href="#安装Arch" class="headerlink" title="安装Arch"></a>安装Arch</h1><h1 id="日用环境配置"><a href="#日用环境配置" class="headerlink" title="日用环境配置"></a>日用环境配置</h1><h2 id="蓝牙"><a href="#蓝牙" class="headerlink" title="蓝牙"></a>蓝牙</h2><p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Bluetooth_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Bluetooth-wiki</a></p>
-<p><strong>安装</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo pacman -S bluez bluez-utils<br>systemctl tart/enable bluetooth.service<br></code></pre></div></td></tr></table></figure>
+              <p>将一些操作记录下来，方便翻阅</p>
+<h1 id="安装Arch"><a href="#安装Arch" class="headerlink" title="安装Arch"></a>安装Arch</h1><h1 id="AUR"><a href="#AUR" class="headerlink" title="AUR"></a>AUR</h1><h2 id="git-clone安装"><a href="#git-clone安装" class="headerlink" title="git clone安装"></a>git clone安装</h2><p>以安装yay为例，执行安装的命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs text">git clone https://aur.archlinux.org/yay.git<br>cd yay<br>makepkg -si<br></code></pre></div></td></tr></table></figure>
 
-<p><strong>开机启动</strong></p>
-<p>开机后自动启动，将 <code>AutoEnable=true</code> 添加在 <code>/etc/bluetooth/main.conf</code> 底部的 <code>[Policy]</code> 下面：</p>
+<h2 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S 包名	#安装在线包<br>yay -U 软件包路径	#安装本地软件包<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="更新-升级-AUR-软件"><a href="#更新-升级-AUR-软件" class="headerlink" title="更新/升级 AUR 软件"></a>更新/升级 AUR 软件</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -Syy  #更新 AUR 软件包数据库<br>yay -Syyu #更新 AUR 软件包数据库并升级所有已安装的软件包,-u表示upgrade（升级<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="卸载-AUR-软件"><a href="#卸载-AUR-软件" class="headerlink" title="卸载 AUR 软件"></a>卸载 AUR 软件</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -Ss 关键词 #搜索在线 AUR 软件包<br><br>yay -Qs 关键词 #模糊匹配，搜索本地 AUR 软件包<br>yay -Q 包名 #精确匹配，搜索本地 AUR 软件包<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="清理无用软件包与缓存"><a href="#清理无用软件包与缓存" class="headerlink" title="清理无用软件包与缓存"></a>清理无用软件包与缓存</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -Scc #清理安装包缓存<br>yay -Rscnu $(yay -Qdtq) #清理孤立软件包<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h1 id="日用环境配置"><a href="#日用环境配置" class="headerlink" title="日用环境配置"></a>日用环境配置</h1><h2 id="makepkg-并行编译"><a href="#makepkg-并行编译" class="headerlink" title="makepkg - 并行编译"></a>makepkg - 并行编译</h2><p>编辑 <code>/etc/makepkg.conf</code> 修改 <code>MAKEFLAGS=&quot;-j8&quot;</code> ，编译的时候将使用 8 个核，速度更快。</p>
+<h2 id="状态栏"><a href="#状态栏" class="headerlink" title="状态栏"></a>状态栏</h2><h3 id="polybar"><a href="#polybar" class="headerlink" title="polybar"></a>polybar</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S polybar<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><h3 id="ttf-ms-win10"><a href="#ttf-ms-win10" class="headerlink" title="ttf-ms-win10"></a>ttf-ms-win10</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S ttf-ms-win10<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="触控板"><a href="#触控板" class="headerlink" title="触控板"></a>触控板</h2><p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/%E5%AE%89%E8%A3%85">安装</a> 软件包 <a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=xf86-input-synaptics">xf86-input-synaptics</a>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo pacman -S xf86-input-synaptics<br><span class="hljs-meta">#</span><span class="bash"> 将默认配置文件复制，用以生效</span><br>sudo cp /usr/share/X11/xorg.conf.d/70-synaptics.conf /etc/X11/xorg.conf.d/<br></code></pre></div></td></tr></table></figure>
+
+<p>配置</p>
+<h2 id="配置时钟同步"><a href="#配置时钟同步" class="headerlink" title="配置时钟同步"></a>配置时钟同步</h2><h3 id="读取硬件时钟"><a href="#读取硬件时钟" class="headerlink" title="读取硬件时钟"></a>读取硬件时钟</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo hwclock --show<br></code></pre></div></td></tr></table></figure>
+
+<p>要将硬件时钟时间标准更改为本地时间，请使用：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo timedatectl set-local-rtc 1<br></code></pre></div></td></tr></table></figure>
+
+<p>要恢复为 UTC 格式的硬件时钟，请键入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo timedatectl set-local-rtc 0<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="Microsoft-Windows-中的-UTC"><a href="#Microsoft-Windows-中的-UTC" class="headerlink" title="Microsoft Windows 中的 UTC"></a>Microsoft Windows 中的 UTC</h3><p>建议将 Windows 配置为使用 UTC，而不是将 Linux 配置为使用本地时间。</p>
+<p>建议将 Windows 配置为使用 UTC，而不是将 Linux 配置为使用本地时间。（Windows 默认使用本地时间）</p>
+<p>它可以通过一个简单的注册表修复来完成：打开<code>regedit</code>并添加一个<code>DWORD</code>十六进制值<code>1</code>到注册表：</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs taggerscript">HKEY_LOCAL_MACHINE<span class="hljs-symbol">\S</span>YSTEM<span class="hljs-symbol">\C</span>urrentControlSet<span class="hljs-symbol">\C</span>ontrol<span class="hljs-symbol">\T</span>imeZoneInformation<span class="hljs-symbol">\R</span>ealTimeIsUniversal<br></code></pre></div></td></tr></table></figure>
+
+<p>您可以从运行的管理员命令提示符执行此操作：</p>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">reg add <span class="hljs-string">&quot;HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation&quot;</span> <span class="hljs-regexp">/v RealTimeIsUniversal /</span>d <span class="hljs-number">1</span> <span class="hljs-regexp">/t REG_DWORD /</span>f<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="音乐"><a href="#音乐" class="headerlink" title="音乐"></a>音乐</h2><h3 id="网易云音乐"><a href="#网易云音乐" class="headerlink" title="网易云音乐"></a>网易云音乐</h3><h3 id="spotify"><a href="#spotify" class="headerlink" title="spotify"></a><a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/spotify">spotify</a></h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S spotify<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="蓝牙"><a href="#蓝牙" class="headerlink" title="蓝牙"></a>蓝牙</h2><p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Bluetooth_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Bluetooth-wiki</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo pacman -S bluez bluez-utils pulseaudio-bluetooth pavucontrol<br>systemctl tart/enable bluetooth.service<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a><strong>开机启动</strong></h3><p>开机后自动启动，将 <code>AutoEnable=true</code> 添加在 <code>/etc/bluetooth/main.conf</code> 底部的 <code>[Policy]</code> 下面：</p>
 <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">vim /etc/bluetooth/main.conf<br><br>[Policy]<br>AutoEnable=true<br></code></pre></div></td></tr></table></figure>
 
-<p><strong>音频</strong></p>
-<p>要使用蓝牙耳机或音响的话要先安装 <code>pulseaudio-bluetooth</code>。有时要用 <code>pavucontrol</code> 选择音频的输出设备。</p>
+<h3 id="音频"><a href="#音频" class="headerlink" title="音频"></a><strong>音频</strong></h3><p>要使用蓝牙耳机或音响的话要先安装 <code>pulseaudio-bluetooth</code>。有时要用 <code>pavucontrol</code> 选择音频的输出设备。</p>
 <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo pacman -S pulseaudio-bluetooth pavucontrol <br></code></pre></div></td></tr></table></figure>
 
+<h3 id="切换双系统蓝牙需重新匹配问题"><a href="#切换双系统蓝牙需重新匹配问题" class="headerlink" title="切换双系统蓝牙需重新匹配问题"></a>切换双系统蓝牙需重新匹配问题</h3><p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Bluetooth_mouse_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">wiki</a></p>
+<p>原因每次蓝牙连接，对每个网卡生成唯一密钥，切换系统后，密钥不同，验证不通过。</p>
+<p><a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/255509/bluetooth-pairing-on-dual-boot-of-windows-linux-mint-ubuntu-stop-having-to-p">解决办法</a></p>
+<ol>
+<li>arch 配对设备。重启到windows，将所有蓝牙连接删除，重新配对你要设置的蓝牙。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S chntpw<br></code></pre></div></td></tr></table></figure>
+<ol start="2">
+<li>重启到arch下安装chntpw</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S chntpw<br></code></pre></div></td></tr></table></figure>
 
+<ol start="3">
+<li>挂载windows到/mnt/win11下<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo fdisk -l #查看分区<br><span class="hljs-meta">#</span><span class="bash">加如我的windows的分区是/dev/nvme0n1p3,则挂载</span><br>sudo mount /dev/nvme0n1p3 /mnt/win11 #修改为你自己的分区<br></code></pre></div></td></tr></table></figure></li>
+<li>获取windows下的蓝牙mac</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">cd /mnt/win11/Windows/System32/config	#进入挂载的windows分区的config路径<br>chntpw -e SYSTEM	#使用chntpw运行SYSTEM<br>cd  ControlSet001\Services\BTHPORT\Parameters\Keys	#进入路径，我的是windwos11，路径是ControlSet001，你的不是的话可以ls打印一下，看看是否是CurrentControlSet<br>ls	#打印路径下<br></code></pre></div></td></tr></table></figure>
 
+<p>看到如下</p>
+<p>Node has 0 subkeys and 1 values<br>  size     type            value name             [value if type DWORD]<br>    16  REG_BINARY        &lt;001f20eb4c9a&gt;</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">hex 001f20eb4c9a #选择该变量的以hex进制打印<br><span class="hljs-meta">#</span><span class="bash">看到如下一串：</span><br><span class="hljs-meta">#</span><span class="bash">:00000  6F 91 2E 58 23 F3 43 E3 DD E3 90 E5 D2 8A D8 78 o..X<span class="hljs-comment">#.C........x</span></span><br><span class="hljs-meta">#</span><span class="bash">将它掐头去尾，中间去掉空格，只保留16进制数。得到如下</span><br>6F912E5823F343E3DDE390E5D28AD878<br></code></pre></div></td></tr></table></figure>
+
+<ol start="5">
+<li>将得到的密钥，修改到arch中对应的蓝牙设备的info中的Key为获取到的密钥</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">su<br>cd /var/lib/bluetooth/你的蓝牙mac地址 #你的蓝牙设备mac地址自己获取，设置里也有<br>ls #查看一下有哪些<br><span class="hljs-meta">#</span><span class="bash">我的目录下是74:A3:4A:EC:8A:9A  cache  settings</span><br>cd d 74\:A3\:4A\:EC\:8A\:9A/ #\:转义，进入我要配置的蓝牙设备<br>vim info #编辑信息文件<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">将这段中的Key修改为刚刚获取到的密钥。</span><br>[LinkKey]<br>Key=6F912E5823F343E3DDE390E5D28AD878<br>Type=4<br>PINLength=0<br><br></code></pre></div></td></tr></table></figure>
+
+<ol start="6">
+<li>重启蓝牙服务，尝试连接蓝牙，成功。</li>
+</ol>
 <h2 id="下载器"><a href="#下载器" class="headerlink" title="下载器"></a>下载器</h2><h3 id="迅雷"><a href="#迅雷" class="headerlink" title="迅雷"></a>迅雷</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S xunlei-bin <br></code></pre></div></td></tr></table></figure>
 
 
@@ -242,7 +313,11 @@
 
 
 
-<h1 id="开发环境配置"><a href="#开发环境配置" class="headerlink" title="开发环境配置"></a>开发环境配置</h1><h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><p>注意<code>arch</code>下<code>npm</code>包管理需要单独安装</p>
+<h1 id="开发环境配置"><a href="#开发环境配置" class="headerlink" title="开发环境配置"></a>开发环境配置</h1><h2 id="VS-Code"><a href="#VS-Code" class="headerlink" title="VS Code"></a>VS Code</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S visual-studio-code-bin<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><p>注意<code>arch</code>下<code>npm</code>包管理需要单独安装</p>
 <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo pacman -S nodejs npm<br></code></pre></div></td></tr></table></figure>
 
 
@@ -265,7 +340,7 @@
 <p>开始安装：</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs pgsql"># sh VMware-edition-<span class="hljs-keyword">version</span>.<span class="hljs-keyword">release</span>.architecture.bundle<br></code></pre></div></td></tr></table></figure>
 
-<h3 id="AUR"><a href="#AUR" class="headerlink" title="AUR"></a>AUR</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S vmware-workstation<br></code></pre></div></td></tr></table></figure>
+<h3 id="AUR-1"><a href="#AUR-1" class="headerlink" title="AUR"></a>AUR</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S vmware-workstation<br></code></pre></div></td></tr></table></figure>
 
 <h2 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">```<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">## settings.xml</span></span><br><br>阿里镜像仓库<br><br>```xml<br>&lt;mirror&gt;<br>    &lt;id&gt;aliyunmaven&lt;/id&gt;<br>    &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;<br>    &lt;name&gt;阿里云公共仓库&lt;/name&gt;<br>    &lt;url&gt;https://maven.aliyun.com/repository/public&lt;/url&gt;<br>&lt;/mirror&gt;<br></code></pre></div></td></tr></table></figure>
 

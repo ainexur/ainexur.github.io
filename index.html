@@ -172,6 +172,46 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2022/04/23/OutOfMemoryErrorLab/" target="_self">
+          OutOfMemoryErrorLab
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/04/23/OutOfMemoryErrorLab/" target="_self">
+          
+          dJava堆溢出jvm参数设置：指定堆的大小，避免堆太大运行时间过长（运行的时间同样很长，不懂原因）测试堆内存溢出，没必要分配太大堆内存。-XX:+HeapDumpOnOutOfMemoryError开启HeapDumpOnOutOfMemoryError 1-Xmx51m -Xms24m -XX:+HeapDumpOnOutOfMemoryError  heapOOM.java new对象存储在
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-04-23 05:45" pubdate>
+              2022-04-23
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/jvm3/">jvm3</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2022/04/22/ubuntu%E4%B8%8B%E6%96%87%E4%BB%B6%E6%A0%A1%E9%AA%8C/" target="_self">
           ubuntu下文件校验
         </a>
@@ -222,7 +262,7 @@
       <p class="index-excerpt">
         <a href="/2022/04/22/%E8%87%AA%E7%BC%96%E8%AF%91JDK%E5%AE%9E%E6%88%98/" target="_self">
           
-          q跟着深入理解JVM3一书的实战操作，自编译JDK12 下载源码直接下载zip（不推荐）原书从官网源码下载（不推荐 GItHub仓库（推荐）推荐直接GitHub拉（最近clone的速度快了挺多），大概两三分钟就clone完毕。直接clone到的是JDK最新版本，详解看 进行编译 第2步。 1git clone https:&#x2F;&#x2F;github.com&#x2F;openjdk&#x2F;jdk  系统我用的和书中一样的u
+          跟着深入理解jvm3一书中实战操作，自编译JDK12 下载源码直接下载zip（不推荐）原书从官网源码下载（不推荐 GItHub仓库（推荐）推荐直接GitHub拉（最近clone的速度快了挺多），大概两三分钟就clone完毕。直接clone到的是JDK最新版本，详解看 进行编译 第2步。 1git clone https:&#x2F;&#x2F;github.com&#x2F;openjdk&#x2F;jdk  系统我用的和书中一样的ub
         </a>
       </p>
 
@@ -241,6 +281,8 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/JDK/">JDK</a>
+            
+              <a href="/tags/jvm3/">jvm3</a>
             
           </div>
         
@@ -396,7 +438,7 @@
       <p class="index-excerpt">
         <a href="/2022/03/23/Arch%E4%B8%AA%E4%BA%BA%E6%8C%87%E5%8D%97/" target="_self">
           
-          Arch将一些操作记录下来，方便下次查找 安装Arch日用环境配置蓝牙Bluetooth-wiki 安装 12sudo pacman -S bluez bluez-utilssystemctl tart&#x2F;enable bluetooth.service  开机启动 开机后自动启动，将 AutoEnable&#x3D;true 添加在 &#x2F;etc&#x2F;bluetooth&#x2F;main.conf 底部的 [Policy]
+          将一些操作记录下来，方便翻阅 安装ArchAURgit clone安装以安装yay为例，执行安装的命令如下： 123git clone https:&#x2F;&#x2F;aur.archlinux.org&#x2F;yay.gitcd yaymakepkg -si  安装软件12yay -S 包名	#安装在线包yay -U 软件包路径	#安装本地软件包  更新&#x2F;升级 AUR 软件12yay -Syy  #更新 AUR 软件包
         </a>
       </p>
 
@@ -545,48 +587,6 @@
               <a href="/tags/Java/">Java</a>
             
               <a href="/tags/Spring/">Spring</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/03/02/JavaWeb%E5%85%A8%E6%94%BB%E7%95%A5/" target="_self">
-          JavaWeb入门笔记
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2022/03/02/JavaWeb%E5%85%A8%E6%94%BB%E7%95%A5/" target="_self">
-          
-          前端这个阶段主要是学习静态页面 HTML客户端浏览器请求：Http Request  -&gt; 服务器响应：Http Response -&gt; 客户端浏览器处理响应数据（字符串），渲染成页面。这些字符串就是HTML。HTML是超文本标记语言，决定页面显示的内容。 解释性语言，不缺分大小写 树形结构 html head meta meta   body    1234567&lt;!DOCTY
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-03-02 22:57" pubdate>
-              2022-03-02
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/JavaWeb/">JavaWeb</a>
-            
-              <a href="/tags/Java/">Java</a>
             
           </div>
         

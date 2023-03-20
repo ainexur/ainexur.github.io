@@ -1,0 +1,616 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ainexur">
+  <meta name="keywords" content="博客">
+  
+    <meta name="description" content="将一些操作记录下来，方便翻阅 安装Arch源1sudo pacman-mirrors -i -c China -m rank   下载ISO文件 U盘制作Ventoy启动盘 复制ISO文件到Ventoy盘 重启进入Ventoy  网络1systemctl enable dhcpcd.service #动态ip分配跟随系统启动  grub1grub-mkconfig -o &#x2F;boot&#x2F;grub&#x2F;gr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arch个人指南">
+<meta property="og:url" content="https://ainexur.github.io/2022/03/23/Arch%E4%B8%AA%E4%BA%BA%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="寻人启事">
+<meta property="og:description" content="将一些操作记录下来，方便翻阅 安装Arch源1sudo pacman-mirrors -i -c China -m rank   下载ISO文件 U盘制作Ventoy启动盘 复制ISO文件到Ventoy盘 重启进入Ventoy  网络1systemctl enable dhcpcd.service #动态ip分配跟随系统启动  grub1grub-mkconfig -o &#x2F;boot&#x2F;grub&#x2F;gr">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-22T20:56:15.000Z">
+<meta property="article:modified_time" content="2023-01-19T14:06:39.545Z">
+<meta property="article:author" content="ainexur">
+<meta property="article:tag" content="Arch">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>Arch个人指南 - 寻人启事</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/atom-one-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Nexur</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/background/2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Arch个人指南">
+              
+                Arch个人指南
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-23 04:56" pubdate>
+        2022年3月23日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      45 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Arch个人指南</h1>
+            
+            <div class="markdown-body">
+              <p>将一些操作记录下来，方便翻阅</p>
+<h1 id="安装Arch"><a href="#安装Arch" class="headerlink" title="安装Arch"></a>安装Arch</h1><h2 id="源"><a href="#源" class="headerlink" title="源"></a>源</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo pacman-mirrors -i -c China -m rank<br></code></pre></div></td></tr></table></figure>
+
+<ol>
+<li>下载ISO文件</li>
+<li>U盘制作Ventoy启动盘</li>
+<li>复制ISO文件到Ventoy盘</li>
+<li>重启进入Ventoy</li>
+</ol>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">systemctl enable dhcpcd.service #动态ip分配跟随系统启动<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="grub"><a href="#grub" class="headerlink" title="grub"></a>grub</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">grub-mkconfig -o /boot/grub/grub.cfg #生成配置文件<br></code></pre></div></td></tr></table></figure>
+
+<p>如果要扫描win10，需要安装<code>os-xx</code> 并在grub配置文件里取消注释</p>
+<h2 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a>sudo</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">pacamn -S sudo<br></code></pre></div></td></tr></table></figure>
+
+<p>字体</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo pacman -S noto-fonts-cjk<br></code></pre></div></td></tr></table></figure>
+
+<p>firefox字体</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo pacman -S firefox-i18n-zh-cn<br></code></pre></div></td></tr></table></figure>
+
+<h1 id="dwm（窗口管理器）"><a href="#dwm（窗口管理器）" class="headerlink" title="dwm（窗口管理器）"></a>dwm（窗口管理器）</h1><p>fcitx5输入法</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">wget https://dwm.suckless.org/patches/autostart/dwm-autostart-20210120-cb3f58a.diff<br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">feh --bg-scale ~/Pictures/wallpaper/6617242.jpg<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h1 id="AUR"><a href="#AUR" class="headerlink" title="AUR"></a>AUR</h1><h2 id="源-1"><a href="#源-1" class="headerlink" title="源"></a>源</h2><p>/etc/pacman.conf文件尾添加</p>
+<figure class="highlight ini"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ini"><span class="hljs-section">[archlinuxcn]</span>          <br><span class="hljs-attr">Server</span> = https://repo.archlinuxcn.org/<span class="hljs-variable">$arch</span><br></code></pre></div></td></tr></table></figure>
+
+<p>之后运行 <code>sudo pacman -Sy</code> 更新，并安装 <code>archlinuxcn-keyring</code>即可。</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo pacman -Sy<br>sudo pacman -S archlinuxcn-keyring<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="git-clone安装"><a href="#git-clone安装" class="headerlink" title="git clone安装"></a>git clone安装</h2><p>以安装yay为例，执行安装的命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs text">git clone https://aur.archlinux.org/yay.git<br>cd yay<br>makepkg -si<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S 包名	#安装在线包<br>yay -U 软件包路径	#安装本地软件包<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="更新-升级-AUR-软件"><a href="#更新-升级-AUR-软件" class="headerlink" title="更新/升级 AUR 软件"></a>更新/升级 AUR 软件</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -Syy  #更新 AUR 软件包数据库<br>yay -Syyu #更新 AUR 软件包数据库并升级所有已安装的软件包,-u表示upgrade（升级<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="卸载-AUR-软件"><a href="#卸载-AUR-软件" class="headerlink" title="卸载 AUR 软件"></a>卸载 AUR 软件</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -Ss 关键词 #搜索在线 AUR 软件包<br><br>yay -Qs 关键词 #模糊匹配，搜索本地 AUR 软件包<br>yay -Q 包名 #精确匹配，搜索本地 AUR 软件包<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="清理无用软件包与缓存"><a href="#清理无用软件包与缓存" class="headerlink" title="清理无用软件包与缓存"></a>清理无用软件包与缓存</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -Scc #清理安装包缓存<br>yay -Rscnu $(yay -Qdtq) #清理孤立软件包<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h1 id="日用环境配置"><a href="#日用环境配置" class="headerlink" title="日用环境配置"></a>日用环境配置</h1><h2 id="makepkg-并行编译"><a href="#makepkg-并行编译" class="headerlink" title="makepkg - 并行编译"></a>makepkg - 并行编译</h2><p>编辑 <code>/etc/makepkg.conf</code> 修改 <code>MAKEFLAGS=&quot;-j8&quot;</code> ，编译的时候将使用 8 个核，速度更快。</p>
+<h2 id="状态栏"><a href="#状态栏" class="headerlink" title="状态栏"></a>状态栏</h2><h3 id="polybar"><a href="#polybar" class="headerlink" title="polybar"></a>polybar</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S polybar<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="fcitx5输入法"><a href="#fcitx5输入法" class="headerlink" title="fcitx5输入法"></a>fcitx5输入法</h2><p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Fcitx5_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">wiki</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo pacman -Rs $(pacman -Qsq fcitx)<br>sudo pacman -S fcitx5-qt fcitx5-gtk fcitx5-chinese-addons fcitx5-git   fcitx5-pinyin-zhwiki kcm-fcitx5<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>fcitx5: 输入法基础框架主程序 </li>
+<li>fcitx5-chinese-addons: 简体中文输入的支持，云拼音 </li>
+<li>fcitx5-gtk: GTK程序的支持 </li>
+<li>citx5-qt: QT5程序的支持 </li>
+<li>fcitx5-pinyin-zhwiki: 肥猫制作的维基百万词库，没有版权风险, 放心使用</li>
+<li>kcm-fcitx5: KDE桌面环境的支持</li>
+</ul>
+<p>编辑vim /etc/environment文件，末尾添加如下参数：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">GTK_IM_MODULE=fcitx<br>QT_IM_MODULE=fcitx<br>XMODIFIERS=@im=fcitx<br>SDL_IM_MODULE=fcitx<br>GLFW_IM_MODULE=ibus<br></code></pre></div></td></tr></table></figure>
+
+<p>将下面的内容粘贴到<code>~/.pam_environment</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">GTK_IM_MODULE DEFAULT=fcitx<br>QT_IM_MODULE  DEFAULT=fcitx<br>XMODIFIERS    DEFAULT=@im=fcitx<br></code></pre></div></td></tr></table></figure>
+
+<p>将下面的内容粘贴到 <code>~/.xprofile</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">fcitx5 &amp;<br></code></pre></div></td></tr></table></figure>
+
+<p>如果dwm环境的话需要打补丁，具体操作看wiki</p>
+<p>注销重新登录。</p>
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><h3 id="ttf-ms-win10"><a href="#ttf-ms-win10" class="headerlink" title="ttf-ms-win10"></a>ttf-ms-win10</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S ttf-ms-win10<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="触控板"><a href="#触控板" class="headerlink" title="触控板"></a>触控板</h2><p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/%E5%AE%89%E8%A3%85">安装</a> 软件包 <a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=xf86-input-synaptics">xf86-input-synaptics</a>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo pacman -S xf86-input-synaptics<br><span class="hljs-meta">#</span><span class="bash"> 将默认配置文件复制，用以生效</span><br>sudo cp /usr/share/X11/xorg.conf.d/70-synaptics.conf /etc/X11/xorg.conf.d/<br></code></pre></div></td></tr></table></figure>
+
+<p>配置</p>
+<h2 id="配置时钟同步"><a href="#配置时钟同步" class="headerlink" title="配置时钟同步"></a>配置时钟同步</h2><h3 id="读取硬件时钟"><a href="#读取硬件时钟" class="headerlink" title="读取硬件时钟"></a>读取硬件时钟</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo hwclock --show<br></code></pre></div></td></tr></table></figure>
+
+<p>要将硬件时钟时间标准更改为本地时间，请使用：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo timedatectl set-local-rtc 1<br></code></pre></div></td></tr></table></figure>
+
+<p>要恢复为 UTC 格式的硬件时钟，请键入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo timedatectl set-local-rtc 0<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="Microsoft-Windows-中的-UTC"><a href="#Microsoft-Windows-中的-UTC" class="headerlink" title="Microsoft Windows 中的 UTC"></a>Microsoft Windows 中的 UTC</h3><p>建议将 Windows 配置为使用 UTC，而不是将 Linux 配置为使用本地时间。</p>
+<p>建议将 Windows 配置为使用 UTC，而不是将 Linux 配置为使用本地时间。（Windows 默认使用本地时间）</p>
+<p>它可以通过一个简单的注册表修复来完成：打开<code>regedit</code>并添加一个<code>DWORD</code>十六进制值<code>1</code>到注册表：</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs taggerscript">HKEY_LOCAL_MACHINE<span class="hljs-symbol">\S</span>YSTEM<span class="hljs-symbol">\C</span>urrentControlSet<span class="hljs-symbol">\C</span>ontrol<span class="hljs-symbol">\T</span>imeZoneInformation<span class="hljs-symbol">\R</span>ealTimeIsUniversal<br></code></pre></div></td></tr></table></figure>
+
+<p>您可以从运行的管理员命令提示符执行此操作：</p>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">reg add <span class="hljs-string">&quot;HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation&quot;</span> <span class="hljs-regexp">/v RealTimeIsUniversal /</span>d <span class="hljs-number">1</span> <span class="hljs-regexp">/t REG_DWORD /</span>f<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="音乐"><a href="#音乐" class="headerlink" title="音乐"></a>音乐</h2><h3 id="网易云音乐"><a href="#网易云音乐" class="headerlink" title="网易云音乐"></a>网易云音乐</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S netease-cloud-music-gtk4<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="spotify"><a href="#spotify" class="headerlink" title="spotify"></a><a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/spotify">spotify</a></h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S spotify<br></code></pre></div></td></tr></table></figure>
+
+<p>缩放问题：<code>ctrl</code> + <code>+</code>/<code>-</code></p>
+<h2 id="蓝牙"><a href="#蓝牙" class="headerlink" title="蓝牙"></a>蓝牙</h2><p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Bluetooth_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Bluetooth-wiki</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo pacman -S bluez bluez-utils pulseaudio-bluetooth pavucontrol<br>systemctl tart/enable bluetooth.service<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a><strong>开机启动</strong></h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo systemctl enable bluetooth<br></code></pre></div></td></tr></table></figure>
+
+<p>开机后自动启动，将 <code>AutoEnable=true</code> 添加在 <code>/etc/bluetooth/main.conf</code> 底部的 <code>[Policy]</code> 下面：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo vim /etc/bluetooth/main.conf<br><br>[Policy]<br>AutoEnable=true<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="音频"><a href="#音频" class="headerlink" title="音频"></a><strong>音频</strong></h3><p>要使用蓝牙耳机或音响的话要先安装 <code>pulseaudio-bluetooth</code>。有时要用 <code>pavucontrol</code> 选择音频的输出设备。</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo pacman -S pulseaudio-bluetooth pavucontrol <br></code></pre></div></td></tr></table></figure>
+
+<h3 id="切换双系统蓝牙需重新匹配问题"><a href="#切换双系统蓝牙需重新匹配问题" class="headerlink" title="切换双系统蓝牙需重新匹配问题"></a>切换双系统蓝牙需重新匹配问题</h3><p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Bluetooth_mouse_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">wiki</a></p>
+<p>原因每次蓝牙连接，对每个网卡生成唯一密钥，切换系统后，密钥不同，验证不通过。</p>
+<p>[解决办法arch 配对设备。重启到windows，将所有蓝牙连接删除，重新配对你要设置的蓝牙。</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S chntpw<br></code></pre></div></td></tr></table></figure>
+<ol start="2">
+<li>重启到arch下安装chntpw</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S chntpw<br></code></pre></div></td></tr></table></figure>
+
+<ol start="3">
+<li>挂载windows到/mnt/win11下<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo fdisk -l #查看分区<br><span class="hljs-meta">#</span><span class="bash">加如我的windows的分区是/dev/nvme0n1p3,则挂载</span><br>sudo mount /dev/nvme0n1p3 /mnt/win11 #修改为你自己的分区<br></code></pre></div></td></tr></table></figure></li>
+<li>获取windows下的蓝牙mac</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">cd /mnt/win11/Windows/System32/config	#进入挂载的windows分区的config路径<br>chntpw -e SYSTEM	#使用chntpw运行SYSTEM<br>cd  ControlSet001\Services\BTHPORT\Parameters\Keys	#进入路径，我的是windwos11，路径是ControlSet001，你的不是的话可以ls打印一下，看看是否是CurrentControlSet<br>ls	#打印路径下<br></code></pre></div></td></tr></table></figure>
+
+<p>看到如下</p>
+<p>Node has 0 subkeys and 1 values<br>  size     type            value name             [value if type DWORD]<br>    16  REG_BINARY        &lt;001f20eb4c9a&gt;</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">hex 001f20eb4c9a #选择该变量的以hex进制打印<br><span class="hljs-meta">#</span><span class="bash">看到如下一串：</span><br><span class="hljs-meta">#</span><span class="bash">:00000  6F 91 2E 58 23 F3 43 E3 DD E3 90 E5 D2 8A D8 78 o..X<span class="hljs-comment">#.C........x</span></span><br><span class="hljs-meta">#</span><span class="bash">将它掐头去尾，中间去掉空格，只保留16进制数。得到如下</span><br>6F912E5823F343E3DDE390E5D28AD878<br></code></pre></div></td></tr></table></figure>
+
+<ol start="5">
+<li>将得到的密钥，修改到arch中对应的蓝牙设备的info中的Key为获取到的密钥</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">su<br>cd /var/lib/bluetooth/你的蓝牙mac地址 #你的蓝牙设备mac地址自己获取，设置里也有<br>ls #查看一下有哪些<br><span class="hljs-meta">#</span><span class="bash">我的目录下是74:A3:4A:EC:8A:9A  cache  settings</span><br>cd d 74\:A3\:4A\:EC\:8A\:9A/ #\:转义，进入我要配置的蓝牙设备<br>vim info #编辑信息文件<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">将这段中的Key修改为刚刚获取到的密钥。</span><br>[LinkKey]<br>Key=6F912E5823F343E3DDE390E5D28AD878<br>Type=4<br>PINLength=0<br><br></code></pre></div></td></tr></table></figure>
+
+<ol start="6">
+<li>重启蓝牙服务，尝试连接蓝牙，成功。</li>
+</ol>
+<h2 id="下载器"><a href="#下载器" class="headerlink" title="下载器"></a>下载器</h2><h3 id="迅雷"><a href="#迅雷" class="headerlink" title="迅雷"></a>迅雷</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S xunlei-bin <br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="百度网盘"><a href="#百度网盘" class="headerlink" title="百度网盘"></a>百度网盘</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S  baidunetdisk-electron <br></code></pre></div></td></tr></table></figure>
+
+<h3 id="Motrix"><a href="#Motrix" class="headerlink" title="Motrix"></a>Motrix</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S motrix<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="v2raya"><a href="#v2raya" class="headerlink" title="v2raya"></a>v2raya</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S v2ray v2raya<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="规则列表"><a href="#规则列表" class="headerlink" title="规则列表"></a>规则列表</h3><p>SwitchyOmega 扩展里新建 switch profile 模式（适用于Firefox 57+和Chrome）<br>规则列表地址填入 <a target="_blank" rel="noopener" href="https://git.io/gfw-list">https://git.io/gfw-list</a> 或 <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/aglent/autoproxy/master/gfwlist.pac">https://raw.githubusercontent.com/aglent/autoproxy/master/gfwlist.pac</a></p>
+<h1 id="开发环境配置"><a href="#开发环境配置" class="headerlink" title="开发环境配置"></a>开发环境配置</h1><h2 id="IDEA-VS-Code"><a href="#IDEA-VS-Code" class="headerlink" title="IDEA VS Code"></a>IDEA VS Code</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S  intellij-idea-ultimate-edition visual-studio-code-bin<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="JDK11"><a href="#JDK11" class="headerlink" title="JDK11"></a>JDK11</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo pacman -S jdk11-oepnjdk<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><p>注意<code>arch</code>下<code>npm</code>包管理需要单独安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo pacman -S nodejs npm<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><ol>
+<li><p>检查<code>node.js</code>环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">node -v<br>npm -v<br></code></pre></div></td></tr></table></figure></li>
+<li><p>安装<code>cnpm</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo npm install -g cnpm --registry=https://registry.npm.taobao.org<br></code></pre></div></td></tr></table></figure></li>
+<li><p>安装hexo(全局)</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo cnpm install -g hexo-cli<br></code></pre></div></td></tr></table></figure></li>
+<li><p>检查hexo是否安装成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs SHELL">hexo -v<br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<h2 id="Vmware"><a href="#Vmware" class="headerlink" title="Vmware"></a>Vmware</h2><h3 id="Wiki"><a href="#Wiki" class="headerlink" title="Wiki"></a>Wiki</h3><p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/VMware_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E5%AE%89%E8%A3%85">VMware-wiki</a></p>
+<p>安装依赖项</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo pacman -S fuse2 gtkmm linux-headers  libcanberra <br>yay -S gksu ncurses5-compat-libs<br></code></pre></div></td></tr></table></figure>
+
+<p>下载最新的 <a target="_blank" rel="noopener" href="https://www.vmware.com/go/tryworkstation">VMware Workstation Pro</a> 或<a target="_blank" rel="noopener" href="https://www.vmware.com/go/downloadplayer">Player</a> (或者<a target="_blank" rel="noopener" href="https://communities.vmware.com/community/vmtn/beta">beta</a>版，如果有的话)。</p>
+<p>开始安装：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs pgsql"># sh VMware-edition-<span class="hljs-keyword">version</span>.<span class="hljs-keyword">release</span>.architecture.bundle<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="AUR-1"><a href="#AUR-1" class="headerlink" title="AUR"></a>AUR</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S vmware-workstation<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">下载二进制文件</span><br>curl -O https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz<br><span class="hljs-meta">#</span><span class="bash">解压</span><br>tar -zxvf apache-maven-3.8.6-bin.tar.gz <br><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="settings-xml"><a href="#settings-xml" class="headerlink" title="settings.xml"></a>settings.xml</h3><p>阿里镜像仓库</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">mirror</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>aliyunmaven<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">mirrorOf</span>&gt;</span>*<span class="hljs-tag">&lt;/<span class="hljs-name">mirrorOf</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>阿里云公共仓库<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>https://maven.aliyun.com/repository/public<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mirror</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>本地仓库路径</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">localRepository</span>&gt;</span>path<span class="hljs-tag">&lt;/<span class="hljs-name">localRepository</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<h2 id="vagrant"><a href="#vagrant" class="headerlink" title="vagrant"></a>vagrant</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo pacman -S vagrant<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="virtualbox"><a href="#virtualbox" class="headerlink" title="virtualbox"></a>virtualbox</h2><p>基本包，安装时需要选择virtualbox-host-modules-arch模块</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo pacman -S virtualbox<br></code></pre></div></td></tr></table></figure>
+
+<p>加载virtualbox内核模块</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo modprobe vboxdrv vboxnetadp vboxnetflt<br></code></pre></div></td></tr></table></figure>
+
+<p>扩展包</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yay -S virtualbox-ext-oracle<br></code></pre></div></td></tr></table></figure>
+
+<p>将用户加入组</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo usermod -G vboxusers -a 用户名<br></code></pre></div></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Arch/">Arch</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/25/JDK%E4%B9%8BHashMap%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JDK之HashMap源码剖析</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/22/GitPages%E7%BB%91%E5%AE%9A%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9F%9F%E5%90%8D/">
+                        <span class="hidden-mobile">GitPages绑定个人的域名</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

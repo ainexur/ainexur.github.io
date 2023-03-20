@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ainexur">
+  <meta name="keywords" content="博客">
+  
+    <meta name="description" content="计算机科学导论绪论图灵模型：一种设计，并不是实体机器。指所有计算都能通过输入数据，黑盒计算，得到输出数据 输入数据-&gt;黑盒-&gt;输出数据。   冯诺依曼模型现代计算机结构。输入和输出数据都储存在寄存器&#x2F;内存上。计算器分四个子系统：输入输出模块、寄存器模块、计算模块、控制模块。 计算机发展历史1.机械计算器 2.电子计算机发展历程：  真空管时代计算机 晶体管时代计算机 集成电路时代 大规">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机科学导论">
+<meta property="og:url" content="https://ainexur.github.io/2022/01/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/index.html">
+<meta property="og:site_name" content="寻人启事">
+<meta property="og:description" content="计算机科学导论绪论图灵模型：一种设计，并不是实体机器。指所有计算都能通过输入数据，黑盒计算，得到输出数据 输入数据-&gt;黑盒-&gt;输出数据。   冯诺依曼模型现代计算机结构。输入和输出数据都储存在寄存器&#x2F;内存上。计算器分四个子系统：输入输出模块、寄存器模块、计算模块、控制模块。 计算机发展历史1.机械计算器 2.电子计算机发展历程：  真空管时代计算机 晶体管时代计算机 集成电路时代 大规">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-06T16:45:17.000Z">
+<meta property="article:modified_time" content="2022-06-20T00:09:23.084Z">
+<meta property="article:author" content="ainexur">
+<meta property="article:tag" content="黑皮书">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>计算机科学导论 - 寻人启事</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/atom-one-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Nexur</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/background/2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="计算机科学导论">
+              
+                计算机科学导论
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-01-07 00:45" pubdate>
+        2022年1月7日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      19 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">计算机科学导论</h1>
+            
+            <div class="markdown-body">
+              <h1 id="计算机科学导论"><a href="#计算机科学导论" class="headerlink" title="计算机科学导论"></a>计算机科学导论</h1><h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><p>图灵模型：一种设计，并不是实体机器。指所有计算都能通过输入数据，黑盒计算，得到输出数据</p>
+<p>输入数据-&gt;黑盒-&gt;输出数据。  </p>
+<h1 id="冯诺依曼模型"><a href="#冯诺依曼模型" class="headerlink" title="冯诺依曼模型"></a>冯诺依曼模型</h1><p>现代计算机结构。输入和输出数据都储存在寄存器/内存上。计算器分四个子系统：输入输出模块、寄存器模块、计算模块、控制模块。</p>
+<h1 id="计算机发展历史"><a href="#计算机发展历史" class="headerlink" title="计算机发展历史"></a>计算机发展历史</h1><p>1.机械计算器</p>
+<p>2.电子计算机发展历程：</p>
+<ul>
+<li>真空管时代计算机</li>
+<li>晶体管时代计算机</li>
+<li>集成电路时代</li>
+<li>大规模集成电路</li>
+</ul>
+<h1 id="数字系统"><a href="#数字系统" class="headerlink" title="数字系统"></a>数字系统</h1><p>十进制、二进制、十六进制、八进制以及之间的转换</p>
+<h1 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h1><ul>
+<li>位</li>
+<li>位模式（数据流）</li>
+<li>字节</li>
+<li>字</li>
+</ul>
+<p>存储数字到计算机中，需要将数字转换成二进制数字。有两个问题需要解决：</p>
+<ul>
+<li>如何存储数字的符号</li>
+<li>如何显示十进制小数</li>
+</ul>
+<h2 id="存储整数"><a href="#存储整数" class="headerlink" title="存储整数"></a>存储整数</h2><ol>
+<li>无符号表示法：存储无符号整数0和正整数时用。</li>
+<li>符号+绝对值表示法：最左边0表示正号，1表示负号，其后跟的值为绝对值。有+0和-0。</li>
+<li>二进制补码表示法：用来存储n位有符号整数。最左位为负权，其后为正权，相加为表示的有符号数值。范围(2^-n-1)<ul>
+<li>反码</li>
+<li>补码</li>
+<li>溢出</li>
+</ul>
+</li>
+</ol>
+<h2 id="存储实数"><a href="#存储实数" class="headerlink" title="存储实数"></a>存储实数</h2><ol>
+<li><p>浮点表示法：符号位 + 移位量 + 定点数。</p>
+<ul>
+<li><p>规范化：由于二进制的科学计数法整数位始终是1，并没有被存储，是隐含的。</p>
+</li>
+<li><p>符号</p>
+</li>
+<li><p>指数</p>
+</li>
+<li><p>尾数</p>
+</li>
+</ul>
+</li>
+<li><p>余码：在浮点表示法上，尾数可以作为无符号整数存储，指数是有符号的数。而在余码系统中，指数通过加上一个移位量，将所有的有符号数的值向右偏移，使得指数是无符号整数存储。</p>
+</li>
+<li><p>IEEE标准</p>
+<ul>
+<li><p>单精度浮点数：符号（1）+ 指数（8）+ 尾数（23）</p>
+<p>余127码。</p>
+</li>
+<li><p>双精度浮点数：符号（1）+ 指数（11）+ 尾数（52）</p>
+<p>余1023码。</p>
+</li>
+</ul>
+</li>
+<li><p>存储零：约定符号、指数、尾数都设为0</p>
+</li>
+</ol>
+<h2 id="3-3-存储文本"><a href="#3-3-存储文本" class="headerlink" title="3.3 存储文本"></a>3.3 存储文本</h2><ol>
+<li>ASCII</li>
+<li>Unicode：如今ASCII码是Unicode的一部分</li>
+</ol>
+<p>截断错误：由于存储小数时需要转换成浮点数存储，尾数只有23位，之后的精度会截断丢失，在需要精密的科研中如航天这种错误是致命的。</p>
+<h2 id="存储音频"><a href="#存储音频" class="headerlink" title="存储音频"></a>存储音频</h2><p>音频区别于可量化的数字文本，是不可数的，随时间变化的实体。只能在每一时刻度量声音的密度，没有无限内存，故度量有间隔。</p>
+<h3 id="采样"><a href="#采样" class="headerlink" title="采样"></a>采样</h3><p>在模拟信号点上选择数量有限的点并记录下来，每秒多少个点（采样率）</p>
+<h3 id="量化"><a href="#量化" class="headerlink" title="量化"></a>量化</h3><p>将样本的值截取为最接近的整数值的一个过程。</p>
+<h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><h2 id="存储图像"><a href="#存储图像" class="headerlink" title="存储图像"></a>存储图像</h2><h3 id="光栅图"><a href="#光栅图" class="headerlink" title="光栅图"></a>光栅图</h3><p>一张照片由模拟数据组成，数据密度随空间变化。图片采样过程称扫描，样本称为像素</p>
+<h4 id="解析度"><a href="#解析度" class="headerlink" title="解析度"></a>解析度</h4><p>每英寸方块内像素的密度</p>
+<h4 id="色彩深度"><a href="#色彩深度" class="headerlink" title="色彩深度"></a>色彩深度</h4><h3 id="矢量图"><a href="#矢量图" class="headerlink" title="矢量图"></a>矢量图</h3><p>并不存储图像的像素的位模式，存储的是图像被分解成的几何图形的数学公式。也成为几何图形或面向对象图形</p>
+<p>不能存储精细的图像</p>
+<h2 id="存储视频"><a href="#存储视频" class="headerlink" title="存储视频"></a>存储视频</h2><p>视频是图像在时间上的表示，连续的帧播放形成运动的图像。视频通常是被压缩存储的</p>
+<h1 id="数据运算"><a href="#数据运算" class="headerlink" title="数据运算"></a>数据运算</h1><h2 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h2><p>位层次上的逻辑运算：与、或、非、异或</p>
+<h3 id="掩码"><a href="#掩码" class="headerlink" title="掩码"></a>掩码</h3><p>把一个位模式上的指定位复位、置位、反转：</p>
+<ul>
+<li>AND：复位（置零）</li>
+<li>OR：置位（置1）</li>
+<li>XOR：反转</li>
+</ul>
+<h2 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h2><p><strong>算术移位</strong>：左移-整除2、右移-乘2</p>
+<p><strong>逻辑移位</strong>：左移-最低位丢失，右移-最高位丢失</p>
+<p><strong>循环移位</strong>：</p>
+<h2 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a>算术运算</h2><p>加减乘除，适用于整数和实数</p>
+<h3 id="整数加减"><a href="#整数加减" class="headerlink" title="整数加减"></a>整数加减</h3><p><strong>补码减法</strong>：将减法转化成加法，加上减数的补</p>
+<h3 id="实数加减"><a href="#实数加减" class="headerlink" title="实数加减"></a>实数加减</h3><p>去规范化，对其指数、尾数移位，相加</p>
+<h1 id="计算机组成"><a href="#计算机组成" class="headerlink" title="计算机组成"></a>计算机组成</h1><p>简单计算机由中央处理单元、主存储器、输入输出设备三个部分组成。</p>
+<h2 id="中央处理单元"><a href="#中央处理单元" class="headerlink" title="中央处理单元"></a>中央处理单元</h2><ul>
+<li>算术逻辑单元（ALU）：对程序进行逻辑、移位、算术运算。</li>
+<li>控制单元（PC、IR）：保存当前正在执行的指令的地址。当前指令执行完成后，计数器自动加1，指向下一条指令的地址。</li>
+<li>寄存器组：存放临时数据的高速独立存储单元<ol>
+<li>数据寄存器</li>
+<li>指令寄存器</li>
+<li>程序计数器</li>
+</ol>
+</li>
+</ul>
+<h2 id="主存储器"><a href="#主存储器" class="headerlink" title="主存储器"></a>主存储器</h2><p><strong>地址空间</strong>：每个存储单元都有唯一标识，称为地址。数据以称为字的位组的形式在内存中传入传出。字可以是8、16、32、64位，对应1字节、2字节、4字节、8字节。</p>
+<p><strong>存储器类型</strong>：</p>
+<ul>
+<li><p>RAM：随机存取存储器，与ROM区别是用户能读写RAM。<strong>易失性</strong>：计算机断电后，存储在RAM中的信息将被删除</p>
+<ul>
+<li>SRAM：静态RAM，触发器门电路保存数据，通电数据始终存在，不需要刷新。速度快、价格贵</li>
+<li>DRAM：动态RAM，技术使用电容器。如果电容器充电，状态为1；电容器放电状态为0；电容器会随时间漏电，内存单元需要周期性刷新。速度较慢，价格便宜。</li>
+</ul>
+</li>
+<li><p>ROM：只读存储器。用户只能读。非易失性。用ROM来存储开机时运行的程序。</p>
+<ul>
+<li>PROM：可编程只读存储器。</li>
+<li>EPROM：可擦除可编程只读存储器。</li>
+<li>EEPROM：电可擦除可编程只读存储器。</li>
+</ul>
+</li>
+</ul>
+<p><strong>存储器层次结构</strong>：快&amp;不便宜&amp;少。慢&amp;便宜&amp;多。</p>
+<p><strong>高速缓存存储器</strong>：比主存快，比cpu内的寄存器慢。容量较小，置于CPU与主存之间。根据地址键做缓存用。</p>
+<h2 id="输入输出子系统"><a href="#输入输出子系统" class="headerlink" title="输入输出子系统"></a>输入输出子系统</h2><p><strong>非存储设备</strong>：键盘、监视器等，能与CPU通信，但不能存储数据。</p>
+<p><strong>存储设备</strong>：</p>
+<ul>
+<li>磁介质存储设备：磁盘（硬盘），由一张张磁片叠加而成。通过每片磁片的磁头读写磁介质表面来进行读取和存储。</li>
+<li>磁带：</li>
+<li>光存储设备：CD（光盘）</li>
+</ul>
+<h2 id="子系统互联"><a href="#子系统互联" class="headerlink" title="子系统互联"></a>子系统互联</h2><p>三个子系统通常由称为<strong>总线</strong>的三组线路连在一起。</p>
+<ul>
+<li>数据总线：由多根线组成，每根线传输一个位的数据。数量由计算机字的大小。（假如计算机是32位，4字节字长，需要32根线的数据总线，一次能传送32位数据）</li>
+<li>地址总线：允许访问存储器中的字。线数量取决于存储空间的大小</li>
+<li>控制总线：在计算机和内存之间传送信息。线数量取决于计算机所需要的控制命令的总数。</li>
+</ul>
+<p><strong>IO设备的连接</strong>：IO设备不能直接与连接内存和CPU的总线相连，</p>
+<ol>
+<li>本质不同，</li>
+<li>速度比CPU和内存慢得多</li>
+</ol>
+<p>必须要有中介来处理这种差异，通过一种被称为输入/输出控制器或接口的器件连接到总线上。</p>
+<p><strong>控制器</strong>：</p>
+<ul>
+<li>SCSI：</li>
+<li>火线：</li>
+<li>USB：</li>
+<li>HDMI：</li>
+<li></li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%BB%91%E7%9A%AE%E4%B9%A6/">黑皮书</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/01/10/Java%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Java笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
+                        <span class="hidden-mobile">计算机组成原理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

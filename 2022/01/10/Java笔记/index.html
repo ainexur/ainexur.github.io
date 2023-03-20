@@ -1,0 +1,496 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ainexur">
+  <meta name="keywords" content="博客">
+  
+    <meta name="description" content="Java笔记面向对象1 重载方法重载：具有多个同名方法称为方法的重载。前提是不同方法之间的参数列表互不相同，例如参数个数、参数顺序、参数类型都可以算做不同的参数列表。返回值不同不能作为重载的依据。 注意：构造方法也可以重载。无参构造方法执行时，类内部没有执行初始化的属性将执行默认初始化。 2 封装封装：将类的属性设置为private，再设置public方法。外部通过调用public方法获取或修改p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java笔记">
+<meta property="og:url" content="https://ainexur.github.io/2022/01/10/Java%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="寻人启事">
+<meta property="og:description" content="Java笔记面向对象1 重载方法重载：具有多个同名方法称为方法的重载。前提是不同方法之间的参数列表互不相同，例如参数个数、参数顺序、参数类型都可以算做不同的参数列表。返回值不同不能作为重载的依据。 注意：构造方法也可以重载。无参构造方法执行时，类内部没有执行初始化的属性将执行默认初始化。 2 封装封装：将类的属性设置为private，再设置public方法。外部通过调用public方法获取或修改p">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-10T05:18:51.000Z">
+<meta property="article:modified_time" content="2022-06-20T00:09:23.042Z">
+<meta property="article:author" content="ainexur">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Java面向对象">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>Java笔记 - 寻人启事</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/atom-one-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Nexur</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/background/2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Java笔记">
+              
+                Java笔记
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-01-10 13:18" pubdate>
+        2022年1月10日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      22 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Java笔记</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Java笔记"><a href="#Java笔记" class="headerlink" title="Java笔记"></a>Java笔记</h1><h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><h3 id="1-重载"><a href="#1-重载" class="headerlink" title="1 重载"></a>1 重载</h3><p>方法重载：具有多个同名方法称为方法的重载。前提是不同方法之间的参数列表互不相同，例如参数个数、参数顺序、参数类型都可以算做不同的参数列表。返回值不同不能作为重载的依据。</p>
+<p>注意：构造方法也可以重载。无参构造方法执行时，类内部没有执行初始化的属性将执行默认初始化。</p>
+<h3 id="2-封装"><a href="#2-封装" class="headerlink" title="2 封装"></a>2 封装</h3><p>封装：将类的属性设置为private，再设置public方法。外部通过调用public方法获取或修改privae属性。</p>
+<p>优势：加强权限控制。</p>
+<p>劣势：代码繁琐（可通过插件，自动在编译时加上默认get\set方法，省去人工编写的工作量以及类代码更简洁）。</p>
+<p>例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String className;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> age;<br>    <br>    Animal(String className, <span class="hljs-keyword">int</span> age)&#123;<br>        <span class="hljs-keyword">this</span>.className = className;<br>        <span class="hljs-keyword">this</span>.age = age;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setClassName</span><span class="hljs-params">(String className)</span></span>&#123;<br>        <span class="hljs-keyword">this</span>.className = className;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setAge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> age)</span></span>&#123;<br>        <span class="hljs-keyword">this</span>.age = age;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getClassName</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.className;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getAge</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.age;<br>    &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="3-继承"><a href="#3-继承" class="headerlink" title="3 继承"></a>3 继承</h3><p>一个类继承另一个类的所有属性及方法称为继承。Java只支持单继承（C++支持多继承），避免了菱形继承。</p>
+<p>Animal.java:</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">speak</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;This is animal speaking!&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<p>Cat.java</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal</span></span>&#123;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<p>Main.java</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        Cat cat = <span class="hljs-keyword">new</span> Cat();<br>        animal.speak();<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight inform7"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs inform7">This <span class="hljs-keyword">is</span> <span class="hljs-keyword">animal</span> speaking!<br></code></pre></div></td></tr></table></figure>
+
+<p>解释：虽然Cat类未定义<code>speak()</code>方法，但继承了Animal类，所以也继承了Animal的<code>speak()</code>方法。</p>
+<h4 id="3-1-重写"><a href="#3-1-重写" class="headerlink" title="3.1 重写"></a>3.1 重写</h4><p>子类重写父类方法称为重写。</p>
+<p>建议：重写方法加上<code>@Override</code>注解，编译器将自动检查是否重写方法，避免人为的编码错误。</p>
+<p>Cat.java</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal</span></span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">speak</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;This is cat speaking!&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight vim"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs vim">This <span class="hljs-keyword">is</span> <span class="hljs-keyword">cat</span> speaking!<br></code></pre></div></td></tr></table></figure>
+
+<p>解释：由于子类重写了父类方法，调用时将调用子类方法。</p>
+<h4 id="3-2-子类方法重载"><a href="#3-2-子类方法重载" class="headerlink" title="3.2 子类方法重载"></a>3.2 子类方法重载</h4><p>Cat.java</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal</span></span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">speak</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;This is cat speaking!&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">speak</span><span class="hljs-params">(String info)</span></span>&#123;<br>        System.out.println(info);<br>    &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+
+<p>Main.java</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">// ……</span><br>Cat cat = <span class="hljs-keyword">new</span> Cat();<br>cat.speak(<span class="hljs-string">&quot;A cat is speak!&quot;</span>);<br><span class="hljs-comment">// ……</span><br></code></pre></div></td></tr></table></figure>
+
+<p>output:</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">A cat is speak!<br></code></pre></div></td></tr></table></figure>
+
+<p>解释：子类方法可以与重写的方法重载，也可以与父类方法重载。</p>
+<p>总结：</p>
+<ul>
+<li>当子类方法名和参数列表与父类方法一致时，子类方法将重写父类方法。</li>
+<li>子类方法名和父类方法名一致，但参数列表不一致时，子类方法将与父类方法触发重载（无论子类是否重写父类方法）。</li>
+</ul>
+<h3 id="4-多态"><a href="#4-多态" class="headerlink" title="4 多态"></a>4 多态</h3><p>编译多态：方法重载。</p>
+<p>运行多态：类指针指向父类或子类实例。</p>
+<h4 id="4-1-指向子类实例"><a href="#4-1-指向子类实例" class="headerlink" title="4.1 指向子类实例"></a>4.1 指向子类实例</h4><p>new：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">Animal animal = <span class="hljs-keyword">new</span> Cat();<br></code></pre></div></td></tr></table></figure>
+
+<p>方法调用：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">animal.speak();<br></code></pre></div></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">This is cat speaking!<br></code></pre></div></td></tr></table></figure>
+
+<p>解释：虽然animal是Animal类，但animal是Cat实例，调用方法时将优先调用子类复写的方法。</p>
+<p><del><strong>调用子类重载的方法：</strong></del></p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">animal.speak(<span class="hljs-string">&quot;A cat is speak!&quot;</span>);<br></code></pre></div></td></tr></table></figure>
+
+<p>报错：’speak()’ in ‘多态.Animal’ cannot be applied to ‘(java.lang.String)’</p>
+<p>解释：虽然animal是cat实例，但是animal对象。调用Cat的重载方法时，在animal中找不到该方法，IDE报错。</p>
+<p>总结：对象指向子类实例时，只能调用父类有的方法和属性，优先调用子类重写的方法和属性。</p>
+<h4 id="4-2-指向父类实例"><a href="#4-2-指向父类实例" class="headerlink" title="4.2 指向父类实例"></a>4.2 指向父类实例</h4><p>new:</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">Cat cat = (Cat)<span class="hljs-keyword">new</span> Animal();<br></code></pre></div></td></tr></table></figure>
+
+<p>方法调用：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">cat.speak(<span class="hljs-string">&quot;A cat is speak!&quot;</span>);  <span class="hljs-comment">//报错：找不到speak的重载方法</span><br></code></pre></div></td></tr></table></figure>
+
+<p>运行报错：Animal cannot be cast to Cat</p>
+<p>解释：虽然加上<code>(Cat)</code>强转类型在编码阶段不报错，但在运行时候提示无法强制类型转换。（原因不明）</p>
+<h3 id="5-接口"><a href="#5-接口" class="headerlink" title="5 接口"></a>5 接口</h3><ul>
+<li>接口不能拥有private属性、private抽象方法</li>
+<li>接口的属性必须在声明时实例化</li>
+<li>接口抽象方法不能拥有<code>body</code>（不能在接口实现抽象方法）</li>
+<li>接口可省略<code>public</code>关键字，即接口的属性和方法只能是<code>public</code>类型</li>
+<li>接口如要像实例化类一样实例化接口，须得在实例化时带上<code>&#39;body</code>(即实例化同时实现接口)）</li>
+<li>接口可以像类一样使用多态</li>
+</ul>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><h1 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h1><h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">Java面向对象</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/01/10/SpringBoot%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SpringBoot笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/">
+                        <span class="hidden-mobile">计算机科学导论</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

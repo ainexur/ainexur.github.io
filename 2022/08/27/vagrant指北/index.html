@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ainexur">
+  <meta name="keywords" content="博客">
+  
+    <meta name="description" content="Vagrant安装&amp;配置 An error occurred while downloading the remote file. The error message, if any, is reproduced below. Please fix this error and try again csdn   安装可通过官网下载安装地址下载安装。 windows10安装选择AMD64版本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vagrant指北">
+<meta property="og:url" content="https://ainexur.github.io/2022/08/27/vagrant%E6%8C%87%E5%8C%97/index.html">
+<meta property="og:site_name" content="寻人启事">
+<meta property="og:description" content="Vagrant安装&amp;配置 An error occurred while downloading the remote file. The error message, if any, is reproduced below. Please fix this error and try again csdn   安装可通过官网下载安装地址下载安装。 windows10安装选择AMD64版本">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20230319214628259.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20230319215133740.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20230319224920262.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/202211102230280.png">
+<meta property="article:published_time" content="2022-08-27T04:36:37.000Z">
+<meta property="article:modified_time" content="2023-03-20T15:00:15.610Z">
+<meta property="article:author" content="ainexur">
+<meta property="article:tag" content="vagrant">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20230319214628259.png">
+  
+  
+  <title>vagrant指北 - 寻人启事</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/atom-one-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Nexur</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/background/2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="vagrant指北">
+              
+                vagrant指北
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-08-27 12:36" pubdate>
+        2022年8月27日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      26 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">vagrant指北</h1>
+            
+            <div class="markdown-body">
+              <h2 id="Vagrant安装-amp-配置"><a href="#Vagrant安装-amp-配置" class="headerlink" title="Vagrant安装&amp;配置"></a>Vagrant安装&amp;配置</h2><ul>
+<li><p>An error occurred while downloading the remote file. The error message, if any, is reproduced below. Please fix this error and try again</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/gongzi_9/article/details/123058281">csdn</a></p>
+</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>可通过<a target="_blank" rel="noopener" href="https://developer.hashicorp.com/vagrant/downloads">官网下载安装地址</a>下载安装。</p>
+<h3 id="windows10安装"><a href="#windows10安装" class="headerlink" title="windows10安装"></a>windows10安装</h3><p>选择AMD64版本，下载得到exe文件后双击打开安装即可。</p>
+<img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20230319214628259.png" srcset="/img/loading.gif" lazyload alt="image-20230319214628259" style="zoom: 33%;" />        
+
+<h3 id="验证安装"><a href="#验证安装" class="headerlink" title="验证安装"></a>验证安装</h3><p>控制台输入<code>vagrant -v</code>查看版本，可验证是否安装完成，正常输出版本如下：例如我的版本是2.3.4</p>
+<img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20230319215133740.png" srcset="/img/loading.gif" lazyload alt="image-20230319215133740" style="zoom: 67%;" />    
+
+<h2 id="配置VMware插件"><a href="#配置VMware插件" class="headerlink" title="配置VMware插件"></a>配置VMware插件</h2><h3 id="安装vagrant-vmware-desktop"><a href="#安装vagrant-vmware-desktop" class="headerlink" title="安装vagrant-vmware-desktop"></a>安装vagrant-vmware-desktop</h3><p><a target="_blank" rel="noopener" href="https://developer.hashicorp.com/vagrant/docs/providers/vmware/installation">官网文档</a></p>
+<blockquote>
+<p>前提：安装完成vagrant后</p>
+</blockquote>
+<p>执行命令安装vmware插件</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">vagrant plugin install vagrant-vmware-desktop<br></code></pre></div></td></tr></table></figure>
+
+<p>稍等几分钟后出现如下提示则安装完成</p>
+<img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20230319224920262.png" srcset="/img/loading.gif" lazyload alt="image-20230319224920262" style="zoom:50%;" />    
+
+<h3 id="安装Vagrant-VMware-Utility"><a href="#安装Vagrant-VMware-Utility" class="headerlink" title="安装Vagrant VMware Utility"></a>安装Vagrant VMware Utility</h3><p>下载页<a target="_blank" rel="noopener" href="https://developer.hashicorp.com/vagrant/downloads/vmware">Install | Vagrant | HashiCorp Developer</a></p>
+<p>windows10选择X86_64版本下载后双击安装。</p>
+<h2 id="基础使用配置"><a href="#基础使用配置" class="headerlink" title="基础使用配置"></a>基础使用配置</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>通过简单的几个vagrant命令即可快速初始化一个虚拟机</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">mkdir centos7_1<br>cd centos7_1<br>vagrant init<br>vagrant up<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="问题集合"><a href="#问题集合" class="headerlink" title="问题集合"></a>问题集合</h3><h4 id="vagrant-up报错：Vagrant-encountered-an-error-while-attempting-to-load-the-utility-service-key-file"><a href="#vagrant-up报错：Vagrant-encountered-an-error-while-attempting-to-load-the-utility-service-key-file" class="headerlink" title="vagrant up报错：Vagrant encountered an error while attempting to load the utility service key file."></a>vagrant up报错：Vagrant encountered an error while attempting to load the utility service key file.</h4><p>Vagrant encountered an error while attempting to load the utility<br>service key file. This error can occur if the Vagrant VMware Utility<br>has not yet been installed, or if it was installed incorrectly. If<br>this error persists after running the Vagrant VMware Utility installer<br>again, please contact support at: <a href="mailto:&#115;&#x75;&#112;&#112;&#x6f;&#x72;&#116;&#64;&#x68;&#97;&#115;&#104;&#105;&#99;&#x6f;&#x72;&#112;&#46;&#x63;&#111;&#x6d;">&#115;&#x75;&#112;&#112;&#x6f;&#x72;&#116;&#64;&#x68;&#97;&#115;&#104;&#105;&#99;&#x6f;&#x72;&#112;&#46;&#x63;&#111;&#x6d;</a></p>
+<p>Information about the Vagrant VMware Utility, including installation<br>instruction, can be found here:</p>
+<p>  <a target="_blank" rel="noopener" href="https://www.vagrantup.com/docs/vmware/vagrant-vmware-utility.html">https://www.vagrantup.com/docs/vmware/vagrant-vmware-utility.html</a></p>
+<p>  Path:  C:/ProgramData/hashicorp/vagrant-vmware-desktop/certificates/vagrant-utility.client.crt<br>  Error: No such file or directory @ rb_sysopen - C:/ProgramData/hashicorp/vagrant-vmware-desktop/certificates/vagrant-utility.client.crt</p>
+<p><strong>原因：</strong></p>
+<p>未安装Vagrant VMware Utility。</p>
+<p><strong>解决</strong>：</p>
+<p>参考上面安装Vagrant Vmware Utility</p>
+<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p><code>vagrant up</code>启动虚拟机后，可通过</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">vagrant ssh<br></code></pre></div></td></tr></table></figure>
+
+<p>ssh连接虚拟机，去除了繁杂的密码密钥等，交由vagrant管理。</p>
+<h3 id="配置网络"><a href="#配置网络" class="headerlink" title="配置网络"></a>配置网络</h3><p>配置<code>hostname</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">config.vm.hostname = &quot;centos01&quot;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="配置ip"><a href="#配置ip" class="headerlink" title="配置ip"></a>配置ip</h3><p>由于VirtualBox默认的虚拟机策略为网络地址转换，此策略对于后续的程序安装，需要访问时，都得转换一次端口，较为麻烦。为给虚拟机分配一个独有的ip地址，可通过vagrant配置文件指定。编辑虚拟机的Vagrantfile文件，加入如下行</p>
+<p><code>hostname: true</code>启用hostname</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">config.vm.network &quot;public_network&quot;, ip: &quot;192.168.1.10&quot;, hostname: true<br></code></pre></div></td></tr></table></figure>
+
+<p>保存后，执行<code>vagrant reload</code>命令重新加载配置，通过<code>ip addr</code>命令可查看虚拟机当前ip地址</p>
+<h3 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 初始化一个vagrant镜像</span><br>vagrant init<br><span class="hljs-meta">#</span><span class="bash"> 启动vagrant镜像</span><br>vagrant up<br><span class="hljs-meta">#</span><span class="bash"> 重新加载配置，用于修改vagrantfile后</span><br>vagrant reload<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="查看端口监听"><a href="#查看端口监听" class="headerlink" title="查看端口监听"></a>查看端口监听</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo netstat -ntalp | grep 80<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="问题合集"><a href="#问题合集" class="headerlink" title="问题合集"></a>问题合集</h2><h3 id="1-vagrant-up-faild、在线安装慢"><a href="#1-vagrant-up-faild、在线安装慢" class="headerlink" title="1. vagrant up faild、在线安装慢"></a>1. vagrant up faild、在线安装慢</h3><p>在首次执行vagrant up时需要下载centOS镜像，由于网络问题可能会下载失败或者下载很慢。这时候可以手动把镜像下载到本地，再通过add命令加载镜像到vagrant，再使用up命令即可跳过下载步骤</p>
+<p>镜像搜索：<a target="_blank" rel="noopener" href="https://app.vagrantup.com/boxes/search">https://app.vagrantup.com/boxes/search</a></p>
+<p>Centos/7：<a target="_blank" rel="noopener" href="https://app.vagrantup.com/centos/boxes/7">https://app.vagrantup.com/centos/boxes/7</a></p>
+<p>下载镜像后通过命令添加到vagrant：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">vagrant add 镜像名 路径<br><span class="hljs-meta">#</span><span class="bash">例如 vagrant box add centos/7 ./CentOS-7-x86_64-Vagrant-2004_01.VirtualBox.box</span><br></code></pre></div></td></tr></table></figure>
+
+<p>此时再通过<code>vagrant up</code>命令安装启动虚拟机就不需要下载了，速度较快，推荐</p>
+<h2 id="2-code-NS-ERROR-FAILURE-0x80004005-component-ConsoleWrap-interface-IConsole"><a href="#2-code-NS-ERROR-FAILURE-0x80004005-component-ConsoleWrap-interface-IConsole" class="headerlink" title="2.code NS_ERROR_FAILURE (0x80004005), component ConsoleWrap, interface IConsole"></a>2.code NS_ERROR_FAILURE (0x80004005), component ConsoleWrap, interface IConsole</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">There was an error while executing `VBoxManage`, a CLI used by Vagrant<br>for controlling VirtualBox. The command and stderr is shown below.<br><br>Command: [&quot;startvm&quot;, &quot;605c2e37-9c5a-48fc-8884-26c9160bdf3d&quot;, &quot;--type&quot;, &quot;headless&quot;]<br><br>Stderr: VBoxManage: error: hv_vm_create() failed: 0xfae94001 (VERR_NEM_INIT_FAILED).<br>VBoxManage: error: Driverless mode (VERR_SUP_DRIVERLESS)<br>VBoxManage: error: Details: code NS_ERROR_FAILURE (0x80004005), component ConsoleWrap, interface IConsole<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/202211102230280.png" srcset="/img/loading.gif" lazyload alt="截屏2022-11-10 22.29.15"></p>
+<p>原因之一：AMD好像只支持到6.1的vbox，卸载7.0安装6.1的，然后在隐私项勾选oracle，确认重启搞定。</p>
+<h2 id="Is-the-docker-daemon-running"><a href="#Is-the-docker-daemon-running" class="headerlink" title="Is the docker daemon running?"></a>Is the docker daemon running?</h2><p>docker服务未启动，</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">启动docker</span><br>service start docker<br><span class="hljs-meta">#</span><span class="bash">开机自启</span><br>sudo systemctl enable docker<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="3-ping-time-out"><a href="#3-ping-time-out" class="headerlink" title="3.ping time out"></a>3.ping time out</h3><p>配置了ip无法连接，检查配置的ip是否和主机处于同一网段</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/vagrant/">vagrant</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/10/24/kuangbin%E4%B8%93%E9%A2%98/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">kuangbin专题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/30/%E6%9C%BA%E8%80%83%E5%9F%BA%E7%A1%80%E9%A2%98%E8%A7%A3/">
+                        <span class="hidden-mobile">机考基础题解</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

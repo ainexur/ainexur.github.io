@@ -1,0 +1,984 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ainexur">
+  <meta name="keywords" content="博客">
+  
+    <meta name="description" content="寄存器 搬运指令 练习题 3.1 假设下面的值存放在指明的内存地址和寄存器中    地址 值    0x100 0xFF   0x104 0xAB   0x108 0x13   0x10C 0x11      寄存器 值    %rax 0x100   %rcx 0x1   %rdx 0x3   填写下表，给出所示操作数的值：    操作数 值 注释    %rax 0x100 寄存器   0x1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSAPP第三章练习">
+<meta property="og:url" content="https://ainexur.github.io/2021/09/10/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0/index.html">
+<meta property="og:site_name" content="寻人启事">
+<meta property="og:description" content="寄存器 搬运指令 练习题 3.1 假设下面的值存放在指明的内存地址和寄存器中    地址 值    0x100 0xFF   0x104 0xAB   0x108 0x13   0x10C 0x11      寄存器 值    %rax 0x100   %rcx 0x1   %rdx 0x3   填写下表，给出所示操作数的值：    操作数 值 注释    %rax 0x100 寄存器   0x1">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.0.1.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com//img/3.0.2.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.1.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.2.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.3.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.4.1.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.4.2.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.5.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.5.1.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.5.2.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.5.3.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.6.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.6.1.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.6.2.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.7.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.8.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.9.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.10.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.11.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.5.3.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.12.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.6.1.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.5.2.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.6.2.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.13.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.14.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.15.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.16.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.17.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.17.B.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.18.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.19.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.20.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.21.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.22.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.23.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.25.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.26.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.27.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.28.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.29.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.30.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.31.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.32.png">
+<meta property="article:published_time" content="2021-09-10T08:27:52.000Z">
+<meta property="article:modified_time" content="2023-05-14T05:50:29.801Z">
+<meta property="article:author" content="ainexur">
+<meta property="article:tag" content="深入理解计算机操作系统">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.0.1.png">
+  
+  
+  <title>CSAPP第三章练习 - 寻人启事</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/atom-one-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Nexur</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/background/2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="CSAPP第三章练习">
+              
+                CSAPP第三章练习
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-10 16:27" pubdate>
+        2021年9月10日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      45 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CSAPP第三章练习</h1>
+            
+            <div class="markdown-body">
+              <h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.0.1.png" srcset="/img/loading.gif" lazyload alt="3.0.1"></p>
+<h3 id="搬运指令"><a href="#搬运指令" class="headerlink" title="搬运指令"></a>搬运指令</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com//img/3.0.2.png" srcset="/img/loading.gif" lazyload alt="3.0.2"></p>
+<h3 id="练习题-3-1"><a href="#练习题-3-1" class="headerlink" title="练习题 3.1"></a>练习题 3.1</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.1.png" srcset="/img/loading.gif" lazyload alt="3.1"></p>
+<p><strong>假设下面的值存放在指明的内存地址和寄存器中</strong></p>
+<table>
+<thead>
+<tr>
+<th>地址</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0x100</td>
+<td>0xFF</td>
+</tr>
+<tr>
+<td>0x104</td>
+<td>0xAB</td>
+</tr>
+<tr>
+<td>0x108</td>
+<td>0x13</td>
+</tr>
+<tr>
+<td>0x10C</td>
+<td>0x11</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>寄存器</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%rax</td>
+<td>0x100</td>
+</tr>
+<tr>
+<td>%rcx</td>
+<td>0x1</td>
+</tr>
+<tr>
+<td>%rdx</td>
+<td>0x3</td>
+</tr>
+</tbody></table>
+<p><strong>填写下表，给出所示操作数的值：</strong></p>
+<table>
+<thead>
+<tr>
+<th>操作数</th>
+<th>值</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%rax</td>
+<td>0x100</td>
+<td>寄存器</td>
+</tr>
+<tr>
+<td>0x104</td>
+<td>0xAB</td>
+<td>绝对地址</td>
+</tr>
+<tr>
+<td>$0x108</td>
+<td>0x108</td>
+<td>立即数</td>
+</tr>
+<tr>
+<td>(%rax)</td>
+<td>0xFF</td>
+<td>地址0x100</td>
+</tr>
+<tr>
+<td>4(%rax)</td>
+<td>0xAB</td>
+<td>地址0x104</td>
+</tr>
+<tr>
+<td>9(%rax, %rdx)</td>
+<td>0x11</td>
+<td>地址0x10C</td>
+</tr>
+<tr>
+<td>260(%rcx, %rdx)</td>
+<td>0x13</td>
+<td>地址0x108</td>
+</tr>
+<tr>
+<td>0xFC(, %rcx, 4)</td>
+<td>0xFF</td>
+<td>地址0x100</td>
+</tr>
+<tr>
+<td>(%rax, %rdx, 4)</td>
+<td>0x11</td>
+<td>地址0x10C</td>
+</tr>
+</tbody></table>
+<h3 id="练习题-3-2"><a href="#练习题-3-2" class="headerlink" title="练习题 3.2"></a>练习题 3.2</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.2.png" srcset="/img/loading.gif" lazyload alt="3.2"></p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>源操作数</th>
+<th>目标操作数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mov<u> l</u></td>
+<td>%eax</td>
+<td>(%rsp)</td>
+</tr>
+<tr>
+<td>mov<u> w</u></td>
+<td>(%rax)</td>
+<td>%dx</td>
+</tr>
+<tr>
+<td>mov<u> b</u></td>
+<td>$0xFF</td>
+<td>%bl</td>
+</tr>
+<tr>
+<td>mov<u> b</u></td>
+<td>(%rsp, %rdx, 4)</td>
+<td>%dl</td>
+</tr>
+<tr>
+<td>mov<u> q</u></td>
+<td>(%rdx)</td>
+<td>%rax</td>
+</tr>
+<tr>
+<td>mov<u> w</u></td>
+<td>%dx</td>
+<td>(%rax)</td>
+</tr>
+</tbody></table>
+<p>​	</p>
+<h3 id="练习题-3-3"><a href="#练习题-3-3" class="headerlink" title="练习题 3.3"></a>练习题 3.3</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.3.png" srcset="/img/loading.gif" lazyload alt="3.3"></p>
+<p><strong>答：</strong></p>
+<ol>
+<li><del>立即数要先写入寄存器， 再写入内存（？</del> 使用%ebx作为64位系统地址寄存器， 在栈上是危险的</li>
+<li><del>movl指令大小错误， 应该用movq, rax是绝对四字寄存器</del> 指令后缀和寄存器ID之间不匹配</li>
+<li>mov指令源操作数和目的操作数同为内存。</li>
+<li>不存在名为sl的寄存器</li>
+<li>立即数不能作为目的操作数</li>
+<li>源操作数和目的操作数字不匹配</li>
+<li>~~不懂 ~~ 指令后缀和寄存器ID之间不匹配</li>
+</ol>
+<h3 id="练习题-3-4-我不李姐"><a href="#练习题-3-4-我不李姐" class="headerlink" title="练习题 3.4 (我不李姐)"></a>练习题 3.4 (我不李姐)</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.4.1.png" srcset="/img/loading.gif" lazyload alt="3.4.1"></p>
+<p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.4.2.png" srcset="/img/loading.gif" lazyload alt="3.4.2"></p>
+<p><strong>答：</strong></p>
+<blockquote>
+<p>src_t in %rdi	dest_t in rsi</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>src_t</th>
+<th>dest_t</th>
+<th>指令</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>long</td>
+<td>long</td>
+<td>movq(%rdi), %rax <br />movq %rax, (%rsi)</td>
+<td>读8个字节<br />存8个字节</td>
+</tr>
+<tr>
+<td>char</td>
+<td>int</td>
+<td>movsbl (%rdi), %eax<br />movq %eax, (%rsi)</td>
+<td>讲char转成int<br />存4个字节</td>
+</tr>
+<tr>
+<td>char</td>
+<td>unsigned</td>
+<td>movsbl (%rdi), %eax<br />movq %eax, (%rsi)</td>
+<td>将char转成int<br />存4个字节</td>
+</tr>
+<tr>
+<td>unsigned char</td>
+<td>long</td>
+<td>movzbl (%rdi),  %eax<br />movq %rax, (%rsi)</td>
+<td>读一个字节并零扩展<br />存8个字节</td>
+</tr>
+<tr>
+<td>int</td>
+<td>char</td>
+<td>movl (%rdi), %eax<br />movb %al, (%rsi)</td>
+<td>读4个字节<br />存低位字节</td>
+</tr>
+<tr>
+<td>unsigned</td>
+<td>unsigned char</td>
+<td>movl (%rdi), %eax<br />movb %al, (%rsi)</td>
+<td>读4个字节<br />存低位字节</td>
+</tr>
+<tr>
+<td>char</td>
+<td>short</td>
+<td>movsbw (%rdi), %ax<br />movw %aw, (%rsi)</td>
+<td>读一个字节并符号扩展<br />存2个字节</td>
+</tr>
+</tbody></table>
+<h3 id="练习题-3-5"><a href="#练习题-3-5" class="headerlink" title="练习题  3.5"></a>练习题  3.5</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.5.png" srcset="/img/loading.gif" lazyload alt="3.5"></p>
+<p>答：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C"><span class="hljs-type">void</span> <span class="hljs-title function_">decode1</span> <span class="hljs-params">(<span class="hljs-type">long</span> *xp, <span class="hljs-type">long</span> *yp, <span class="hljs-type">long</span> *zp)</span> &#123;<br>    <span class="hljs-type">long</span> x = *xp;<br>    <span class="hljs-type">long</span> y = *yp;<br>    <span class="hljs-type">long</span> z = *xp;<br>    *yp = x;<br>    *zp = y;<br>    *xp = z;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<hr>
+<h3 id="算术和逻辑指令"><a href="#算术和逻辑指令" class="headerlink" title="算术和逻辑指令"></a>算术和逻辑指令</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.5.1.png" srcset="/img/loading.gif" lazyload alt="3.5.1"></p>
+<p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.5.2.png" srcset="/img/loading.gif" lazyload alt="3.5.2"></p>
+<p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.5.3.png" srcset="/img/loading.gif" lazyload alt="3.5.3"></p>
+<hr>
+<h3 id="练习题-3-6"><a href="#练习题-3-6" class="headerlink" title="练习题 3.6"></a>练习题 3.6</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.6.png" srcset="/img/loading.gif" lazyload alt="3.6"></p>
+<p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.6.1.png" srcset="/img/loading.gif" lazyload alt="3.6.1"></p>
+<p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.6.2.png" srcset="/img/loading.gif" lazyload alt="3.6.2"></p>
+<p>答：</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>leaq 6(%ax), %rdx</td>
+<td>6 + (x &amp; 0xFFFF)</td>
+</tr>
+<tr>
+<td>leaq (%rax, %rcx), %rdx</td>
+<td>x + y</td>
+</tr>
+<tr>
+<td>leaq (%rax, %rcx, 4), %rdx</td>
+<td>x + y * 4</td>
+</tr>
+<tr>
+<td><del>leaq 7(%rax, %rax, 8), %rdx</del></td>
+<td><del>8 + x * 5</del> 7 + 9x</td>
+</tr>
+<tr>
+<td>leaq 0xA (, %rcx, 4), %rdx</td>
+<td><del>0xA + (y * 4)</del> 10 + 4y</td>
+</tr>
+<tr>
+<td>leaq 9(%rax, %rcx, 2), %rdx</td>
+<td>9 + (x + y * 2)</td>
+</tr>
+</tbody></table>
+<h3 id="练习题-3-7"><a href="#练习题-3-7" class="headerlink" title="练习题 3.7"></a>练习题 3.7</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.7.png" srcset="/img/loading.gif" lazyload alt="3.7"></p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C"><span class="hljs-type">long</span> <span class="hljs-title function_">scale2</span><span class="hljs-params">(<span class="hljs-type">long</span> x, <span class="hljs-type">long</span> y, <span class="hljs-type">long</span> z)</span> &#123;<br>    <span class="hljs-type">long</span> t = <span class="hljs-number">5</span> * x + y * <span class="hljs-number">2</span> + <span class="hljs-number">8</span> * z;<br>    <span class="hljs-keyword">return</span> t;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="练习题-3-8"><a href="#练习题-3-8" class="headerlink" title="练习题 3.8"></a>练习题 3.8</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.8.png" srcset="/img/loading.gif" lazyload alt="3.8"></p>
+<p>答：</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>目的</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>addq %rcx, (%rax)</td>
+<td>0x100</td>
+<td>0x100</td>
+</tr>
+<tr>
+<td>subq %rdx, 8(rax)</td>
+<td>0x108</td>
+<td>0xA8</td>
+</tr>
+<tr>
+<td>imulq $16, (%rax, %rdx, 8)</td>
+<td>0x118</td>
+<td><del>0x176</del> 0x110</td>
+</tr>
+<tr>
+<td>incq 16（%rax)</td>
+<td>0x100</td>
+<td><del>0x100</del> 0x14</td>
+</tr>
+<tr>
+<td>decq %rcx</td>
+<td>%rcx</td>
+<td>0x0</td>
+</tr>
+<tr>
+<td>subq %rdx, %rax</td>
+<td>%rax</td>
+<td>0xFD</td>
+</tr>
+</tbody></table>
+<h3 id="练习题3-9"><a href="#练习题3-9" class="headerlink" title="练习题3.9"></a>练习题3.9</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.9.png" srcset="/img/loading.gif" lazyload alt="3.9"></p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">sal	<span class="hljs-number">4</span> %rax <br>sarl %ecx %rax<br></code></pre></div></td></tr></table></figure>
+
+<p>参考答案：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">salq $4, %rax<br>sarq %cl, %rax<br></code></pre></div></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="练习题3-10"><a href="#练习题3-10" class="headerlink" title="练习题3.10"></a>练习题3.10</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.10.png" srcset="/img/loading.gif" lazyload alt="3.10"></p>
+<p>答：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C"><span class="hljs-type">long</span> <span class="hljs-title function_">arith2</span><span class="hljs-params">(<span class="hljs-type">long</span> x, <span class="hljs-type">long</span> y, <span class="hljs-type">long</span> z)</span> &#123;<br>    <span class="hljs-type">long</span> t1 = x | y;<br>    <span class="hljs-type">long</span> t2 = t1 &gt;&gt; <span class="hljs-number">3</span>;<br>    <span class="hljs-type">long</span> t3 = ~t2;<br>    <span class="hljs-type">long</span> t4 = z - t3;<br>    <span class="hljs-keyword">return</span> t4;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+
+
+
+
+<h3 id="练习题-3-11"><a href="#练习题-3-11" class="headerlink" title="练习题 3.11"></a>练习题 3.11</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.11.png" srcset="/img/loading.gif" lazyload alt="3.11"></p>
+<p>答：</p>
+<p>A: 寄存器%rdx值置零</p>
+<p>B:	subq %rdx %rdx 或者 movq $0 %rdx</p>
+<p>C: </p>
+<h3 id="特殊的运算操作"><a href="#特殊的运算操作" class="headerlink" title="特殊的运算操作"></a>特殊的运算操作</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.5.3.png" srcset="/img/loading.gif" lazyload alt="3.5.3"></p>
+<h3 id="练习题-3-12"><a href="#练习题-3-12" class="headerlink" title="练习题 3.12"></a>练习题 3.12</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.12.png" srcset="/img/loading.gif" lazyload alt="3.12"></p>
+<p>答：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">remdiv:<br>	movq %rdx, %r8<br>    movq %rdi, %rax<br>    movq $<span class="hljs-number">0</span>, %rdx<br>    idivq %rsi<br>    movq %rax, (%r8)<br>    movq %rdx, (%rcx)<br>    ret<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="条件码"><a href="#条件码" class="headerlink" title="条件码"></a>条件码</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.6.1.png" srcset="/img/loading.gif" lazyload alt="3.6.1"></p>
+<h3 id="比较和测试指令"><a href="#比较和测试指令" class="headerlink" title="比较和测试指令"></a>比较和测试指令</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.5.2.png" srcset="/img/loading.gif" lazyload alt="3.5.2"></p>
+<h3 id="set-指令"><a href="#set-指令" class="headerlink" title="set 指令"></a>set 指令</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.6.2.png" srcset="/img/loading.gif" lazyload alt="3.6.2"></p>
+<h3 id="练习题-3-13"><a href="#练习题-3-13" class="headerlink" title="练习题 3.13"></a>练习题 3.13</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.13.png" srcset="/img/loading.gif" lazyload alt="3.13"></p>
+<p>答：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp">A:  <br><span class="hljs-type">int</span> &lt; <span class="hljs-type">int</span><br><br>B:<br><span class="hljs-type">short</span> &gt;= <span class="hljs-type">short</span><br><br>C:<br><span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> &lt;= <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span><br><br>D:<br><span class="hljs-type">long</span> != <span class="hljs-type">long</span>\<span class="hljs-type">unsigned</span> <span class="hljs-type">long</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="练习题-3-14"><a href="#练习题-3-14" class="headerlink" title="练习题 3.14"></a>练习题 3.14</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.14.png" srcset="/img/loading.gif" lazyload alt="3.14"></p>
+<p>答：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp">A:  <br><span class="hljs-type">long</span> &gt;=<br><br>B:<br><span class="hljs-type">short</span>\<span class="hljs-type">unsigned</span> <span class="hljs-type">short</span>  ==<br><br>C:<br><span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> &gt;<br><br>D:<br><span class="hljs-type">int</span>\<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> !=<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="jump-指令"><a href="#jump-指令" class="headerlink" title="jump 指令"></a>jump 指令</h3><h3 id="练习题-3-15"><a href="#练习题-3-15" class="headerlink" title="练习题 3.15"></a>练习题 3.15</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.15.png" srcset="/img/loading.gif" lazyload alt="3.15"></p>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">A</span>:<span class="hljs-number">4003</span>fc + <span class="hljs-number">0</span>x2 = <span class="hljs-number">4003</span>fe<br><span class="hljs-attribute">B</span>:<span class="hljs-number">400431</span> + <span class="hljs-number">0</span>xf4(-<span class="hljs-number">12</span>) = <span class="hljs-number">400425</span><br><span class="hljs-attribute">C</span>:<span class="hljs-number">400543</span> \ <span class="hljs-number">400545</span><br><span class="hljs-attribute">D</span>:<span class="hljs-number">4005</span>ed + <span class="hljs-number">0</span>xffffff73(-<span class="hljs-number">141</span>) = <span class="hljs-number">400560</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="练习题-3-16"><a href="#练习题-3-16" class="headerlink" title="练习题 3.16"></a>练习题 3.16</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.16.png" srcset="/img/loading.gif" lazyload alt="3.16"></p>
+<p>答：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">A:<br><span class="hljs-type">void</span> <span class="hljs-title function_">cond</span><span class="hljs-params">(<span class="hljs-type">long</span> a, <span class="hljs-type">long</span> *p)</span> &#123;<br>    <span class="hljs-keyword">if</span> (p == <span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">goto</span> done;<br>    <span class="hljs-keyword">if</span> (*p &gt;= a) &#123;<br>        <span class="hljs-keyword">goto</span> done;<br>    &#125;<br>    *p = a;<br>    done;<br>&#125;<br>B:汇编一次只能执行一条指令， 两条比较指令包含两个分支<br><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="练习题-3-17"><a href="#练习题-3-17" class="headerlink" title="练习题 3.17"></a>练习题 3.17</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.17.png" srcset="/img/loading.gif" lazyload alt="3.17"></p>
+<p>答：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C"><span class="hljs-type">long</span> <span class="hljs-title function_">gotodiff_se</span><span class="hljs-params">(<span class="hljs-type">long</span> x, <span class="hljs-type">long</span> y)</span> &#123;<br>    <span class="hljs-type">long</span> result;<br>    <span class="hljs-keyword">if</span> (x &lt; y) &#123;<br>        <span class="hljs-keyword">goto</span> x_lt_y<br>    &#125;<br>    ge_cnt++;<br>    result = x - y;<br>    <span class="hljs-keyword">return</span> result;<br>x_lt_y:<br>	lt_cnt++;<br>    result = y - x;<br>    <span class="hljs-keyword">return</span> resultl;<br>    	<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.17.B.png" srcset="/img/loading.gif" lazyload alt="3.17.B"></p>
+<h3 id="练习题-3-18"><a href="#练习题-3-18" class="headerlink" title="练习题 3.18"></a>练习题 3.18</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.18.png" srcset="/img/loading.gif" lazyload alt="3.18"></p>
+<blockquote>
+<p>com s1, s2 	&#x2F;&#x2F; s2 - s1</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C"><span class="hljs-type">long</span> <span class="hljs-title function_">test</span> <span class="hljs-params">(<span class="hljs-type">long</span> x, <span class="hljs-type">long</span> y, <span class="hljs-type">long</span> z)</span> &#123;<br>    <span class="hljs-type">long</span> val = x + y + z;<br>    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">-3</span>) &#123;<br>        <span class="hljs-keyword">if</span> (y &lt; z)<br>            val = x * y;<br>        <span class="hljs-keyword">else</span><br>            val = y * z;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (x &gt; <span class="hljs-number">2</span>)<br>        val = x * z;<br>    <span class="hljs-keyword">return</span> val;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="练习题-3-19"><a href="#练习题-3-19" class="headerlink" title="练习题 3.19"></a>练习题 3.19</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.19.png" srcset="/img/loading.gif" lazyload alt="3.19"></p>
+<figure class="highlight dts"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs dts"><span class="hljs-comment">//不懂	</span><br><span class="hljs-symbol">A:</span> T = <span class="hljs-number">2</span> * (<span class="hljs-number">31</span> - <span class="hljs-number">16</span>) = <span class="hljs-number">30</span><br><span class="hljs-symbol">B:</span> <span class="hljs-number">16</span> + <span class="hljs-number">30</span> = <span class="hljs-number">47</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="条件传送指令"><a href="#条件传送指令" class="headerlink" title="条件传送指令"></a>条件传送指令</h3>
+
+
+
+<h3 id="练习题-3-20"><a href="#练习题-3-20" class="headerlink" title="练习题 3.20"></a>练习题 3.20</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.20.png" srcset="/img/loading.gif" lazyload alt="3.20"></p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">A: x / <span class="hljs-number">8</span>, 如果x是负数， 必须先加上偏置数<span class="hljs-number">7</span><br>B:<br><span class="hljs-comment">//long arith(long x):</span><br><span class="hljs-comment">//x in %rdi</span><br>arith:<br>	leaq <span class="hljs-number">7</span>(%rdi), %rax	<span class="hljs-comment">// temp = 7 + x</span><br>    testq %rdi, %rdi	<span class="hljs-comment">// x &amp; x</span><br>    cmovns %rdi, %rax	<span class="hljs-comment">// 如果 %rdi &gt; 0, %rax = %rdi</span><br>    sarq $<span class="hljs-number">3</span>, %rax	<span class="hljs-comment">// %rax &gt;&gt; 3;</span><br>    ret<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="练习题-3-21"><a href="#练习题-3-21" class="headerlink" title="练习题 3.21"></a>练习题 3.21</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.21.png" srcset="/img/loading.gif" lazyload alt="3.21"></p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C"><span class="hljs-type">long</span> <span class="hljs-title function_">test</span><span class="hljs-params">(<span class="hljs-type">long</span> x, <span class="hljs-type">long</span> y, <span class="hljs-type">long</span> z)</span> &#123;<br>    <span class="hljs-type">long</span> val = <span class="hljs-number">8</span> * x;<br>    <span class="hljs-keyword">if</span> (y &gt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">if</span> (x &lt; y) <br>            val = y - x;<br>        <span class="hljs-keyword">else</span> <br>            val = x + y;<br>        <br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (y &lt;= <span class="hljs-number">-2</span>)&#123;<br>        val = x + y;<br>    &#125;<br>    <span class="hljs-keyword">return</span> val;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="练习题-3-22"><a href="#练习题-3-22" class="headerlink" title="练习题 3.22"></a>练习题 3.22</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.22.png" srcset="/img/loading.gif" lazyload alt="3.22"></p>
+<figure class="highlight avrasm"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs avrasm"><span class="hljs-symbol">A:</span><br><span class="hljs-symbol">B:</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="练习题-3-23"><a href="#练习题-3-23" class="headerlink" title="练习题 3.23"></a>练习题 3.23</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.23.png" srcset="/img/loading.gif" lazyload alt="3.23"></p>
+<figure class="highlight mel"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mel">A.<br>x : %rax<br>y : %rcx<br>n : %rdx<br>B.<br>答；编译器认为指针p总是指向x，因此表达式(*p) ++就能实现x+<span class="hljs-number">1</span>。通过第<span class="hljs-number">7</span>行的leap指令， 把这个加一和加y组合起来。<br>C.<br><span class="hljs-comment">// long dw_loop(long x)</span><br><span class="hljs-comment">// x initially in %rdi</span><br>dw_loop:<br>	movq %rdi, %rax		<span class="hljs-comment">//%rax = x</span><br>	movq %rdi, %rcx		<span class="hljs-comment">//%rcx = x</span><br>	imulq %rdi, %rcx	<span class="hljs-comment">//y = x * x</span><br>	leaq (%rdi, %rdi)	<span class="hljs-comment">//n = x + x</span><br>.L2:					<span class="hljs-comment">//loop</span><br>	leaq <span class="hljs-number">1</span>(%rcx, %rax), %rax	<span class="hljs-comment">//x += y + 1;</span><br>	subq $1, %rdx		<span class="hljs-comment">//n-=1</span><br>	testq %rdx, %rdx	<span class="hljs-comment">//Test n</span><br>	jg .L2				<span class="hljs-comment">//if n &gt; 0, goto loop;</span><br>	rep;ret				<span class="hljs-comment">//return %rax;</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="练习题-3-25"><a href="#练习题-3-25" class="headerlink" title="练习题 3.25"></a>练习题 3.25</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.25.png" srcset="/img/loading.gif" lazyload alt="3.25"></p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C"><span class="hljs-type">long</span> <span class="hljs-title function_">loop_while2</span><span class="hljs-params">(<span class="hljs-type">long</span> a, <span class="hljs-type">long</span> b)</span> &#123;<br>    <span class="hljs-type">long</span> result = b;<br>    <span class="hljs-keyword">while</span> (b &gt; <span class="hljs-number">0</span>) &#123;<br>        result = result * a;<br>        b = b - a;<br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.26.png" srcset="/img/loading.gif" lazyload alt="3.26"></p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">A; 方法：跳转到中间 (jump to middle)<br>B;<br><span class="hljs-type">long</span> <span class="hljs-title function_">fun_a</span> <span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> x)</span> &#123;<br>    <span class="hljs-type">long</span> val = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (x) &#123;<br>        val ^= x;<br>        x &gt;&gt;= <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> val &amp; <span class="hljs-number">0x1</span>;<br>&#125;<br>C;<br>不懂<br>参考答案：<br>    这个代码计算参数x的奇偶性。 也就是， 如果x中有奇数个<span class="hljs-number">1</span>，就返回<span class="hljs-number">1</span>， 否则返回<span class="hljs-number">0</span>；<br><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="练习题-3-27"><a href="#练习题-3-27" class="headerlink" title="练习题 3.27"></a>练习题 3.27</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.27.png" srcset="/img/loading.gif" lazyload alt="3.27"></p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C"><span class="hljs-type">long</span> <span class="hljs-title function_">fact_for</span><span class="hljs-params">(<span class="hljs-type">long</span> n)</span> &#123;<br>    <span class="hljs-type">long</span> i;<br>    <span class="hljs-type">long</span> result = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">2</span>; i &lt;= n; i ++)<br>        result *= i;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br>A;<br>改<span class="hljs-keyword">while</span>;<br><span class="hljs-type">long</span> <span class="hljs-title function_">fact_for</span> <span class="hljs-params">(<span class="hljs-type">long</span> n)</span> &#123;<br>    <span class="hljs-type">long</span> i = <span class="hljs-number">2</span>;<br>    <span class="hljs-type">long</span> result = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (i &lt;= n)<br>        result *= i++;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br>guarded_do 变换;<br><span class="hljs-type">long</span> <span class="hljs-title function_">fact_for_gd_goto</span><span class="hljs-params">(<span class="hljs-type">long</span> n)</span> &#123;<br>    <span class="hljs-type">long</span> i = <span class="hljs-number">2</span>;<br>    <span class="hljs-type">long</span> result = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">1</span>)<br>       	<span class="hljs-keyword">goto</span> done;<br>    loop:<br>    	result *= i;<br>    	i ++;<br>    	<span class="hljs-keyword">if</span> (i &lt;= n) <br>            <span class="hljs-keyword">goto</span> loop;<br>    done:<br>    	<span class="hljs-keyword">return</span> result;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="练习题-3-28"><a href="#练习题-3-28" class="headerlink" title="练习题 3.28"></a>练习题 3.28</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.28.png" srcset="/img/loading.gif" lazyload alt="3.28"></p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">A;<br><span class="hljs-type">long</span> <span class="hljs-title function_">fun_b</span> <span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> x)</span> &#123;<br>    <span class="hljs-type">long</span> val = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">long</span> i;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">64</span>; i != <span class="hljs-number">0</span>; i --) &#123;<br>        val = (val &lt;&lt; <span class="hljs-number">1</span>) | (<span class="hljs-number">0x1</span> &amp; x);<br>        x &gt;&gt;= <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> val;<br>&#125;<br>B; 这段代码是从guarded_do变换生成的。编译器发现i初始化成<span class="hljs-number">64</span>，所以一定满足不等于<span class="hljs-number">0</span>，因此初始测试是没必要的。<br>C;<br>翻转x的二进制位<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="练习题-3-29"><a href="#练习题-3-29" class="headerlink" title="练习题 3.29"></a>练习题 3.29</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.29.png" srcset="/img/loading.gif" lazyload alt="3.29"></p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">A: <span class="hljs-keyword">for</span>翻译到<span class="hljs-keyword">while</span>循环;<br><span class="hljs-type">long</span> sum = <span class="hljs-number">0</span>;<br><span class="hljs-type">long</span> i = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">10</span>) &#123;<br>    <span class="hljs-keyword">if</span>(i &amp; <span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">continue</span>;<br>    sum += i;<br>    i ++;<br>&#125;<br>当<span class="hljs-keyword">continue</span>时， 会跳过iupdate部分代码， 导致死循环;<br><span class="hljs-type">long</span> sum = <span class="hljs-number">0</span>;<br><span class="hljs-type">long</span> i = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span> ( i &lt; <span class="hljs-number">10</span> ) &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-number">1</span> &amp; <span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">goto</span> update;<br>    sum += <span class="hljs-number">1</span>;<br>update:<br>    i ++;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="练习题-3-30"><a href="#练习题-3-30" class="headerlink" title="练习题  3.30"></a>练习题  3.30</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.30.png" srcset="/img/loading.gif" lazyload alt="3.30"></p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">A; <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>;<br>B; <span class="hljs-number">2</span>, <span class="hljs-number">3</span>;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="练习题-3-31-我不李姐"><a href="#练习题-3-31-我不李姐" class="headerlink" title="练习题 3.31	(我不李姐)"></a>练习题 3.31	(我不李姐)</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.31.png" srcset="/img/loading.gif" lazyload alt="3.31"></p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C"><span class="hljs-type">void</span> <span class="hljs-title function_">switcher</span><span class="hljs-params">(<span class="hljs-type">long</span> a, <span class="hljs-type">long</span> b, <span class="hljs-type">long</span> c, <span class="hljs-type">long</span> *dest)</span> &#123;<br>    <span class="hljs-type">long</span> val;<br>    swtich(a) &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">5</span>:<br>      	c = b ^ <span class="hljs-number">15</span>;  <br>        <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:<br>        val = c + <span class="hljs-number">112</span>;<br>        <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">7</span>:<br>        val = (b + c) &lt;&lt; <span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:<br>        val = a;<br>        <span class="hljs-keyword">default</span>:<br>        val = b;<br>    &#125;<br>    *dest = val;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="练习题-3-32"><a href="#练习题-3-32" class="headerlink" title="练习题 3.32"></a>练习题 3.32</h3><p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/3.32.png" srcset="/img/loading.gif" lazyload alt="3.32"></p>
+<table>
+<thead>
+<tr>
+<th align="center">标号</th>
+<th align="center">PC</th>
+<th align="center">指令</th>
+<th align="center">%rdi</th>
+<th align="center">%rsi</th>
+<th align="center">%rax</th>
+<th align="center">%rsp</th>
+<th align="center">* %rsp</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">M1</td>
+<td align="center">0x400560</td>
+<td align="center">callq</td>
+<td align="center">10</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">0x7fffffffe820</td>
+<td align="center">-</td>
+<td align="center">调用first(10)</td>
+</tr>
+<tr>
+<td align="center">F1</td>
+<td align="center">0x400548</td>
+<td align="center">lea</td>
+<td align="center">10</td>
+<td align="center">11</td>
+<td align="center">-</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">y&#x3D;x+1</td>
+</tr>
+<tr>
+<td align="center">F2</td>
+<td align="center">0x40054c</td>
+<td align="center">sub</td>
+<td align="center">9</td>
+<td align="center">11</td>
+<td align="center">-</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">x -&#x3D; 1</td>
+</tr>
+<tr>
+<td align="center">F3</td>
+<td align="center">0x400550</td>
+<td align="center">callq</td>
+<td align="center">9</td>
+<td align="center">11</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">调用last</td>
+</tr>
+<tr>
+<td align="center">L1</td>
+<td align="center">0x400540</td>
+<td align="center">mov</td>
+<td align="center">9</td>
+<td align="center">11</td>
+<td align="center">9</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">%rax &#x3D; u</td>
+</tr>
+<tr>
+<td align="center">L2</td>
+<td align="center">0x400543</td>
+<td align="center">imul</td>
+<td align="center">9</td>
+<td align="center">11</td>
+<td align="center">99</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">%rax *&#x3D; v</td>
+</tr>
+<tr>
+<td align="center">L3</td>
+<td align="center">0x400547</td>
+<td align="center">retq</td>
+<td align="center">9</td>
+<td align="center">11</td>
+<td align="center">99</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">从last返回 99</td>
+</tr>
+<tr>
+<td align="center">F4</td>
+<td align="center">0x400555</td>
+<td align="center">repz retq</td>
+<td align="center">9</td>
+<td align="center">11</td>
+<td align="center">99</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">从first返回99</td>
+</tr>
+<tr>
+<td align="center">M2</td>
+<td align="center">0x400565</td>
+<td align="center">mov</td>
+<td align="center">9</td>
+<td align="center">11</td>
+<td align="center">99</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">继续执行想··</td>
+</tr>
+</tbody></table>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">深入理解计算机操作系统</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/15/%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9ALCD%E6%98%BE%E7%A4%BA/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">实验六：LCD显示</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/10/CSAPP%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%AE%B6%E5%BA%AD%E4%BD%9C%E4%B8%9A2-63/">
+                        <span class="hidden-mobile">CSAPP第二章家庭作业2.63</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

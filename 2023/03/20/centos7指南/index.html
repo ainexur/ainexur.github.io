@@ -1,0 +1,517 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ainexur">
+  <meta name="keywords" content="博客">
+  
+    <meta name="description" content="常用命令和操作用户操作1sudo adduser k  修改密码1passwd k  开启sudo权限 将root用户的sudoers增加写权限， 使得下一步可以修改该文件 1chmod -v u+w &#x2F;etc&#x2F;sudoers	#root用户增加写权限， 使得可修改该文件  找到该位置root	ALL&#x3D;(ALL)	ALL， 并在接下来的一行新增 1k	ALL&#x3D;(ALL)	ALL  去除root用户">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos7指南">
+<meta property="og:url" content="https://ainexur.github.io/2023/03/20/centos7%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="寻人启事">
+<meta property="og:description" content="常用命令和操作用户操作1sudo adduser k  修改密码1passwd k  开启sudo权限 将root用户的sudoers增加写权限， 使得下一步可以修改该文件 1chmod -v u+w &#x2F;etc&#x2F;sudoers	#root用户增加写权限， 使得可修改该文件  找到该位置root	ALL&#x3D;(ALL)	ALL， 并在接下来的一行新增 1k	ALL&#x3D;(ALL)	ALL  去除root用户">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-20T15:01:18.000Z">
+<meta property="article:modified_time" content="2023-05-14T05:50:29.804Z">
+<meta property="article:author" content="ainexur">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="centos7">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>centos7指南 - 寻人启事</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/atom-one-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Nexur</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/background/2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="centos7指南">
+              
+                centos7指南
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-03-20 23:01" pubdate>
+        2023年3月20日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      35 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">centos7指南</h1>
+            
+            <div class="markdown-body">
+              <h2 id="常用命令和操作"><a href="#常用命令和操作" class="headerlink" title="常用命令和操作"></a>常用命令和操作</h2><h3 id="用户操作"><a href="#用户操作" class="headerlink" title="用户操作"></a>用户操作</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo adduser k<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h4><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">passwd k<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="开启sudo权限"><a href="#开启sudo权限" class="headerlink" title="开启sudo权限"></a>开启sudo权限</h4><ol>
+<li><p>将root用户的sudoers增加写权限， 使得下一步可以修改该文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">chmod -v u+w /etc/sudoers	#root用户增加写权限， 使得可修改该文件<br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p>找到该位置<code>root	ALL=(ALL)	ALL</code>， 并在接下来的一行新增</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">k	ALL=(ALL)	ALL<br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p>去除root用户的写权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">chmod -v u+w /etc/sudoers	#root用户增加写权限， 使得可修改该文件<br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<h3 id="CentOS7允许root-x2F-开启密码登录"><a href="#CentOS7允许root-x2F-开启密码登录" class="headerlink" title="CentOS7允许root&#x2F;开启密码登录"></a>CentOS7允许root&#x2F;开启密码登录</h3><p>1、 修改sshd配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">vim /etc/ssh/sshd\_config<br></code></pre></div></td></tr></table></figure>
+
+<p>将如下两项改为yes， 如果是注释#状态就取消注释</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">PasswordAuthentication yes	#允许使用密码登录<br>PermitRootLogin yes	#允许root认证登录<br></code></pre></div></td></tr></table></figure>
+
+<p>2、重启sshd</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">systemctl restart sshd<br></code></pre></div></td></tr></table></figure>
+
+<p>3、设置免密登录(可选)</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">ssh\-kengen ssh\-copy-id -i .ssh/id\_rsa.pub  root@172.0.0.3<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="查看包名和安装位置"><a href="#查看包名和安装位置" class="headerlink" title="查看包名和安装位置"></a>查看包名和安装位置</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">先查看一波软件包名</span><br>rpm -qa|grep mysql<br><span class="hljs-meta prompt_">#</span><span class="language-bash">再使用rpm -ql 包名查看目录，例如：</span><br>rpm -ql mysql80-community-release-el8-2.noarch<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="查看所有已安装的包"><a href="#查看所有已安装的包" class="headerlink" title="查看所有已安装的包"></a>查看所有已安装的包</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">yum list installed <br></code></pre></div></td></tr></table></figure>
+
+<h3 id="更新具体的yum包"><a href="#更新具体的yum包" class="headerlink" title="更新具体的yum包"></a>更新具体的yum包</h3><figure class="highlight ruby"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ruby">yum update mysql<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><h3 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h3><p>由于mysql被oracle收购，后面可能面临闭源问题，所以用mariadb（mysql的另一个分支代替）</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo yum remove mysql	#卸载残留<br>yum -y install mariadb-server mariadb	#安装<br>service mariadb start	#启动<br></code></pre></div></td></tr></table></figure>
+
+<p>设置开机启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">sudo systemctl enable mariadb	#设置开机启动<br>sudo systemctl is-enabled maradb	#查看是否开机启动<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="安装vim"><a href="#安装vim" class="headerlink" title="安装vim"></a>安装vim</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">apt-get update<br>apt-get install vim<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="时间同步"><a href="#时间同步" class="headerlink" title="时间同步"></a>时间同步</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">ntp</span><br>sudo yum install ntp<br><span class="hljs-meta prompt_">#</span><span class="language-bash">设置时区</span><br>sudo timedatectl set-timezone Asia/Shanghai<br><span class="hljs-meta prompt_"># </span><span class="language-bash">/etc/npt.conf新增下面配置</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">new(新增)</span><br>server ntp1.aliyun.com prefer<br>server ntp2.aliyun.com<br><span class="hljs-meta prompt_">#</span><span class="language-bash">手动同步</span><br>sudo ntpdate ntp1.aliyun.com<br><span class="hljs-meta prompt_">#</span><span class="language-bash">查看时间</span><br>date<br><span class="hljs-meta prompt_">#</span><span class="language-bash">启动ntp服务</span><br>sudo service ntpd start<br><span class="hljs-meta prompt_">#</span><span class="language-bash">开机启动</span><br>sudo chkconfig ntpd on<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="docker安装配置"><a href="#docker安装配置" class="headerlink" title="docker安装配置"></a>docker安装配置</h2><h3 id="centos7安装docker"><a href="#centos7安装docker" class="headerlink" title="centos7安装docker"></a>centos7安装docker</h3><p>Docker 要求 CentOS 系统的内核版本高于 3.10 ，查看本页面的前提条件来验证你的CentOS 版本是否支持 Docker 。</p>
+<blockquote>
+<p>基本命令</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">基本命令</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">查看当前服务器内核版本</span><br>uname -r<br><span class="hljs-meta prompt_">#</span><span class="language-bash">安装 Docker</span><br>yum -y install docker<br><span class="hljs-meta prompt_">#</span><span class="language-bash">启动 Docker 后台服务</span><br>service docker start<br><span class="hljs-meta prompt_">#</span><span class="language-bash">测试运行 hello-world,由于本地没有hello-world这个镜像，所以会下载一个hello-world的镜像，并在容器内运行。</span><br>docker run hello-world<br><span class="hljs-meta prompt_">#</span><span class="language-bash">启动docker</span><br>systemctl start docker.service<br><span class="hljs-meta prompt_">#</span><span class="language-bash">设置docker开机自启动</span><br>systemctl enable docker.service<br><span class="hljs-meta prompt_">#</span><span class="language-bash">重启docker</span><br>systemctl restart docker.service<br><span class="hljs-meta prompt_">#</span><span class="language-bash">查看docker版本</span><br>docker -v<br><span class="hljs-meta prompt_">#</span><span class="language-bash">概要信息</span><br>docker info<br><span class="hljs-meta prompt_">#</span><span class="language-bash">拉取hello-world测验</span><br>docker pull hello-world<br><span class="hljs-meta prompt_">#</span><span class="language-bash">镜像查看</span><br>docker images<br><span class="hljs-meta prompt_">#</span><span class="language-bash">查看容器列表：</span><br>docker ps -a<br></code></pre></div></td></tr></table></figure>
+
+<p>CentOS7安装dokcer：<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/centos/#install-using-the-repository">https://docs.docker.com/engine/install/centos/#install-using-the-repository</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo yum install -y yum-utils<br>sudo yum-config-manager \<br>    --add-repo \<br>    https://download.docker.com/linux/centos/docker-ce.repo<br>sudo yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin<br>yum list docker-ce --showduplicates | sort -r<br>sudo yum install docker-ce docker-ce-cli<br><span class="hljs-meta prompt_">#</span><span class="language-bash">复制回车，中途会提示好几个按y</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="docker镜像加速"><a href="#docker镜像加速" class="headerlink" title="docker镜像加速"></a>docker镜像加速</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo mkdir -p /etc/docker<br>sudo tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27;<br>&#123;<br>&quot;registry-mirrors&quot;: [&quot;https://mirror.ccs.tencentyun.com&quot;]<br>&#125;<br>EOF<br>sudo systemctl daemon-reload<br>sudo systemctl restart docker<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="docker下安装mysql"><a href="#docker下安装mysql" class="headerlink" title="docker下安装mysql"></a>docker下安装mysql</h3><p>docker hub：<a target="_blank" rel="noopener" href="https://hub.docker.com/search?q=mysql">https://hub.docker.com/search?q=mysql</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">查看镜像列表</span><br>sudo docker images<br><span class="hljs-meta prompt_">#</span><span class="language-bash">下载mysql容器镜像,默认最新版</span><br>sudo docker pull mysql<br><span class="hljs-meta prompt_">#</span><span class="language-bash">创建容器并启动</span><br>sudo docker run -itd --name mysql \<br>-v /mydata/mysql/data:/var/lib/mysql \<br>-v /mydata/mysql/conf:/etc/mysql \<br>-v /mydata/mysql/log:/var/log/mysql \<br>-v /mydata/mysql/mysql-files:/var/lib/mysql-files/ \<br>-p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql<br><span class="hljs-meta prompt_">#</span><span class="language-bash">随docker启动</span><br>docker update mysql --restart=always<br></code></pre></div></td></tr></table></figure>
+
+<p>如果要指定版本例如5.7</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo docker pull mysql:5.7<br>docker run -itd --name mysql:5.7 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql<br></code></pre></div></td></tr></table></figure>
+
+<p>如果mysql切换了版本后，需要将挂载的文件删除重新生成，原因：不一致的文件会无法启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">创建容器但无法启动时需要执行如下：</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">CentOS7中的安全模块selinux把权限禁掉了，无法使用-v命令进行挂载</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">添加selinux规则，将要挂载的目录添加到白名单</span><br>sudo chcon -Rt svirt_sandbox_file_t /mydata/mysql/log<br>sudo chcon -Rt svirt_sandbox_file_t /mydata/mysql/data<br>sudo chcon -Rt svirt_sandbox_file_t /mydata/mysql/conf<br><span class="hljs-meta prompt_">#</span><span class="language-bash">原文链接：https://blog.csdn.net/qq_41999034/article/details/106162366</span><br></code></pre></div></td></tr></table></figure>
+
+<p>进入mysql bash</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">docker exec -it mysql /bin/bash<br></code></pre></div></td></tr></table></figure>
+
+<p>设置字符编码</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">vim /mydata/mysql/conf/my.cnf<br></code></pre></div></td></tr></table></figure>
+
+<p>将以下配置项复制</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">[client]<br>default-character-set=utf8<br><br>[mysql]<br>default-character-set=utf8<br><br>[mysqld]<br>init_connect=&#x27;SET collation_connection = utf8_unicode_ci&#x27;<br>init_connect=&#x27;SET NAMES utf8&#x27;<br>character-set-server=utf8<br>collation-server=utf8_unicode_ci<br>skip-character-set-client-handshake<br>skip-name-resolve<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="docker下安装redis"><a href="#docker下安装redis" class="headerlink" title="docker下安装redis"></a>docker下安装redis</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo docker pull redis<br>sudo mkdir -p /mydata/redis/conf<br>sudo touch /mydata/redis/conf/redis.conf<br>sudo docker run -p 6379:6379 --name redis -v /mydata/redis/data:/data \<br>-v /mydata/redis/conf/redis.conf:/etc/redis/redis.conf \<br>-d redis redis-server /etc/redis/redis.conf<br>sudo docker exec -it redis redis-cli<br><span class="hljs-meta prompt_">#</span><span class="language-bash">随docker容器启动</span><br>docker update redis --restart=always<br></code></pre></div></td></tr></table></figure>
+
+
+
+
+
+<h2 id="安装nps"><a href="#安装nps" class="headerlink" title="安装nps"></a>安装nps</h2><p>项目GitHub地址**<a target="_blank" rel="noopener" href="https://github.com/ehang-io/nps">nps</a>**</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ehang-io/nps/blob/master/README_zh.md">中文文档</a></p>
+<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">wget https://github.com/ehang-io/nps/releases/download/v0.26.10/linux_amd64_server.tar.gz<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">tar zxvf linux_amd64_server.tar.gz<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">./nps install<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">nps start<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h4><p>浏览器输入url</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">ip:8080<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h4><p>默认账号 admin</p>
+<p>密码 123</p>
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">查看日志</span><br>cat /var/log/nps.log<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="修改web密码"><a href="#修改web密码" class="headerlink" title="修改web密码"></a>修改web密码</h4><p>编辑<code>/etc/nps/conf/nps.conf</code>的</p>
+<table>
+<thead>
+<tr>
+<th>web_password</th>
+<th>web界面管理密码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>web_username</td>
+<td>web界面管理账号</td>
+</tr>
+</tbody></table>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/linux/">linux</a>
+                    
+                      <a class="hover-with-bg" href="/tags/centos7/">centos7</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/05/15/Spring%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Spring4实战</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/11/10/mac%E6%8C%87%E5%8D%97/">
+                        <span class="hidden-mobile">mac指南</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

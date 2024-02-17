@@ -16,12 +16,12 @@
   <meta name="author" content="ainexur">
   <meta name="keywords" content="博客">
   
-    <meta name="description" content="惯例：中文官方文档 1. Git是什么1.1 版本控制发展历程： 本地版本控制系统：大多数采用简单的数据库来记录文件的历次更新差异。   最流行的一种叫做RCS（工作原理：是在硬盘上保存补丁（文件修订前后的变化）集，通过应用所有的补丁，可以重新计算出各个版本的文件内容。           集中化的版本控制系统：本地版本控制中，遇到新的问题，即如何让不同系统上的开发者协同工作?集中化的版本控制系统">
+    <meta name="description" content="惯例：中文官方文档 1. Git是什么1.1 版本控制发展历程： 本地版本控制系统：大多数采用简单的数据库来记录文件的历次更新差异。   最流行的一种叫做RCS（工作原理：是在硬盘上保存补丁（文件修订前后的变化）集，通过应用所有的补丁，可以重新计算出各个版本的文件内容。  		  集中化的版本控制系统：本地版本控制中，遇到新的问题，即如何让不同系统上的开发者协同工作?集中化的版本控制系统（Cent">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git配置">
 <meta property="og:url" content="https://ainexur.github.io/2021/12/02/Git%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="寻人启事">
-<meta property="og:description" content="惯例：中文官方文档 1. Git是什么1.1 版本控制发展历程： 本地版本控制系统：大多数采用简单的数据库来记录文件的历次更新差异。   最流行的一种叫做RCS（工作原理：是在硬盘上保存补丁（文件修订前后的变化）集，通过应用所有的补丁，可以重新计算出各个版本的文件内容。           集中化的版本控制系统：本地版本控制中，遇到新的问题，即如何让不同系统上的开发者协同工作?集中化的版本控制系统">
+<meta property="og:description" content="惯例：中文官方文档 1. Git是什么1.1 版本控制发展历程： 本地版本控制系统：大多数采用简单的数据库来记录文件的历次更新差异。   最流行的一种叫做RCS（工作原理：是在硬盘上保存补丁（文件修订前后的变化）集，通过应用所有的补丁，可以重新计算出各个版本的文件内容。  		  集中化的版本控制系统：本地版本控制中，遇到新的问题，即如何让不同系统上的开发者协同工作?集中化的版本控制系统（Cent">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com//img/202112021512500.png">
 <meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com//img/202112020954998.png">
@@ -74,7 +74,8 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="寻人启事" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -225,7 +226,8 @@
 <blockquote>
 <p> 最流行的一种叫做<strong>RCS</strong>（工作原理：是在硬盘上保存补丁（文件修订前后的变化）集，通过应用所有的补丁，可以重新计算出各个版本的文件内容。</p>
 </blockquote>
-<img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com//img/202112021512500.png" srcset="/img/loading.gif" lazyload alt="image-20211202104805398" style="zoom:50%;" />        </li>
+<img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com//img/202112021512500.png" srcset="/img/loading.gif" lazyload alt="image-20211202104805398" style="zoom:50%;" />		
+</li>
 <li><p><strong>集中化的版本控制系统</strong>：本地版本控制中，遇到新的问题，即如何让不同系统上的开发者协同工作?集中化的版本控制系统（Centralized Version Control Systems，简称 CVCS）应运而生</p>
 <p>代表：CVS、SubVersion、Perforce</p>
 <p>特点：有一个单一的集中管理的服务器，保存所有文件的修订版本。客户端连接到这台服务器，取出最新的文件或提交更新。</p>
@@ -235,21 +237,21 @@
 </ol>
 <h1 id="2-初次运行前的配置"><a href="#2-初次运行前的配置" class="headerlink" title="2. 初次运行前的配置"></a>2. 初次运行前的配置</h1><p>git提供一个–config来管理所有配置</p>
 <h2 id="2-1-用户信息"><a href="#2-1-用户信息" class="headerlink" title="2.1 用户信息"></a>2.1 用户信息</h2><p>必要设置</p>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">设置用户信息</span><br>git config --global user.name &quot;nexur&quot; #名字<br>git config --global user.email 1186996418@qq.com	#邮箱<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">设置用户信息</span><br>git config --global user.name &quot;nexur&quot; #名字<br>git config --global user.email 1186996418@qq.com	#邮箱<br></code></pre></div></td></tr></table></figure>
 
 <h2 id="2-2-文本编辑器"><a href="#2-2-文本编辑器" class="headerlink" title="2.2 文本编辑器"></a>2.2 文本编辑器</h2><p>可选设置：修改<code>core.editor</code>项，可指定文本编辑器。</p>
 <p><strong>Linux:</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">Linux</span><br><span class="hljs-meta">#</span><span class="bash">Emacs</span><br>git config --global core.editor emacs<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">Linux</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">Emacs</span><br>git config --global core.editor emacs<br></code></pre></div></td></tr></table></figure>
 
 <p><strong>Windows</strong>：</p>
 <p>必须指定可执行文件的完整路径，例如<code>Sublime Text 3</code>安装路径在<code>&quot;D:\Program Files\Sublime Text 3\sublime_text.exe&quot;</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">Windows</span><br><span class="hljs-meta">#</span><span class="bash">Sublime Text 3</span><br>git config --global core.editor &quot;D:\Program Files\Sublime Text 3\sublime_text.exe&quot;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">Windows</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">Sublime Text 3</span><br>git config --global core.editor &quot;D:\Program Files\Sublime Text 3\sublime_text.exe&quot;<br></code></pre></div></td></tr></table></figure>
 
 
 
 <h2 id="2-3-检查配置信息"><a href="#2-3-检查配置信息" class="headerlink" title="2.3 检查配置信息"></a>2.3 检查配置信息</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">git config --list<br></code></pre></div></td></tr></table></figure>
 
-<img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com//img/202112020954998.png" srcset="/img/loading.gif" lazyload alt="image-20211202095425820" style="zoom:50%;" />    
+<img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com//img/202112020954998.png" srcset="/img/loading.gif" lazyload alt="image-20211202095425820" style="zoom:50%;" />	
 
 <blockquote>
 <p>可能会看到重复的变量名，因为 Git 会从不同的文件中读取同一个配置（例如：<code>/etc/gitconfig</code> 与 <code>~/.gitconfig</code>）。 这种情况下，Git 会使用它找到的每一个变量的最后一个配置。</p>

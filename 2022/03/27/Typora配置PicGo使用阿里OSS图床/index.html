@@ -16,12 +16,12 @@
   <meta name="author" content="ainexur">
   <meta name="keywords" content="博客">
   
-    <meta name="description" content="q 前言：之前使用Gitee搭建的Typora图床，25号博客的照片无法访问，查看gitee仓库发现：因外链封禁仓库。免费终归不是长久之道。解封仓库后拉到本地，遂决定使用其他图床。斟酌二三，选择阿里OSS对象存储服务。 OSS购买与相关配置购买OSS 登录阿里云OSS控制台（如果你是第一次使用，需要同意协议）  单击左侧资源包管理      点击购买资源包      进入购买页，选择你要购买的套餐">
+    <meta name="description" content="q 前言：之前使用Gitee搭建的Typora图床，25号博客的照片无法访问，查看gitee仓库发现：因外链封禁仓库。免费终归不是长久之道。解封仓库后拉到本地，遂决定使用其他图床。斟酌二三，选择阿里OSS对象存储服务。 OSS购买与相关配置购买OSS 登录阿里云OSS控制台（如果你是第一次使用，需要同意协议）  单击左侧资源包管理 	  点击购买资源包 	  进入购买页，选择你要购买的套餐。这里我">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Typora配置PicGo使用阿里OSS图床">
 <meta property="og:url" content="https://ainexur.github.io/2022/03/27/Typora%E9%85%8D%E7%BD%AEPicGo%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8COSS%E5%9B%BE%E5%BA%8A/index.html">
 <meta property="og:site_name" content="寻人启事">
-<meta property="og:description" content="q 前言：之前使用Gitee搭建的Typora图床，25号博客的照片无法访问，查看gitee仓库发现：因外链封禁仓库。免费终归不是长久之道。解封仓库后拉到本地，遂决定使用其他图床。斟酌二三，选择阿里OSS对象存储服务。 OSS购买与相关配置购买OSS 登录阿里云OSS控制台（如果你是第一次使用，需要同意协议）  单击左侧资源包管理      点击购买资源包      进入购买页，选择你要购买的套餐">
+<meta property="og:description" content="q 前言：之前使用Gitee搭建的Typora图床，25号博客的照片无法访问，查看gitee仓库发现：因外链封禁仓库。免费终归不是长久之道。解封仓库后拉到本地，遂决定使用其他图床。斟酌二三，选择阿里OSS对象存储服务。 OSS购买与相关配置购买OSS 登录阿里云OSS控制台（如果你是第一次使用，需要同意协议）  单击左侧资源包管理 	  点击购买资源包 	  进入购买页，选择你要购买的套餐。这里我">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20220328023248317.png">
 <meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20220328023337134.png">
@@ -90,7 +90,8 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="寻人启事" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -241,9 +242,11 @@
 <li><p>登录阿里云<a target="_blank" rel="noopener" href="https://oss.console.aliyun.com/overview">OSS控制台</a>（如果你是第一次使用，需要同意协议）</p>
 </li>
 <li><p>单击左侧资源包管理</p>
-<img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20220328023248317.png" srcset="/img/loading.gif" lazyload alt="image-20220328023248317" style="zoom:50%;" />    </li>
+<img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20220328023248317.png" srcset="/img/loading.gif" lazyload alt="image-20220328023248317" style="zoom:50%;" />	
+</li>
 <li><p>点击购买资源包</p>
-<img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20220328023337134.png" srcset="/img/loading.gif" lazyload alt="image-20220328023337134" style="zoom:50%;" />    </li>
+<img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20220328023337134.png" srcset="/img/loading.gif" lazyload alt="image-20220328023337134" style="zoom:50%;" />	
+</li>
 <li><p>进入购买页，选择你要购买的套餐。这里我选择最小的40G，用来存放图床的照片绰绰有余。年选一年，现在搞活动低不到一块</p>
 <img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20220328023428347.png" srcset="/img/loading.gif" lazyload alt="image-20220328023428347" style="zoom:80%;" /></li>
 </ol>
@@ -266,16 +269,17 @@
 <p>AccessKey相等于子账户，给它OSS权限，用来读写OSS</p>
 <ul>
 <li><p>鼠标停留右上角个人头像，出现面板。单击AccessKey管理</p>
-<img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20220328025215178.png" srcset="/img/loading.gif" lazyload alt="image-20220328025215178" style="zoom:50%;" />    </li>
+<img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20220328025215178.png" srcset="/img/loading.gif" lazyload alt="image-20220328025215178" style="zoom:50%;" />	
+</li>
 <li><p>跳转页安全提示，选择开始使用子用户AccessKey</p>
-<p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20220328025825379.png" srcset="/img/loading.gif" lazyload alt="image-20220328025825379">    </p>
+<p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20220328025825379.png" srcset="/img/loading.gif" lazyload alt="image-20220328025825379">	</p>
 </li>
 <li><p>跳转页选择创建用户</p>
 <p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20220328025919359.png" srcset="/img/loading.gif" lazyload alt="image-20220328025919359"></p>
 </li>
 <li><p>创建用户页，填写登录名称、显示名称，勾选OpenAPI访问，最后单击确定。（可能确定后会跳安全验证，验证即可）</p>
 <p><strong>重点</strong>：若开通 Open API 调用访问，请<strong>及时保存 AccessKey 信息</strong>，页面关闭后将无法再次获取信息。可以选择下载CSV文件，这样不怕忘记。</p>
-<p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20220328030055310.png" srcset="/img/loading.gif" lazyload alt="image-20220328030055310">    </p>
+<p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20220328030055310.png" srcset="/img/loading.gif" lazyload alt="image-20220328030055310">	</p>
 <p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20220328030335990.png" srcset="/img/loading.gif" lazyload alt="image-20220328030335990"></p>
 </li>
 <li><p>添加子用户OSS权限（新建的用户默认是没有权限的，这里添加OSS权限使得可以读写OSS对象存储）</p>

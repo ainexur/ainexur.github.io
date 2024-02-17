@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ainexur">
+  <meta name="keywords" content="博客">
+  
+    <meta name="description" content="01编译四步骤：预处理（gcc -E -o）、编译（gcc -s -c）、汇编（gcc -c）、链接（gcc -o） 02 操作系统实战-实现一个简单的内核：HelloOS1. 引导流程： PC机的BIOS（即引导程序）是烧写在主板的ROM芯片上，断电也能保存。   当PC机上电后执行的第一条指令就是BIOS固件中的指令，负责检测和初始化CPU、内存和平台； 然后加载引导设备中的第一个扇区数据，到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cs45讲笔记">
+<meta property="og:url" content="https://ainexur.github.io/2023/12/09/cs45%E8%AE%B2%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="寻人启事">
+<meta property="og:description" content="01编译四步骤：预处理（gcc -E -o）、编译（gcc -s -c）、汇编（gcc -c）、链接（gcc -o） 02 操作系统实战-实现一个简单的内核：HelloOS1. 引导流程： PC机的BIOS（即引导程序）是烧写在主板的ROM芯片上，断电也能保存。   当PC机上电后执行的第一条指令就是BIOS固件中的指令，负责检测和初始化CPU、内存和平台； 然后加载引导设备中的第一个扇区数据，到">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/f2/bd/f2d31ab7144bf309761711efa9d6d4bd.jpg?wh=4335*3170">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/78/f5/782ef574b96084fa44a33ea1f83146f5.jpg?wh=3530*1605">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/cb/34/cbd634cd5256e372bcbebd4b95f21b34.jpg?wh=4378*4923">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20231212220414793.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20231212220137653.png">
+<meta property="article:published_time" content="2023-12-09T07:37:31.000Z">
+<meta property="article:modified_time" content="2023-12-14T13:28:14.866Z">
+<meta property="article:author" content="ainexur">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://static001.geekbang.org/resource/image/f2/bd/f2d31ab7144bf309761711efa9d6d4bd.jpg?wh=4335*3170">
+  
+  
+  <title>cs45讲笔记 - 寻人启事</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/atom-one-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="寻人启事" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Nexur</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/background/2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="cs45讲笔记">
+              
+                cs45讲笔记
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-12-09 15:37" pubdate>
+        2023年12月9日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      38 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">cs45讲笔记</h1>
+            
+            <div class="markdown-body">
+              <h2 id="01"><a href="#01" class="headerlink" title="01"></a>01</h2><p>编译四步骤：预处理（gcc -E -o）、编译（gcc -s -c）、汇编（gcc -c）、链接（gcc -o）</p>
+<h2 id="02-操作系统实战-实现一个简单的内核：HelloOS"><a href="#02-操作系统实战-实现一个简单的内核：HelloOS" class="headerlink" title="02 操作系统实战-实现一个简单的内核：HelloOS"></a>02 操作系统实战-实现一个简单的内核：HelloOS</h2><h3 id="1-引导流程："><a href="#1-引导流程：" class="headerlink" title="1. 引导流程："></a>1. 引导流程：</h3><blockquote>
+<p>PC机的BIOS（即引导程序）是烧写在主板的ROM芯片上，断电也能保存。</p>
+</blockquote>
+<ol>
+<li>当PC机上电后执行的第一条指令就是BIOS固件中的指令，负责检测和初始化CPU、内存和平台；</li>
+<li>然后加载引导设备中的第一个扇区数据，到0x7c00地址开始的内存空间；</li>
+<li>接着跳转到0x7c00地址处执行指令（这里即GRUB引导程序）。</li>
+</ol>
+<img src="https://static001.geekbang.org/resource/image/f2/bd/f2d31ab7144bf309761711efa9d6d4bd.jpg?wh=4335*3170" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 15%;" />		
+
+
+
+<h3 id="2-引导汇编代码"><a href="#2-引导汇编代码" class="headerlink" title="2. 引导汇编代码"></a>2. 引导汇编代码</h3><p>c语言不能直接操作特定硬件，需要使用汇编准备c语言所需要的环境：栈（C语言的函数调用、函数传参都需要调用栈）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs asm">;彭东 @ 2021.01.09<br>MBT_HDR_FLAGS EQU 0x00010003<br>MBT_HDR_MAGIC EQU 0x1BADB002 ;多引导协议头魔数<br>MBT_HDR2_MAGIC EQU 0xe85250d6 ;第二版多引导协议头魔数<br>global _start ;导出_start符号<br>extern main ;导入外部的main函数符号<br>[section .start.text] ;定义.start.text代码节<br>[bits 32] ;汇编成32位代码<br>_start:<br>jmp _entry<br>ALIGN 8<br>mbt_hdr:<br>dd MBT_HDR_MAGIC<br>dd MBT_HDR_FLAGS<br>dd -(MBT_HDR_MAGIC+MBT_HDR_FLAGS)<br>dd mbt_hdr<br>dd _start<br>dd 0<br>dd 0<br>dd _entry<br>;以上是GRUB所需要的头<br>ALIGN 8<br>mbt2_hdr:<br>DD MBT_HDR2_MAGIC<br>DD 0<br>DD mbt2_hdr_end - mbt2_hdr<br>DD -(MBT_HDR2_MAGIC + 0 + (mbt2_hdr_end - mbt2_hdr))<br>DW 2, 0<br>DD 24<br>DD mbt2_hdr<br>DD _start<br>DD 0<br>DD 0<br>DW 3, 0<br>DD 12<br>DD _entry<br>DD 0<br>DW 0, 0<br>DD 8<br>mbt2_hdr_end:<br>;以上是GRUB2所需要的头<br>;包含两个头是为了同时兼容GRUB、GRUB2<br>ALIGN 8<br>_entry:<br>;关中断<br>cli<br>;关不可屏蔽中断<br>in al, 0x70<br>or al, 0x80<br>out 0x70,al<br>;重新加载GDT<br>lgdt [GDT_PTR]<br>jmp dword 0x8 :_32bits_mode<br>_32bits_mode:<br>;下面初始化C语言可能会用到的寄存器<br>mov ax, 0x10<br>mov ds, ax<br>mov ss, ax<br>mov es, ax<br>mov fs, ax<br>mov gs, ax<br>xor eax,eax<br>xor ebx,ebx<br>xor ecx,ecx<br>xor edx,edx<br>xor edi,edi<br>xor esi,esi<br>xor ebp,ebp<br>xor esp,esp<br>;初始化栈，C语言需要栈才能工作<br>mov esp,0x9000<br>;调用C语言函数main<br>call main<br>;让CPU停止执行指令<br>halt_step:<br>halt<br>jmp halt_step<br>GDT_START:<br>knull_dsc: dq 0<br>kcode_dsc: dq 0x00cf9e000000ffff<br>kdata_dsc: dq 0x00cf92000000ffff<br>k16cd_dsc: dq 0x00009e000000ffff<br>k16da_dsc: dq 0x000092000000ffff<br>GDT_END:<br>GDT_PTR:<br>GDTLEN dw GDT_END-GDT_START-1<br>GDTBASE dd GDT_START<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="3-主函数"><a href="#3-主函数" class="headerlink" title="3. 主函数"></a>3. 主函数</h3><p>这里的printf，并不是c语言标准输入输出的printf函数，而是我们自己实现的：将字符输出到屏幕上。</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;vgastr.h&quot;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Hello OS!&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="4-printf函数：vgastr-h-vgastr-c"><a href="#4-printf函数：vgastr-h-vgastr-c" class="headerlink" title="4. printf函数：vgastr.h vgastr.c"></a>4. printf函数：vgastr.h vgastr.c</h3><p>我们需要在屏幕上显示字符，就要编程操作显卡。所有的显卡都支持VESA的标准，这种便准有两种工作模式：</p>
+<ol>
+<li>字符模式</li>
+<li>图形模式</li>
+</ol>
+<p>我们需要在屏幕上打印字符，则可以着重思考字符模式：</p>
+<blockquote>
+<p>它把屏幕分成 24 行，每行 80 个字符，把这（24*80）个位置映射到以 0xb8000 地址开始的内存中，每两个字节对应一个字符，其中一个字节是字符的 ASCII 码，另一个字节为字符的颜色值。如下图所示：</p>
+<img src="https://static001.geekbang.org/resource/image/78/f5/782ef574b96084fa44a33ea1f83146f5.jpg?wh=3530*1605" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 25%;" />	
+
+<p>计算机显卡文本模式明白了显卡的字符模式的工作细节，下面我们开始写代码。</p>
+</blockquote>
+<p>vgastr.h</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-type">void</span> _strwrite(<span class="hljs-type">char</span>* str);<br><span class="hljs-type">void</span> <span class="hljs-title function_">printf</span><span class="hljs-params">(<span class="hljs-type">char</span>* str, ...)</span>;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<p>vgastr.c:</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-type">void</span> _strwrite(<span class="hljs-type">char</span>* str) &#123;<br>    <span class="hljs-type">char</span>* p_strdst = (<span class="hljs-type">char</span>*)(<span class="hljs-number">0x8000</span>);<br>    <span class="hljs-keyword">while</span> (*str) &#123;<br>        *p_strdst = *str++;<br>        p_strdst += <span class="hljs-number">2</span>; <span class="hljs-comment">// 跳过字符颜色的填充空间</span><br>    &#125;<br>    <span class="hljs-keyword">return</span>;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">printf</span><span class="hljs-params">(<span class="hljs-type">char</span>* fmt, ...)</span> &#123;<br>    _strwrite(fmt);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="5-链接脚本：hello-lds"><a href="#5-链接脚本：hello-lds" class="headerlink" title="5. 链接脚本：hello.lds"></a>5. 链接脚本：hello.lds</h3><figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-comment">/*彭东 @ 2021.01.09*/</span><br><br>ENTRY(_start)<br>OUTPUT_ARCH(i386)<br>OUTPUT_FORMAT(elf32-i386)<br>SECTIONS<br>&#123;<br>	. = <span class="hljs-number">0x200000</span>;<br>	__begin_start_text = .;<br>	.start.text : ALIGN(<span class="hljs-number">4</span>) &#123; *(.start.text) &#125;<br>	__end_start_text = .;<br><br>	__begin_text = .;<br>	.text : ALIGN(<span class="hljs-number">4</span>) &#123; *(.text) &#125;<br>	__end_text = .;<br><br>	__begin_data = .;<br>	.data : ALIGN(<span class="hljs-number">4</span>) &#123; *(.data) &#125;<br>	__end_data = .;<br><br>	__begin_rodata = .;<br>	.rodata : ALIGN(<span class="hljs-number">4</span>) &#123; *(.rodata) *(.rodata.*) &#125;<br>	__end_rodata = .;<br><br>	__begin_kstrtab = .;<br>	.kstrtab : ALIGN(<span class="hljs-number">4</span>) &#123; *(.kstrtab) &#125;<br>	__end_kstrtab = .;<br><br>	__begin_bss = .;<br>       .bss : ALIGN(<span class="hljs-number">4</span>) &#123; *(.bss) &#125;<br>	__end_bss = .;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="6-编译和安装HelloOS"><a href="#6-编译和安装HelloOS" class="headerlink" title="6. 编译和安装HelloOS"></a>6. 编译和安装HelloOS</h3><h4 id="1-编写makefile"><a href="#1-编写makefile" class="headerlink" title="1. 编写makefile"></a>1. 编写makefile</h4><blockquote>
+<p>make：强大的控制编译过程的工具，读取一个名为makefile文件（固定名，一个文本文件，写好了构建规则），根据其定义的规则自动化构建软件。</p>
+</blockquote>
+<img src="https://static001.geekbang.org/resource/image/cb/34/cbd634cd5256e372bcbebd4b95f21b34.jpg?wh=4378*4923" srcset="/img/loading.gif" lazyload alt="img" style="zoom:15%;" />	
+
+<figure class="highlight makefile"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs makefile"><span class="hljs-comment"># nexur @ 2023.12.10</span><br><br>MAKEFLAGS = -sR<br>MKDIR = mkdir<br>RMDIR = rmdir<br>CP = cp<br>CD = cd<br>DD = dd<br>RM = rm<br><br>ASM = nasm<br>CC = gcc<br>LD = ld<br>OBJCOPY = objcopy<br><br>ASMBFLAGS = -f elf -w-orphan-labels<br>CFLAGS = -c -Os -std=c99 -m32 -Wall -Wshadow -W -Wconversion -Wno-sign-conversion -fno-stack-protector -fomit-frame-pointer -fno-builtin -fno-common -ffreestanding -Wno-unused-parameter -Wunused-variable<br>LDFLAGS = -s -static -T hello.lds -n -Map HelloOS.Map<br>OJCYFLAGS = -S -O binary<br><br>HELLOOS_OBJS :=<br>HELLOOS_OBJS += entry.o main.o vgastr.o<br>HELLOOS_ELF = HelloOS.elf<br>HELLOOS_BIN = HelloOS.bin<br><br>.PHONY : build clean all link bin <span class="hljs-comment">#定义五个伪目标</span><br><br><span class="hljs-section">all: clean build link bin #为目标all依赖于伪目标clean build link bin</span><br><br><span class="hljs-section">clean:</span><br>	<span class="hljs-variable">$(RM)</span> -f *.o *.bin *.elf <span class="hljs-comment">#伪目标依赖于rm -f *.o *.bin *.elf</span><br><br><span class="hljs-section">build: <span class="hljs-variable">$(HELLOOS_OBJS)</span> #伪目标build依赖于HELLOOS_OBJS</span><br><br><span class="hljs-section">link: <span class="hljs-variable">$(HELLOOS_ELF)</span> </span><br><span class="hljs-variable">$(HELLOOS_ELF)</span> : <span class="hljs-variable">$(HELLOOS_OBJS)</span> <br>	<span class="hljs-variable">$(LD)</span> <span class="hljs-variable">$(LDFLAGS)</span> -o <span class="hljs-variable">$@</span> <span class="hljs-variable">$(HELLOOS_OBJS)</span> <span class="hljs-comment">#伪目标link依赖于HelloOS.elf</span><br><br><span class="hljs-section">bin: <span class="hljs-variable">$(HELLOOS_BIN)</span></span><br><span class="hljs-variable">$(HELLOOS_BIN)</span>: <span class="hljs-variable">$(HELLOOS_ELF)</span><br>	<span class="hljs-variable">$(OBJCOPY)</span> <span class="hljs-variable">$(OJCYFLAGS)</span> <span class="hljs-variable">$&lt;</span> <span class="hljs-variable">$@</span><br><br>%.o : %.asm<br>	<span class="hljs-variable">$(ASM)</span> <span class="hljs-variable">$(ASMBFLAGS)</span> -o <span class="hljs-variable">$@</span> <span class="hljs-variable">$&lt;</span><br>%.o : %.c<br>	<span class="hljs-variable">$(CC)</span> <span class="hljs-variable">$(CFLAGS)</span> -o <span class="hljs-variable">$@</span> <span class="hljs-variable">$&lt;</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="2-执行make命令"><a href="#2-执行make命令" class="headerlink" title="2.  执行make命令"></a>2.  执行make命令</h4><p>编写好makefile，就可以执行make编译，编译完成后得到HelloOS.bin文件</p>
+<blockquote>
+<p>如果编写的makefile有误，或者缺少编译依赖文件，会报错，根据提示的行数排查问题，修改后重新执行make命令</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">make<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="7-启动"><a href="#7-启动" class="headerlink" title="7. 启动"></a>7. 启动</h3><blockquote>
+<p>可以使用虚拟机vmware安装ubuntu，此时默认的引导工具即是grub。</p>
+<ol>
+<li>编辑ubuntu的grub配置，添加启动项</li>
+<li>添加后启动虚拟机时有读条则按下SHIFT键即可加载驱动项界面，选择手动加的启动项</li>
+</ol>
+</blockquote>
+<h4 id="1-编写启动项"><a href="#1-编写启动项" class="headerlink" title="1. 编写启动项"></a>1. 编写启动项</h4><p>把下面的代码复制，然后插入到&#x2F;boot&#x2F;grub&#x2F;grub.cfg文件中 </p>
+<p>1. </p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c">menuentry <span class="hljs-string">&#x27;HelloOS&#x27;</span> &#123;<br>    insmod part_msdos<br>    insmod ext2<br>    <span class="hljs-built_in">set</span> root=<span class="hljs-string">&#x27;hd0,msdos4&#x27;</span> #注意boot目录挂载的分区，这是我机器上的情况<br>    multiboot2 /boot/HelloOS.bin<br>    boot<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="2-复制HelloOS-bin"><a href="#2-复制HelloOS-bin" class="headerlink" title="2. 复制HelloOS.bin"></a>2. 复制HelloOS.bin</h4><p>把HelloOS.bin文件复制到&#x2F;boot&#x2F;目录下</p>
+<h4 id="3-重启计算机"><a href="#3-重启计算机" class="headerlink" title="3. 重启计算机"></a>3. 重启计算机</h4><ol>
+<li><p>重启计算机，当界面读条时，按住<code>shift</code>键，</p>
+ <img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20231212220414793.png" srcset="/img/loading.gif" lazyload alt="image-20231212220414793" style="zoom:33%;" />	
+</li>
+<li><p>加载启动项选择界面，选择HelloOS</p>
+</li>
+<li><p>可以看到HelloOS启动选项了</p>
+ <img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20231212220137653.png" srcset="/img/loading.gif" lazyload alt="image-20231212220137653" style="zoom:33%;" /></li>
+</ol>
+<p>	</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/12/09/vscode%E8%87%AA%E7%94%A8%E6%8C%87%E5%8D%97/">
+                        <span class="hidden-mobile">vscode自用指南</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

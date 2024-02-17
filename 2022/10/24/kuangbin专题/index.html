@@ -1,396 +1,255 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1,user-scalable=no"><meta name="renderer" content="webkit"><meta name="color-scheme" content="dark light"><meta name="author" content="ainexur"><meta name="description" content="温故 知新"><meta name="keywords" content="博客"><title>kuangbin专题</title><link rel="icon" type="image/x-icon" href="/images/favicon.ico"><link rel="stylesheet" href="//at.alicdn.com/t/font_3242539_utq6ykfq7z.css"><link rel="stylesheet" light-src="https://cdn.staticfile.org/highlight.js/11.5.0/styles/default.min.css" dark-src="https://cdn.staticfile.org/highlight.js/11.5.0/styles/tokyo-night-dark.min.css"><link rel="stylesheet" href="https://fonts.font.im/css?family=Noto+Serif" as="font"><link href="/style/index.css" rel="stylesheet"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="寻人启事" type="application/atom+xml">
+</head><body><header class="page-header"><nav><ul class="router-list"><li class="nav-item"> <a href="/">主页</a></li><li class="nav-item"> <a href="/archives/">归档</a></li><li class="nav-item"> <a href="/atom.xml">RSS</a></li></ul><div class="mode-switch"><span class="iconfont icon-DarkTheme"></span></div></nav></header><main><section class="main-content"><section class="post-page"><div class="title-bar"><h1>kuangbin专题</h1><div class="post-info"><span>2022-10-24 23:12:55</span><span class="tags"><a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a></span></div></div><article> <div class="content"><h1 id="专题一-简单搜索"><a href="#专题一-简单搜索" class="headerlink" title="专题一 简单搜索"></a>专题一 简单搜索</h1><h2 id="1-棋盘问题"><a href="#1-棋盘问题" class="headerlink" title="1. 棋盘问题"></a>1. <a target="_blank" rel="noopener" href="https://vjudge.csgrandeur.cn/problem/POJ-1321">棋盘问题</a></h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>n皇后裸体</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
+<span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">10</span>;
+<span class="hljs-type">int</span> n, k;
+<span class="hljs-type">char</span> a[N][N];
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> i, <span class="hljs-type">int</span> mark, <span class="hljs-type">int</span> x)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (i == n ) <span class="hljs-keyword">return</span> x == <span class="hljs-number">0</span>;
+    <span class="hljs-type">int</span> ans = <span class="hljs-built_in">dfs</span>(i + <span class="hljs-number">1</span>, mark, x);
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; n; j ++) &#123;
+        <span class="hljs-keyword">if</span> (a[i][j] == <span class="hljs-string">&#x27;.&#x27;</span> || (mark &amp; (<span class="hljs-number">1</span> &lt;&lt; j))) <span class="hljs-keyword">continue</span>;
+        ans += <span class="hljs-built_in">dfs</span>(i + <span class="hljs-number">1</span>, mark | (<span class="hljs-number">1</span> &lt;&lt; j), x - <span class="hljs-number">1</span>);
+    &#125;
+    <span class="hljs-keyword">return</span> ans;
+&#125;
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">while</span> (cin &gt;&gt; n &gt;&gt; k, n != <span class="hljs-number">-1</span> &amp;&amp; k != <span class="hljs-number">-1</span>) &#123;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) cin &gt;&gt; a[i];
+        cout &lt;&lt; <span class="hljs-built_in">dfs</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, k) &lt;&lt; endl;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
 
-<!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=dark>
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
-  <link rel="icon" href="/img/avatar.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="ainexur">
-  <meta name="keywords" content="博客">
-  
-    <meta name="description" content="专题一 简单搜索1. 棋盘问题思路n皇后裸体 代码12345678910111213141516171819202122#include &lt;iostream&gt;using namespace std;const int N &#x3D; 10;int n, k;char a[N][N];int dfs(int i, int mark, int x) &amp;#123;    if (i &#x3D;&#x3D; n ) r">
-<meta property="og:type" content="article">
-<meta property="og:title" content="kuangbin专题">
-<meta property="og:url" content="https://ainexur.github.io/2022/10/24/kuangbin%E4%B8%93%E9%A2%98/index.html">
-<meta property="og:site_name" content="寻人启事">
-<meta property="og:description" content="专题一 简单搜索1. 棋盘问题思路n皇后裸体 代码12345678910111213141516171819202122#include &lt;iostream&gt;using namespace std;const int N &#x3D; 10;int n, k;char a[N][N];int dfs(int i, int mark, int x) &amp;#123;    if (i &#x3D;&#x3D; n ) r">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-10-24T15:12:55.000Z">
-<meta property="article:modified_time" content="2023-01-19T14:06:39.545Z">
-<meta property="article:author" content="ainexur">
-<meta property="article:tag" content="刷题">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  <title>kuangbin专题 - 寻人启事</title>
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/atom-one-dark.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"ainexur.github.io","root":"/","version":"1.8.14","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
-
-
-<body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Nexur</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="banner" id="banner" parallax=true
-         style="background: url('https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/background/2.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="kuangbin专题">
-              
-                kuangbin专题
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-10-24 23:12" pubdate>
-        2022年10月24日 晚上
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      2.6k 字
-    </span>
-  
-
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      22 分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
-          </div>
-
-          
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">kuangbin专题</h1>
-            
-            <div class="markdown-body">
-              <h1 id="专题一-简单搜索"><a href="#专题一-简单搜索" class="headerlink" title="专题一 简单搜索"></a>专题一 简单搜索</h1><h2 id="1-棋盘问题"><a href="#1-棋盘问题" class="headerlink" title="1. 棋盘问题"></a>1. <a target="_blank" rel="noopener" href="https://vjudge.csgrandeur.cn/problem/POJ-1321">棋盘问题</a></h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>n皇后裸体</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">10</span>;<br><span class="hljs-keyword">int</span> n, k;<br><span class="hljs-keyword">char</span> a[N][N];<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> mark, <span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (i == n ) <span class="hljs-keyword">return</span> x == <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">int</span> ans = <span class="hljs-built_in">dfs</span>(i + <span class="hljs-number">1</span>, mark, x);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; n; j ++) &#123;<br>        <span class="hljs-keyword">if</span> (a[i][j] == <span class="hljs-string">&#x27;.&#x27;</span> || (mark &amp; (<span class="hljs-number">1</span> &lt;&lt; j))) <span class="hljs-keyword">continue</span>;<br>        ans += <span class="hljs-built_in">dfs</span>(i + <span class="hljs-number">1</span>, mark | (<span class="hljs-number">1</span> &lt;&lt; j), x - <span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; n &gt;&gt; k, n != <span class="hljs-number">-1</span> &amp;&amp; k != <span class="hljs-number">-1</span>) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) cin &gt;&gt; a[i];<br>        cout &lt;&lt; <span class="hljs-built_in">dfs</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, k) &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://vjudge.csgrandeur.cn/problem/POJ-2251/origin">Dungeon Master POJ - 2251 </a></p>
-<p>身陷三层迷宫，可上下前后左右走，问从S到E到最小路径。从二维BFS到三维BFS到转换，代码不变。</p>
+<h2 id="2-Dungeon-Master-POJ-2251"><a href="#2-Dungeon-Master-POJ-2251" class="headerlink" title="2.Dungeon Master POJ - 2251 "></a>2.<a target="_blank" rel="noopener" href="https://vjudge.csgrandeur.cn/problem/POJ-2251/origin">Dungeon Master POJ - 2251 </a></h2><p>身陷三层迷宫，可上下前后左右走，问从S到E到最小路径。从二维BFS到三维BFS到转换，代码不变。</p>
 <p>要注意POJ使用C98，不支持C++11的特性</p>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">35</span>;<br><span class="hljs-keyword">bool</span> g[N][N][N], vis[N][N][N];<br><span class="hljs-keyword">int</span> n, m, l;<br><span class="hljs-keyword">int</span> sx, sy, sz;<br><span class="hljs-keyword">int</span> ex, ey, ez;<br><br><span class="hljs-keyword">int</span> dirs[][<span class="hljs-number">3</span>]  = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span>&#123;</span><br>    <span class="hljs-keyword">int</span> x, y, z;<br>    <span class="hljs-built_in">Node</span>(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b, <span class="hljs-keyword">int</span> c):<span class="hljs-built_in">x</span>(a), <span class="hljs-built_in">y</span>(b), <span class="hljs-built_in">z</span>(c) &#123;<br>    &#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span> </span>&#123;<br>    queue&lt;Node&gt; q;<br>    q.<span class="hljs-built_in">push</span>(<span class="hljs-built_in">Node</span>(sx, sy, sz));<br>    g[sx][sy][sz] = <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (q.<span class="hljs-built_in">size</span>()) &#123;<br>        <span class="hljs-keyword">int</span> size = q.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i ++) &#123;<br>            Node t = q.<span class="hljs-built_in">front</span>(); q.<span class="hljs-built_in">pop</span>();<br>            <span class="hljs-keyword">if</span> (t.x == ex &amp;&amp; t.y == ey &amp;&amp; t.z == ez) <span class="hljs-keyword">return</span> res;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">6</span>; i ++) &#123;<br>                <span class="hljs-keyword">int</span> tx = t.x + dirs[i][<span class="hljs-number">0</span>], ty = t.y + dirs[i][<span class="hljs-number">1</span>], tz = t.z + dirs[i][<span class="hljs-number">2</span>];<br>                <span class="hljs-keyword">if</span> (tx &gt;= n || tx &lt; <span class="hljs-number">0</span> || ty &gt;= m || ty &lt; <span class="hljs-number">0</span> || tz &gt;= l || tz &lt; <span class="hljs-number">0</span> || !g[tx][ty][tz]) <span class="hljs-keyword">continue</span>;<br>                g[tx][ty][tz] = <span class="hljs-literal">false</span>;<br>                q.<span class="hljs-built_in">push</span>(<span class="hljs-built_in">Node</span>(tx, ty, tz));<br>            &#125;<br>        &#125;<br>        ++ res;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">while</span>(cin &gt;&gt; n &gt;&gt; m &gt;&gt; l, n &amp;&amp; m &amp;&amp; l) &#123;<br>        <span class="hljs-keyword">char</span> ch;<br>        <span class="hljs-built_in">memset</span>(g, <span class="hljs-literal">false</span>, <span class="hljs-keyword">sizeof</span> g);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; m; j ++) &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>; k &lt; l; k ++) &#123;<br>                    cin &gt;&gt; ch;<br>                    <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;S&#x27;</span>) sx = i, sy = j, sz = k;<br>                    <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;E&#x27;</span>)  ex = i, ey = j, ez = k;<br>                    g[i][j][k] = ch != <span class="hljs-string">&#x27;#&#x27;</span>;<br>                &#125;<br>            &#125;<br>            <span class="hljs-built_in">getchar</span>();<br>        &#125;<br>        <span class="hljs-keyword">int</span> res = <span class="hljs-built_in">solve</span>();<br>        <span class="hljs-built_in">printf</span>(res == - <span class="hljs-number">1</span> ? <span class="hljs-string">&quot;Trapped!\n&quot;</span> : <span class="hljs-string">&quot;Escaped in %d minute(s).\n&quot;</span>, res);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;queue&gt;</span></span>
 
-<p><a target="_blank" rel="noopener" href="https://vjudge.csgrandeur.cn/problem/POJ-3278/origin">POJ-3278</a> <a target="_blank" rel="noopener" href="https://vjudge.csgrandeur.cn/problem/POJ-3278">Catch That Cow</a></p>
-<p>给定数字n和k，从n出发，每次可以-1、+1、*2，问变成k的最小步数</p>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;set&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">200005</span>;<br><span class="hljs-keyword">int</span> n, k;<br>queue&lt;<span class="hljs-keyword">int</span>&gt; q;<br><span class="hljs-keyword">bool</span> vis[N];<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">cal</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span> || x &gt;= N || vis[x]) <span class="hljs-keyword">return</span>;<br>    q.<span class="hljs-built_in">push</span>(x);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span> </span>&#123;<br>    q.<span class="hljs-built_in">push</span>(n);<br>    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (q.<span class="hljs-built_in">size</span>()) &#123;<br>        <span class="hljs-keyword">int</span> size = q.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i ++) &#123;<br>            <span class="hljs-keyword">int</span> t = q.<span class="hljs-built_in">front</span>(); q.<span class="hljs-built_in">pop</span>();<br>            vis[t] = <span class="hljs-literal">true</span>;<br>            <span class="hljs-keyword">if</span> (t == k) <span class="hljs-keyword">return</span> res;<br>            <span class="hljs-built_in">cal</span>(t + <span class="hljs-number">1</span>);<br>            <span class="hljs-built_in">cal</span>(t - <span class="hljs-number">1</span>);<br>            <span class="hljs-built_in">cal</span>(t * <span class="hljs-number">2</span>);<br>        &#125;<br>        ++res;   <br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    cin &gt;&gt; n &gt;&gt; k;<br>    cout &lt;&lt; <span class="hljs-built_in">solve</span>() &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">35</span>;
+<span class="hljs-type">bool</span> g[N][N][N], vis[N][N][N];
+<span class="hljs-type">int</span> n, m, l;
+<span class="hljs-type">int</span> sx, sy, sz;
+<span class="hljs-type">int</span> ex, ey, ez;
+
+<span class="hljs-type">int</span> dirs[][<span class="hljs-number">3</span>]  = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;;
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">Node</span>&#123;
+    <span class="hljs-type">int</span> x, y, z;
+    <span class="hljs-built_in">Node</span>(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b, <span class="hljs-type">int</span> c):<span class="hljs-built_in">x</span>(a), <span class="hljs-built_in">y</span>(b), <span class="hljs-built_in">z</span>(c) &#123;
+    &#125;
+&#125;;
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span> </span>&#123;
+    queue&lt;Node&gt; q;
+    q.<span class="hljs-built_in">push</span>(<span class="hljs-built_in">Node</span>(sx, sy, sz));
+    g[sx][sy][sz] = <span class="hljs-literal">false</span>;
+    <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (q.<span class="hljs-built_in">size</span>()) &#123;
+        <span class="hljs-type">int</span> size = q.<span class="hljs-built_in">size</span>();
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i ++) &#123;
+            Node t = q.<span class="hljs-built_in">front</span>(); q.<span class="hljs-built_in">pop</span>();
+            <span class="hljs-keyword">if</span> (t.x == ex &amp;&amp; t.y == ey &amp;&amp; t.z == ez) <span class="hljs-keyword">return</span> res;
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">6</span>; i ++) &#123;
+                <span class="hljs-type">int</span> tx = t.x + dirs[i][<span class="hljs-number">0</span>], ty = t.y + dirs[i][<span class="hljs-number">1</span>], tz = t.z + dirs[i][<span class="hljs-number">2</span>];
+                <span class="hljs-keyword">if</span> (tx &gt;= n || tx &lt; <span class="hljs-number">0</span> || ty &gt;= m || ty &lt; <span class="hljs-number">0</span> || tz &gt;= l || tz &lt; <span class="hljs-number">0</span> || !g[tx][ty][tz]) <span class="hljs-keyword">continue</span>;
+                g[tx][ty][tz] = <span class="hljs-literal">false</span>;
+                q.<span class="hljs-built_in">push</span>(<span class="hljs-built_in">Node</span>(tx, ty, tz));
+            &#125;
+        &#125;
+        ++ res;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+&#125;
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">while</span>(cin &gt;&gt; n &gt;&gt; m &gt;&gt; l, n &amp;&amp; m &amp;&amp; l) &#123;
+        <span class="hljs-type">char</span> ch;
+        <span class="hljs-built_in">memset</span>(g, <span class="hljs-literal">false</span>, <span class="hljs-keyword">sizeof</span> g);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) &#123;
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; m; j ++) &#123;
+                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k = <span class="hljs-number">0</span>; k &lt; l; k ++) &#123;
+                    cin &gt;&gt; ch;
+                    <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;S&#x27;</span>) sx = i, sy = j, sz = k;
+                    <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;E&#x27;</span>)  ex = i, ey = j, ez = k;
+                    g[i][j][k] = ch != <span class="hljs-string">&#x27;#&#x27;</span>;
+                &#125;
+            &#125;
+            <span class="hljs-built_in">getchar</span>();
+        &#125;
+        <span class="hljs-type">int</span> res = <span class="hljs-built_in">solve</span>();
+        <span class="hljs-built_in">printf</span>(res == - <span class="hljs-number">1</span> ? <span class="hljs-string">&quot;Trapped!\n&quot;</span> : <span class="hljs-string">&quot;Escaped in %d minute(s).\n&quot;</span>, res);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h2 id="3-POJ-3278-Catch-That-Cow"><a href="#3-POJ-3278-Catch-That-Cow" class="headerlink" title="3.POJ-3278 Catch That Cow"></a>3.<a target="_blank" rel="noopener" href="https://vjudge.csgrandeur.cn/problem/POJ-3278/origin">POJ-3278</a> <a target="_blank" rel="noopener" href="https://vjudge.csgrandeur.cn/problem/POJ-3278">Catch That Cow</a></h2><p>给定数字n和k，从n出发，每次可以-1、+1、*2，问变成k的最小步数</p>
+<pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;queue&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;set&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">200005</span>;
+<span class="hljs-type">int</span> n, k;
+queue&lt;<span class="hljs-type">int</span>&gt; q;
+<span class="hljs-type">bool</span> vis[N];
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">cal</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span> || x &gt;= N || vis[x]) <span class="hljs-keyword">return</span>;
+    q.<span class="hljs-built_in">push</span>(x);
+&#125;
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span> </span>&#123;
+    q.<span class="hljs-built_in">push</span>(n);
+    <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (q.<span class="hljs-built_in">size</span>()) &#123;
+        <span class="hljs-type">int</span> size = q.<span class="hljs-built_in">size</span>();
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i ++) &#123;
+            <span class="hljs-type">int</span> t = q.<span class="hljs-built_in">front</span>(); q.<span class="hljs-built_in">pop</span>();
+            vis[t] = <span class="hljs-literal">true</span>;
+            <span class="hljs-keyword">if</span> (t == k) <span class="hljs-keyword">return</span> res;
+            <span class="hljs-built_in">cal</span>(t + <span class="hljs-number">1</span>);
+            <span class="hljs-built_in">cal</span>(t - <span class="hljs-number">1</span>);
+            <span class="hljs-built_in">cal</span>(t * <span class="hljs-number">2</span>);
+        &#125;
+        ++res;   
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+&#125;
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    cin &gt;&gt; n &gt;&gt; k;
+    cout &lt;&lt; <span class="hljs-built_in">solve</span>() &lt;&lt; endl;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h2 id="4-POJ-3279-Fliptile"><a href="#4-POJ-3279-Fliptile" class="headerlink" title="4.POJ - 3279  Fliptile"></a>4.<a target="_blank" rel="noopener" href="https://vjudge.csgrandeur.cn/problem/POJ-3279/origin">POJ - 3279 </a> <a target="_blank" rel="noopener" href="https://vjudge.csgrandeur.cn/problem/POJ-3279">Fliptile</a></h2><p>有N*M的格子，格子一边是黑色，一边是白色可以任意翻转，翻转一个格子会触发上下左右四个格子同时翻转。给定初始状态，求翻转为全部白色格子所需要的最小步骤，若有多个翻转方案，输出字典序最小的一个</p>
+<p><strong>思路</strong>：二进制枚举第一列的所有翻转的方案，后续列由于受到前一列的翻转方案约束是固定的要维护前一列的颜色，可以推到而来。具体的，</p>
+<ol>
+<li>若前一列当前格子为黑色，则当前列当前格子需要翻转使得上一个格子可以触发翻转成白色，依次类推若最后一列无法</li>
+<li>若前一列当前格子为白色，则当前列的格子必不能翻转，否则上列则会触发翻转成为黑色</li>
+</ol>
+<pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">20</span>, M = <span class="hljs-number">20</span>;
+<span class="hljs-type">int</span> n, m;
+<span class="hljs-type">bool</span> g[N][M], turn[N][N], arr[N][N], ret[N][N];
+<span class="hljs-type">int</span> dirs[][<span class="hljs-number">2</span>] = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>&#125;;
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;
+    <span class="hljs-comment">//重置翻转次数</span>
+    <span class="hljs-built_in">memset</span>(turn, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span> turn);
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; m; i ++) 
+        turn[<span class="hljs-number">1</span>][i + <span class="hljs-number">1</span>] = x &amp; (<span class="hljs-number">1</span> &lt;&lt; i);
+    <span class="hljs-comment">//拷贝副本，用作当次计算的数组</span>
+    <span class="hljs-built_in">memset</span>(arr, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span> arr);
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) 
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; j++) 
+            arr[i][j] = g[i][j];
+    <span class="hljs-comment">//计算当前第一列的翻转情况是x时，推演剩下的列的翻转情况</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++)
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; j ++) &#123;
+            <span class="hljs-keyword">if</span> (i != <span class="hljs-number">1</span> &amp;&amp; arr[i - <span class="hljs-number">1</span>][j])
+                turn[i][j] = <span class="hljs-number">1</span>;
+            <span class="hljs-keyword">if</span> (turn[i][j]) &#123;
+                arr[i][j] = !arr[i][j];
+                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k = <span class="hljs-number">0</span>; k &lt; <span class="hljs-number">4</span>; k ++) &#123;
+                    <span class="hljs-type">int</span> x = i + dirs[k][<span class="hljs-number">0</span>];
+                    <span class="hljs-type">int</span> y = j + dirs[k][<span class="hljs-number">1</span>];
+                    arr[x][y] = !arr[x][y];
+                &#125;
+            &#125;
+        &#125;
+
+    <span class="hljs-type">bool</span> flag = <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i ++) 
+        <span class="hljs-keyword">if</span> (arr[n][i]) &#123;
+            flag = <span class="hljs-literal">false</span>;
+            <span class="hljs-keyword">break</span>;
+        &#125;
+    <span class="hljs-keyword">if</span> (!flag) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) 
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; j ++)
+            res += turn[i][j];
+    <span class="hljs-keyword">return</span> res;
+&#125;
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">copy</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) 
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; j ++)
+            ret[i][j] = turn[i][j];
+&#125;
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    cin &gt;&gt; n &gt;&gt; m;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) 
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; j ++) 
+            cin &gt;&gt; g[i][j];
+
+    <span class="hljs-type">int</span> min_res = <span class="hljs-number">0x3f3f3f3f</span>;
+    <span class="hljs-type">bool</span> flag = <span class="hljs-literal">false</span>;
+  	<span class="hljs-comment">// 枚举第一列的所有翻转可能</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; (<span class="hljs-number">1</span> &lt;&lt; m); i ++) &#123;
+        <span class="hljs-type">int</span> res = <span class="hljs-built_in">solve</span>(i);
+        <span class="hljs-keyword">if</span> (res != <span class="hljs-number">-1</span> &amp;&amp; res &lt; min_res) &#123;
+            flag = <span class="hljs-number">1</span>;
+            min_res = res;
+            <span class="hljs-built_in">copy</span>();
+        &#125;
+    &#125;
+
+    <span class="hljs-keyword">if</span> (flag) &#123;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) &#123;
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; j ++) &#123;
+                cout &lt;&lt; ret[i][j] &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;
+            &#125;
+            <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;&quot;</span>);
+        &#125;
+    &#125; <span class="hljs-keyword">else</span> &#123;
+        cout &lt;&lt; <span class="hljs-string">&quot;IMPOSSIBLE&quot;</span> &lt;&lt; endl;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
 
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E5%88%B7%E9%A2%98/">刷题</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/11/10/mac%E6%8C%87%E5%8D%97/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">mac指南</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/08/27/vagrant%E6%8C%87%E5%8C%97/">
-                        <span class="hidden-mobile">vagrant指北</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
 
-            
-          </article>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
+<h2 id="5-POJ-1426"><a href="#5-POJ-1426" class="headerlink" title="5.POJ-1426"></a>5.<a target="_blank" rel="noopener" href="https://vjudge.csgrandeur.cn/problem/POJ-1426/origin">POJ-1426</a></h2><p><a target="_blank" rel="noopener" href="https://vjudge.csgrandeur.cn/problem/POJ-1426">Find The Multiple</a></p>
+<p>给点n，求任意能整整除n且只包含数字1和0的一个数</p>
+<p>bfs所有数位上1或0的可能，直到找到任意符合条件的值</p>
+<pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;queue&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
-      </div>
-    
-  </div>
-</div>
+<span class="hljs-keyword">typedef</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ull;
+ull n;
 
-<!-- Custom -->
+<span class="hljs-function">ull <span class="hljs-title">solve</span><span class="hljs-params">()</span> </span>&#123;
+    queue&lt;ull&gt; q;
+    q.<span class="hljs-built_in">push</span>(<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">while</span> (q.<span class="hljs-built_in">size</span>()) &#123;
+        ull t = q.<span class="hljs-built_in">front</span>(); q.<span class="hljs-built_in">pop</span>();
+        <span class="hljs-keyword">if</span> (t % n == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> t;
+        q.<span class="hljs-built_in">push</span>(t * <span class="hljs-number">10</span>);
+        q.<span class="hljs-built_in">push</span>(t * <span class="hljs-number">10</span> + <span class="hljs-number">1</span>);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+&#125;
 
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-    
-
-    
-  </main>
-
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
-  
-
-  
-
-  
-</footer>
-
-
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  
-    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
-  
-  
-    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
-  
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123; 
+    <span class="hljs-keyword">while</span> (cin &gt;&gt; n, n) &#123;
+        cout &lt;&lt; <span class="hljs-built_in">solve</span>() &lt;&lt; endl;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
 
 
 
@@ -398,22 +257,122 @@
 
 
 
+<h2 id="6-POJ-3126"><a href="#6-POJ-3126" class="headerlink" title="6.POJ - 3126 "></a>6.<a target="_blank" rel="noopener" href="https://vjudge.csgrandeur.cn/problem/POJ-3126/origin">POJ - 3126 </a></h2><p><a target="_blank" rel="noopener" href="https://vjudge.csgrandeur.cn/problem/POJ-3126">Prime Path</a></p>
+<p>有n组数据，每组输出给出两个四位质数a b，每次可以将一位上的数字变换，求a变成b的最少步数（注意变换的中间值也必须是质数）。</p>
+<p>质数打表+最短路bfs</p>
+<pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;queue&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+<span class="hljs-keyword">typedef</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ull;
 
+<span class="hljs-type">int</span> n;
+<span class="hljs-type">int</span> a, b;
+<span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">10005</span>;
+<span class="hljs-type">bool</span> prime[N];  <span class="hljs-comment">// 素数表</span>
+<span class="hljs-type">bool</span> vis[N];    <span class="hljs-comment">// 访问标记</span>
+<span class="hljs-type">int</span> bases[] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">10</span>, <span class="hljs-number">100</span>, <span class="hljs-number">1000</span>&#125;;
 
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-comment">// 重置访问标记</span>
+    <span class="hljs-built_in">memset</span>(vis, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span> vis);
+    queue&lt;<span class="hljs-type">int</span>&gt; q;
+    <span class="hljs-comment">// 加入bfs起点</span>
+    q.<span class="hljs-built_in">push</span>(a);
+    vis[a] = <span class="hljs-number">1</span>;
+    <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;
+    <span class="hljs-comment">// bfs</span>
+    <span class="hljs-keyword">while</span> (q.<span class="hljs-built_in">size</span>()) &#123;
+        <span class="hljs-type">int</span> len = q.<span class="hljs-built_in">size</span>();
+        <span class="hljs-keyword">while</span> (len --) &#123;
+            <span class="hljs-type">int</span> t = q.<span class="hljs-built_in">front</span>(); q.<span class="hljs-built_in">pop</span>();
+            <span class="hljs-comment">// 找到目标，返回路径值</span>
+            <span class="hljs-keyword">if</span> (t == b) <span class="hljs-keyword">return</span> ans;
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i ++) &#123;
+                <span class="hljs-type">int</span> base = bases[i];
+                <span class="hljs-type">int</span> n1 = (t / base / <span class="hljs-number">10</span>) * base * <span class="hljs-number">10</span>;
+                <span class="hljs-type">int</span> n2 = t % base;
+                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> ch = <span class="hljs-number">0</span>; ch &lt;= <span class="hljs-number">9</span>; ch ++) &#123;
+                    <span class="hljs-type">int</span> n3 = ch * base;
+                    <span class="hljs-type">int</span> num = n1 + n2 + n3;
+                    <span class="hljs-keyword">if</span> (!prime[num] || vis[num]) <span class="hljs-keyword">continue</span>;
+                    vis[num] = <span class="hljs-number">1</span>;
+                    q.<span class="hljs-built_in">push</span>(num);
+                &#125;
+                <span class="hljs-comment">// cout &lt;&lt; endl;</span>
+            &#125;
+        &#125;
+        ++ ans;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+&#125;
 
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123; 
+    <span class="hljs-comment">// 素数打表</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1000</span>; i &lt; <span class="hljs-number">10000</span>; i++) &#123;
+        <span class="hljs-type">bool</span> flag = <span class="hljs-literal">true</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">2</span>; j * j &lt;= i; j ++)
+            <span class="hljs-keyword">if</span> (i % j == <span class="hljs-number">0</span>) &#123;
+                flag = <span class="hljs-literal">false</span>;
+                <span class="hljs-keyword">break</span>;
+            &#125;
+        prime[i] = flag;
+    &#125;
+    <span class="hljs-comment">// 输入输出</span>
+    cin &gt;&gt; n;
+    <span class="hljs-keyword">while</span> (n--) &#123;
+        cin &gt;&gt; a &gt;&gt; b;
+        cout &lt;&lt; <span class="hljs-built_in">solve</span>() &lt;&lt; endl;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
 
+<h2 id="7-POJ-3087"><a href="#7-POJ-3087" class="headerlink" title="7.POJ-3087"></a>7.<a target="_blank" rel="noopener" href="https://vjudge.csgrandeur.cn/problem/POJ-3087/origin">POJ-3087</a></h2><p><a target="_blank" rel="noopener" href="https://vjudge.csgrandeur.cn/problem/POJ-3087"> Shuffle’m Up</a></p>
+<p>两手扑克牌，s2第一张，s1第二张交替洗，然后对半分，问能否洗成S12的牌，可以输出次数，否则输出-1</p>
+<p>模拟题，没看懂题，看的题解</p>
+<pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;queue&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+<span class="hljs-keyword">typedef</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ull;
 
+<span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">105</span>;
+string s1, s2, s;
+<span class="hljs-type">int</span> T, n;
 
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(string a, string b, <span class="hljs-type">int</span> step)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (a + b == s) <span class="hljs-keyword">return</span> step;
+    string tmp = <span class="hljs-string">&quot;&quot;</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) tmp = tmp + b[i] + a[i];
+    a = tmp.<span class="hljs-built_in">substr</span>(<span class="hljs-number">0</span>, n);
+    b = tmp.<span class="hljs-built_in">substr</span>(n, n);
+    <span class="hljs-keyword">if</span> (a.<span class="hljs-built_in">compare</span>(s1) == <span class="hljs-number">0</span> &amp;&amp; b.<span class="hljs-built_in">compare</span>(s2) == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">dfs</span>(a, b, step + <span class="hljs-number">1</span>);
+&#125;
 
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">dfs</span>(s1, s2, <span class="hljs-number">0</span>);
+&#125;
 
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123; 
+    cin &gt;&gt; T;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= T; i ++) &#123;
+        cin &gt;&gt; n;
+        cin &gt;&gt; s1 &gt;&gt; s2 &gt;&gt; s;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d\n&quot;</span>, i, <span class="hljs-built_in">solve</span>());
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
 
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
-
-</body>
-</html>
+<h2 id="8-POJ-3414"><a href="#8-POJ-3414" class="headerlink" title="8. POJ-3414"></a>8.<a target="_blank" rel="noopener" href="https://vjudge.csgrandeur.cn/problem/POJ-3414/origin"> POJ-3414</a></h2><p><a target="_blank" rel="noopener" href="https://vjudge.csgrandeur.cn/problem/POJ-3414">Pots</a></p>
+</div></article><div class="copyright-wrapper"><p>原文作者:<a href="https://ainexur.github.io">ainexur</a></p><p>原文链接:<a href="https://ainexur.github.io/2022/10/24/kuangbin%E4%B8%93%E9%A2%98/">kuangbin专题</a></p><p>发表日期: 2022-10-24 23:12:55</p><p>更新日期: 2023-04-02 23:52:57</p><p>版权声明: 本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p></div><div class="post-pager"><div class="prev"><a href="/2022/11/10/mac%E6%8C%87%E5%8D%97/" title="mac指南">上一篇 mac指南</a></div><div class="next"> <a href="/2022/08/27/vagrant%E6%8C%87%E5%8C%97/" title="vagrant指北">下一篇 vagrant指北</a></div></div><link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css"/><script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script><div id="gitalk-container"></div><script>new Gitalk({
+  clientID: '',
+  clientSecret: '',
+  repo: '',
+  owner: '',
+  admin: '',
+  id: location.pathname.substr(0, 48),
+  distractionFreeMode: true,
+  labels: ['Gitalk'],
+  title: 'kuangbin专题',
+}).render('gitalk-container');</script></section></section></main><footer class="footer-page"><div><span>Powered by</span><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>| Theme</span><a target="_blank" rel="noopener" href="https://github.com/techmovie/hexo-theme-instapaper">instapaper</a></div></footer><script src="/scripts/dark.js"></script><script src="/scripts/post.js"></script></body></html>

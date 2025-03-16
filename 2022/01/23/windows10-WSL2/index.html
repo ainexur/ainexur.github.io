@@ -26,8 +26,10 @@
 <meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20230326125215152.png">
 <meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20230326130832653.png">
 <meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20230326130041096.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20250316033859857.png">
+<meta property="og:image" content="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20250316032209624.png">
 <meta property="article:published_time" content="2022-01-23T15:48:53.000Z">
-<meta property="article:modified_time" content="2023-03-26T05:19:32.254Z">
+<meta property="article:modified_time" content="2025-03-16T12:39:45.497Z">
 <meta property="article:author" content="ainexur">
 <meta property="article:tag" content="Windows">
 <meta property="article:tag" content="WSL2">
@@ -181,7 +183,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      525 字
+      4.2k 字
     </span>
   
 
@@ -190,7 +192,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5 分钟
+      35 分钟
     </span>
   
 
@@ -256,6 +258,59 @@
 <h1 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h1><h2 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">换阿里源</span><br>sudo sed -i &#x27;s/http:\/\/archive.ubuntu.com/http:\/\/mirrors.aliyun.com/g&#x27; /etc/apt/sources.list<br>sudo sed -i &#x27;s/https:\/\/archive.ubuntu.com/http:\/\/mirrors.aliyun.com/g&#x27; /etc/apt/sources.list<br></code></pre></div></td></tr></table></figure>
 
 
+
+<h1 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h1><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">wsl --update<br><br><br>wsl --set-default-version 2<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h1 id="安装Ubuntu-24-04"><a href="#安装Ubuntu-24-04" class="headerlink" title="安装Ubuntu-24.04"></a>安装Ubuntu-24.04</h1><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">安装</span><br>wsl --install -d Ubuntu-24.04<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">默认启动</span><br>wsl --setdefault Ubuntu-24.04<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="换源-1"><a href="#换源-1" class="headerlink" title="换源"></a>换源</h2><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble main restricted universe multiverse</span><br><span class="hljs-string">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-updates main restricted universe multiverse</span><br><span class="hljs-string">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-security main restricted universe multiverse&quot;</span> | sudo <span class="hljs-built_in">tee</span> /etc/apt/sources.list<br><br><span class="hljs-comment"># 更新</span><br>sudo apt update &amp;&amp; sudo apt upgrade<br><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="root密码重置"><a href="#root密码重置" class="headerlink" title="root密码重置"></a>root密码重置</h2><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo passwd root<br></code></pre></div></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="0h-my-zsh"><a href="#0h-my-zsh" class="headerlink" title="0h-my-zsh"></a>0h-my-zsh</h2><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 安装 ZSH</span><br>sudo apt install zsh -y<br><span class="hljs-comment"># 切换默认 Shell 为 ZSH</span><br>chsh -s $(<span class="hljs-built_in">which</span> zsh)<br><br><br><span class="hljs-comment"># 安装zsh</span><br>sh -c <span class="hljs-string">&quot;<span class="hljs-subst">$(wget -O- https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)</span>&quot;</span><br><span class="hljs-comment"># 语法高亮插件（zsh-syntax-highlighting）</span><br>git <span class="hljs-built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="hljs-variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-syntax-highlighting<br><span class="hljs-comment"># 自动建议插件（zsh-autosuggestions）</span><br>git <span class="hljs-built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions <span class="hljs-variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-autosuggestions<br><span class="hljs-comment"># 快速跳转插件（autojump）</span><br>sudo apt install autojump -y<br><br><span class="hljs-comment"># 编辑~/.zshrc，修改该行，添加新的插件</span><br>plugins=(git zsh-syntax-highlighting zsh-autosuggestions autojump)<br><br><span class="hljs-comment"># powerlevel10k/powerlevel10k主题安装</span><br>git <span class="hljs-built_in">clone</span> --depth=1 https://github.com/romkatv/powerlevel10k.git <span class="hljs-variable">$&#123;ZSH_CUSTOM:-<span class="hljs-variable">$HOME</span>/.oh-my-zsh/custom&#125;</span>/themes/powerlevel10k<br><span class="hljs-comment"># 将 ZSH_THEME 设置为 powerlevel10k/powerlevel10k</span><br>vim ./zshrc<br><span class="hljs-comment">#自定义</span><br><span class="hljs-comment">#手动编辑 ~/.p10k.zsh 文件，调整图标、颜色、间距等细节（需重启终端生效）‌47。</span><br><br><br><br><span class="hljs-comment"># 并行编译</span><br><span class="hljs-built_in">export</span> MAKEFLAGS=<span class="hljs-string">&quot;-j<span class="hljs-subst">$(nproc)</span>&quot;</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+
+
+<h1 id="WSL启用和禁用"><a href="#WSL启用和禁用" class="headerlink" title="WSL启用和禁用"></a>WSL启用和禁用</h1><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">禁用 Hyper-V 和虚拟机平台</span><br>dism /online /disable-feature /featurename:Microsoft-Hyper-V /norestart<br>dism /online /disable-feature /featurename:VirtualMachinePlatform /norestart<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">清理残留驱动</span><br>bcdedit /set hypervisorlaunchtype off<br>shutdown /r /t 0<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">重启后重新启用</span><br>dism /online /enable-feature /featurename:Microsoft-Hyper-V /all /norestart<br>dism /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart<br>bcdedit /set hypervisorlaunchtype auto<br>shutdown /r /t 0<br></code></pre></div></td></tr></table></figure>
+
+
+
+
+
+
+
+<h1 id="内核编译-ubuntu"><a href="#内核编译-ubuntu" class="headerlink" title="内核编译 -ubuntu"></a>内核编译 -ubuntu</h1><p><a target="_blank" rel="noopener" href="https://github.com/microsoft/WSL2-Linux-Kernel">GitHub - microsoft&#x2F;WSL2-Linux-Kernel: The source for the Linux kernel used in Windows Subsystem for Linux 2 (WSL2)</a></p>
+<p>官方教程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo apt install build-essential flex bison dwarves libssl-dev libelf-dev cpio qemu-utils debhelper  build-essential<br>make menuconfig KCONFIG_CONFIG=Microsoft/config-wsl<br>make -j$(<span class="hljs-built_in">nproc</span>) KCONFIG_CONFIG=Microsoft/config-wsl &amp;&amp; make -j$(<span class="hljs-built_in">nproc</span>) INSTALL_MOD_PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$PWD</span>/modules&quot;</span> modules_install<br><br><br>make -j16 KCONFIG_CONFIG=Microsoft/config-wsl  bindeb-pkg<br><span class="hljs-comment"># 拷贝镜像</span><br><span class="hljs-built_in">cp</span>  <span class="hljs-built_in">arch</span>/x86/boot/bzImage /mnt/c/Users/sevenx/Documents/02-devTool <br><br><br><span class="hljs-comment"># 在windows .wslconfig配置指定内核</span><br>[wsl2]<br>kernel=C:\\Users\\sevenx\\Documents\\02-devTool\\bzImage<br></code></pre></div></td></tr></table></figure>
+
+<p>自己定义：</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ~<br><br>git <span class="hljs-built_in">clone</span> --depth 1 https://github.com/microsoft/WSL2-Linux-Kernel<br><span class="hljs-built_in">cd</span> WSL2-Linux-Kernel<br><span class="hljs-built_in">cp</span> ./Microsoft/config-wsl .config<br>make menuconfig<br><span class="hljs-comment"># 检查配置</span><br>grep CONFIG_DEBUG_INFO .config<br>grep CONFIG_KPROBES .config<br>grep CONFIG_DEBUG_FS .config<br>grep CONFIG_RELAY .config<br>grep CONFIG_DEBUG_INFO_DWARF4 .config<br><br><span class="hljs-comment"># 启用未启用的项</span><br>sed -i <span class="hljs-string">&#x27;s/# CONFIG_DEBUG_INFO_DWARF4 is not set/CONFIG_DEBUG_INFO_DWARF4=y/&#x27;</span> .config<br><br><span class="hljs-comment"># </span><br>sudo apt install build-essential flex bison dwarves libssl-dev libelf-dev cpio qemu-utils<br><br><span class="hljs-comment"># arch-linux</span><br>yay -S dpkg debhelper fakeroot bc rsync git binutils make gcc flex bison openssl libelf<br>make -j$(<span class="hljs-built_in">nproc</span>) deb-pkg<br></code></pre></div></td></tr></table></figure>
+
+
+
+
+
+<h2 id="systemtap"><a href="#systemtap" class="headerlink" title="systemtap"></a>systemtap</h2><p>推荐自编译安装，防止遇到其他问题</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">wget https://sourceware.org/systemtap/ftp/releases/systemtap-5.2.tar.gz<br><br>tar -xzvf systemtap-5.2.tar.gz <br><br><span class="hljs-built_in">cd</span> systemtap-5.2<br><br>./configure --prefix=/usr/local  <br><br>make<br>sudo make install<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20250316033859857.png" srcset="/img/loading.gif" lazyload alt="image-20250316033859857"></p>
+<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p>configure: error: missing elfutils development headers&#x2F;libraries (install elfutils-devel, libebl-dev, libdw-dev and&#x2F;or libebl-devel)</p>
+<p>答：缺失elfutils，手动编译安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">wget https://sourceware.org/elfutils/ftp/0.192/elfutils-0.192.tar.bz2<br>tar -xf elfutils-0.192.tar.bz2<br><span class="hljs-built_in">cd</span> elfutils-0.192<br>make &amp;&amp; sudo make install<br></code></pre></div></td></tr></table></figure>
+
+<p>stap命令报错如下：</p>
+<img src="https://typoradrawingbed.oss-cn-guangzhou.aliyuncs.com/img/image-20250316032209624.png" srcset="/img/loading.gif" lazyload alt="image-20250316032209624" style="zoom:50%;" />
+
+<p>答：卸载apt包管理安装的后，自编译安装重新执行命令成功</p>
+
             </div>
             <hr>
             <div>
@@ -284,9 +339,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/01/26/Windwos%E6%96%87%E4%BB%B6%E6%A0%A1%E9%AA%8C/">
+                      <a href="/2022/01/26/Windwos%E7%AC%94%E8%AE%B0/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Windwos文件校验</span>
+                        <span class="hidden-mobile">Windwos笔记</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
